@@ -19,6 +19,11 @@
 <img src="https://img.shields.io/badge/code%20quality-A+-brightgreen" alt="Code Quality" />
 </p>
 
+<p align="center">
+  <img src="Poster.png" alt="Icon Collection Showcase" width="100%" style="border-radius: 10px;" />
+</p>
+
+
 ---
 
 ## The Problem: Why Traditional Icons Fail on Modern Screens
