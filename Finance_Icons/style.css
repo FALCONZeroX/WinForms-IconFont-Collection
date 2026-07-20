@@ -1,0 +1,543 @@
+@font-face {
+  font-family: 'Finance_icons';
+  src:  url('fonts/Finance_icons.eot?wdhsjo');
+  src:  url('fonts/Finance_icons.eot?wdhsjo#iefix') format('embedded-opentype'),
+    url('fonts/Finance_icons.ttf?wdhsjo') format('truetype'),
+    url('fonts/Finance_icons.woff?wdhsjo') format('woff'),
+    url('fonts/Finance_icons.svg?wdhsjo#Finance_icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Finance_icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-auction-line:before {
+  content: "\e900";
+}
+.icon-hours-fill:before {
+  content: "\e901";
+}
+.icon-hours-line:before {
+  content: "\e902";
+}
+.icon-auction-fill:before {
+  content: "\e903";
+}
+.icon-bank-card-2-fill:before {
+  content: "\e904";
+}
+.icon-bank-card-2-line:before {
+  content: "\e905";
+}
+.icon-bank-card-fill:before {
+  content: "\e906";
+}
+.icon-bank-card-line:before {
+  content: "\e907";
+}
+.icon-bit-coin-fill:before {
+  content: "\e908";
+}
+.icon-bit-coin-line:before {
+  content: "\e909";
+}
+.icon-bnb-fill:before {
+  content: "\e90a";
+}
+.icon-bnb-line:before {
+  content: "\e90b";
+}
+.icon-btc-fill:before {
+  content: "\e90c";
+}
+.icon-btc-line:before {
+  content: "\e90d";
+}
+.icon-cash-fill:before {
+  content: "\e90e";
+}
+.icon-cash-line:before {
+  content: "\e90f";
+}
+.icon-coin-fill:before {
+  content: "\e910";
+}
+.icon-coin-line:before {
+  content: "\e911";
+}
+.icon-coins-fill:before {
+  content: "\e912";
+}
+.icon-coins-line:before {
+  content: "\e913";
+}
+.icon-copper-coin-fill:before {
+  content: "\e914";
+}
+.icon-copper-coin-line:before {
+  content: "\e915";
+}
+.icon-copper-diamond-fill:before {
+  content: "\e916";
+}
+.icon-copper-diamond-line:before {
+  content: "\e917";
+}
+.icon-coupon-2-fill:before {
+  content: "\e918";
+}
+.icon-coupon-2-line:before {
+  content: "\e919";
+}
+.icon-coupon-3-fill:before {
+  content: "\e91a";
+}
+.icon-coupon-3-line:before {
+  content: "\e91b";
+}
+.icon-coupon-4-fill:before {
+  content: "\e91c";
+}
+.icon-coupon-4-line:before {
+  content: "\e91d";
+}
+.icon-coupon-5-fill:before {
+  content: "\e91e";
+}
+.icon-coupon-5-line:before {
+  content: "\e91f";
+}
+.icon-coupon-fill:before {
+  content: "\e920";
+}
+.icon-coupon-line:before {
+  content: "\e921";
+}
+.icon-currency-fill:before {
+  content: "\e922";
+}
+.icon-currency-line:before {
+  content: "\e923";
+}
+.icon-diamond-fill:before {
+  content: "\e924";
+}
+.icon-diamond-line:before {
+  content: "\e925";
+}
+.icon-diamond-ring-fill:before {
+  content: "\e926";
+}
+.icon-diamond-ring-line:before {
+  content: "\e927";
+}
+.icon-discount-percent-fill:before {
+  content: "\e928";
+}
+.icon-discount-percent-line:before {
+  content: "\e929";
+}
+.icon-eth-fill:before {
+  content: "\e92a";
+}
+.icon-eth-line:before {
+  content: "\e92b";
+}
+.icon-exchange-2-fill:before {
+  content: "\e92c";
+}
+.icon-exchange-2-line:before {
+  content: "\e92d";
+}
+.icon-exchange-box-fill:before {
+  content: "\e92e";
+}
+.icon-exchange-box-line:before {
+  content: "\e92f";
+}
+.icon-exchange-cny-fill:before {
+  content: "\e930";
+}
+.icon-exchange-cny-line:before {
+  content: "\e931";
+}
+.icon-exchange-dollar-fill:before {
+  content: "\e932";
+}
+.icon-exchange-dollar-line:before {
+  content: "\e933";
+}
+.icon-exchange-fill:before {
+  content: "\e934";
+}
+.icon-exchange-funds-fill:before {
+  content: "\e935";
+}
+.icon-exchange-funds-line:before {
+  content: "\e936";
+}
+.icon-exchange-line:before {
+  content: "\e937";
+}
+.icon-funds-box-fill:before {
+  content: "\e938";
+}
+.icon-funds-box-line:before {
+  content: "\e939";
+}
+.icon-funds-fill:before {
+  content: "\e93a";
+}
+.icon-funds-line:before {
+  content: "\e93b";
+}
+.icon-gift-2-fill:before {
+  content: "\e93c";
+}
+.icon-gift-2-line:before {
+  content: "\e93d";
+}
+.icon-gift-fill:before {
+  content: "\e93e";
+}
+.icon-gift-line:before {
+  content: "\e93f";
+}
+.icon-hand-coin-fill:before {
+  content: "\e940";
+}
+.icon-hand-coin-line:before {
+  content: "\e941";
+}
+.icon-hand-heart-fill:before {
+  content: "\e942";
+}
+.icon-hand-heart-line:before {
+  content: "\e943";
+}
+.icon-increase-decrease-fill:before {
+  content: "\e944";
+}
+.icon-increase-decrease-line:before {
+  content: "\e945";
+}
+.icon-jewelry-fill:before {
+  content: "\e946";
+}
+.icon-jewelry-line:before {
+  content: "\e947";
+}
+.icon-money-cny-box-fill:before {
+  content: "\e948";
+}
+.icon-money-cny-box-line:before {
+  content: "\e949";
+}
+.icon-money-cny-circle-fill:before {
+  content: "\e94a";
+}
+.icon-money-cny-circle-line:before {
+  content: "\e94b";
+}
+.icon-money-dollar-box-fill:before {
+  content: "\e94c";
+}
+.icon-money-dollar-box-line:before {
+  content: "\e94d";
+}
+.icon-money-dollar-circle-fill:before {
+  content: "\e94e";
+}
+.icon-money-dollar-circle-line:before {
+  content: "\e94f";
+}
+.icon-money-euro-box-fill:before {
+  content: "\e950";
+}
+.icon-money-euro-box-line:before {
+  content: "\e951";
+}
+.icon-money-euro-circle-fill:before {
+  content: "\e952";
+}
+.icon-money-euro-circle-line:before {
+  content: "\e953";
+}
+.icon-money-pound-box-fill:before {
+  content: "\e954";
+}
+.icon-money-pound-box-line:before {
+  content: "\e955";
+}
+.icon-money-pound-circle-fill:before {
+  content: "\e956";
+}
+.icon-money-pound-circle-line:before {
+  content: "\e957";
+}
+.icon-money-rupee-circle-fill:before {
+  content: "\e958";
+}
+.icon-money-rupee-circle-line:before {
+  content: "\e959";
+}
+.icon-nft-fill:before {
+  content: "\e95a";
+}
+.icon-nft-line:before {
+  content: "\e95b";
+}
+.icon-no-credit-card-fill:before {
+  content: "\e95c";
+}
+.icon-no-credit-card-line:before {
+  content: "\e95d";
+}
+.icon-p2p-fill:before {
+  content: "\e95e";
+}
+.icon-p2p-line:before {
+  content: "\e95f";
+}
+.icon-percent-fill:before {
+  content: "\e960";
+}
+.icon-percent-line:before {
+  content: "\e961";
+}
+.icon-price-tag-2-fill:before {
+  content: "\e962";
+}
+.icon-price-tag-2-line:before {
+  content: "\e963";
+}
+.icon-price-tag-3-fill:before {
+  content: "\e964";
+}
+.icon-price-tag-3-line:before {
+  content: "\e965";
+}
+.icon-price-tag-fill:before {
+  content: "\e966";
+}
+.icon-price-tag-line:before {
+  content: "\e967";
+}
+.icon-red-packet-fill:before {
+  content: "\e968";
+}
+.icon-red-packet-line:before {
+  content: "\e969";
+}
+.icon-refund-2-fill:before {
+  content: "\e96a";
+}
+.icon-refund-2-line:before {
+  content: "\e96b";
+}
+.icon-refund-fill:before {
+  content: "\e96c";
+}
+.icon-refund-line:before {
+  content: "\e96d";
+}
+.icon-safe-2-fill:before {
+  content: "\e96e";
+}
+.icon-safe-2-line:before {
+  content: "\e96f";
+}
+.icon-safe-3-fill:before {
+  content: "\e970";
+}
+.icon-safe-3-line:before {
+  content: "\e971";
+}
+.icon-safe-fill:before {
+  content: "\e972";
+}
+.icon-safe-line:before {
+  content: "\e973";
+}
+.icon-secure-payment-fill:before {
+  content: "\e974";
+}
+.icon-secure-payment-line:before {
+  content: "\e975";
+}
+.icon-shopping-bag-2-fill:before {
+  content: "\e976";
+}
+.icon-shopping-bag-2-line:before {
+  content: "\e977";
+}
+.icon-shopping-bag-3-fill:before {
+  content: "\e978";
+}
+.icon-shopping-bag-3-line:before {
+  content: "\e979";
+}
+.icon-shopping-bag-4-fill:before {
+  content: "\e97a";
+}
+.icon-shopping-bag-4-line:before {
+  content: "\e97b";
+}
+.icon-shopping-bag-fill:before {
+  content: "\e97c";
+}
+.icon-shopping-bag-line:before {
+  content: "\e97d";
+}
+.icon-shopping-basket-2-fill:before {
+  content: "\e97e";
+}
+.icon-shopping-basket-2-line:before {
+  content: "\e97f";
+}
+.icon-shopping-basket-fill:before {
+  content: "\e980";
+}
+.icon-shopping-basket-line:before {
+  content: "\e981";
+}
+.icon-shopping-cart-2-fill:before {
+  content: "\e982";
+}
+.icon-shopping-cart-2-line:before {
+  content: "\e983";
+}
+.icon-shopping-cart-fill:before {
+  content: "\e984";
+}
+.icon-shopping-cart-line:before {
+  content: "\e985";
+}
+.icon-stock-fill:before {
+  content: "\e986";
+}
+.icon-stock-line:before {
+  content: "\e987";
+}
+.icon-swap-2-fill:before {
+  content: "\e988";
+}
+.icon-swap-2-line:before {
+  content: "\e989";
+}
+.icon-swap-3-fill:before {
+  content: "\e98a";
+}
+.icon-swap-3-line:before {
+  content: "\e98b";
+}
+.icon-swap-box-fill:before {
+  content: "\e98c";
+}
+.icon-swap-box-line:before {
+  content: "\e98d";
+}
+.icon-swap-fill:before {
+  content: "\e98e";
+}
+.icon-swap-line:before {
+  content: "\e98f";
+}
+.icon-ticket-2-fill:before {
+  content: "\e990";
+}
+.icon-ticket-2-line:before {
+  content: "\e991";
+}
+.icon-ticket-fill:before {
+  content: "\e992";
+}
+.icon-ticket-line:before {
+  content: "\e993";
+}
+.icon-token-swap-fill:before {
+  content: "\e994";
+}
+.icon-token-swap-line:before {
+  content: "\e995";
+}
+.icon-trophy-fill:before {
+  content: "\e996";
+}
+.icon-trophy-line:before {
+  content: "\e997";
+}
+.icon-vip-crown-2-fill:before {
+  content: "\e998";
+}
+.icon-vip-crown-2-line:before {
+  content: "\e999";
+}
+.icon-vip-crown-fill:before {
+  content: "\e99a";
+}
+.icon-vip-crown-line:before {
+  content: "\e99b";
+}
+.icon-vip-diamond-fill:before {
+  content: "\e99c";
+}
+.icon-vip-diamond-line:before {
+  content: "\e99d";
+}
+.icon-vip-fill:before {
+  content: "\e99e";
+}
+.icon-vip-line:before {
+  content: "\e99f";
+}
+.icon-wallet-2-fill:before {
+  content: "\e9a0";
+}
+.icon-wallet-2-line:before {
+  content: "\e9a1";
+}
+.icon-wallet-3-fill:before {
+  content: "\e9a2";
+}
+.icon-wallet-3-line:before {
+  content: "\e9a3";
+}
+.icon-wallet-fill:before {
+  content: "\e9a4";
+}
+.icon-wallet-line:before {
+  content: "\e9a5";
+}
+.icon-water-flash-fill:before {
+  content: "\e9a6";
+}
+.icon-water-flash-line:before {
+  content: "\e9a7";
+}
+.icon-xrp-fill:before {
+  content: "\e9a8";
+}
+.icon-xrp-line:before {
+  content: "\e9a9";
+}
+.icon-xtz-fill:before {
+  content: "\e9aa";
+}
+.icon-xtz-line:before {
+  content: "\e9ab";
+}

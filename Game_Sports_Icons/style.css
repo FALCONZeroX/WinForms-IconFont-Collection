@@ -1,0 +1,177 @@
+@font-face {
+  font-family: 'Game_Sports_icons';
+  src:  url('fonts/Game_Sports_icons.eot?diqqms');
+  src:  url('fonts/Game_Sports_icons.eot?diqqms#iefix') format('embedded-opentype'),
+    url('fonts/Game_Sports_icons.ttf?diqqms') format('truetype'),
+    url('fonts/Game_Sports_icons.woff?diqqms') format('woff'),
+    url('fonts/Game_Sports_icons.svg?diqqms#Game_Sports_icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Game_Sports_icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-basketball-fill:before {
+  content: "\e900";
+}
+.icon-baseball-fill:before {
+  content: "\e901";
+}
+.icon-baseball-line:before {
+  content: "\e902";
+}
+.icon-basketball-line:before {
+  content: "\e903";
+}
+.icon-billiards-fill:before {
+  content: "\e904";
+}
+.icon-billiards-line:before {
+  content: "\e905";
+}
+.icon-boxing-fill:before {
+  content: "\e906";
+}
+.icon-boxing-line:before {
+  content: "\e907";
+}
+.icon-chess-fill:before {
+  content: "\e908";
+}
+.icon-chess-line:before {
+  content: "\e909";
+}
+.icon-dice-1-fill:before {
+  content: "\e90a";
+}
+.icon-dice-1-line:before {
+  content: "\e90b";
+}
+.icon-dice-2-fill:before {
+  content: "\e90c";
+}
+.icon-dice-2-line:before {
+  content: "\e90d";
+}
+.icon-dice-3-fill:before {
+  content: "\e90e";
+}
+.icon-dice-3-line:before {
+  content: "\e90f";
+}
+.icon-dice-4-fill:before {
+  content: "\e910";
+}
+.icon-dice-4-line:before {
+  content: "\e911";
+}
+.icon-dice-5-fill:before {
+  content: "\e912";
+}
+.icon-dice-5-line:before {
+  content: "\e913";
+}
+.icon-dice-6-fill:before {
+  content: "\e914";
+}
+.icon-dice-6-line:before {
+  content: "\e915";
+}
+.icon-dice-fill:before {
+  content: "\e916";
+}
+.icon-dice-line:before {
+  content: "\e917";
+}
+.icon-football-fill:before {
+  content: "\e918";
+}
+.icon-football-line:before {
+  content: "\e919";
+}
+.icon-game-2-fill:before {
+  content: "\e91a";
+}
+.icon-game-2-line:before {
+  content: "\e91b";
+}
+.icon-game-fill:before {
+  content: "\e91c";
+}
+.icon-game-line:before {
+  content: "\e91d";
+}
+.icon-golf-ball-fill:before {
+  content: "\e91e";
+}
+.icon-golf-ball-line:before {
+  content: "\e91f";
+}
+.icon-piano-fill:before {
+  content: "\e920";
+}
+.icon-piano-grand-fill:before {
+  content: "\e921";
+}
+.icon-piano-grand-line:before {
+  content: "\e922";
+}
+.icon-piano-line:before {
+  content: "\e923";
+}
+.icon-ping-pong-fill:before {
+  content: "\e924";
+}
+.icon-ping-pong-line:before {
+  content: "\e925";
+}
+.icon-poker-clubs-fill:before {
+  content: "\e926";
+}
+.icon-poker-clubs-line:before {
+  content: "\e927";
+}
+.icon-poker-diamonds-fill:before {
+  content: "\e928";
+}
+.icon-poker-diamonds-line:before {
+  content: "\e929";
+}
+.icon-poker-hearts-fill:before {
+  content: "\e92a";
+}
+.icon-poker-hearts-line:before {
+  content: "\e92b";
+}
+.icon-poker-spades-fill:before {
+  content: "\e92c";
+}
+.icon-poker-spades-line:before {
+  content: "\e92d";
+}
+.icon-sword-fill:before {
+  content: "\e92e";
+}
+.icon-sword-line:before {
+  content: "\e92f";
+}
+.icon-target-fill:before {
+  content: "\e930";
+}
+.icon-target-line:before {
+  content: "\e931";
+}
