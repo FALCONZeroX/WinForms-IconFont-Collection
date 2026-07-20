@@ -335,7 +335,7 @@ Custom icon fonts do not use standard letters (like 'A', 'B', 'C'). Instead, the
 
 أيقونات الخطوط لا تستخدم الأحرف العادية (مثل أ، ب، ج). بدلاً من ذلك، تقوم بربط الأيقونات الشعاعية برموز برمجية خاصة تُسمى **Unicode Character Points** (تظهر عادةً على شكل `\ue908` أو `\uf1ba`). عندما تقوم بتعيين الخط المخصص لزر ما وتكتب هذا الكود في خاصية الـ Text، يقوم السيستم برسم الأيقونة بدقة عالية بدلاً من النص.
 
-### 🌐 Finding Icons Using the Repository's HTML Indexes
+### 🌐 Finding Icons Using the Repository's HTML Indexes (العثور على الأيقونات باستخدام فهارس HTML الخاصة بالمستودع)
 
 To make finding icons effortless, **every font pack included in this repository comes with its own Interactive HTML index file** located in the same directory.
 
