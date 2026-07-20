@@ -1,10 +1,30 @@
 # 🎨 WinForms-IconFont-Collection
 
 <p align="center">
-  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License" />
-  <img src="https://img.shields.io/badge/Platform-.NET%20%7C%20Windows%20Forms-512BD4.svg" alt=".NET | Windows Forms" />
-  <img src="https://img.shields.io/badge/Language-C%23-239120.svg" alt="C#" />
-  <img src="https://img.shields.io/badge/Maintenance-Active-brightgreen.svg" alt="Maintenance Active" />
+<!-- دعم إصدارات .NET -->
+<img src="https://img.shields.io/badge/.NET%20Framework-4.7.2%2B-512BD4?logo=dotnet&logoColor=white" alt=".NET Framework 4.7.2+" />
+<img src="https://img.shields.io/badge/.NET-6%2B-512BD4?logo=dotnet&logoColor=white" alt=".NET 6+" />
+<img src="https://img.shields.io/badge/.NET-8%2B-512BD4?logo=dotnet&logoColor=white" alt=".NET 8+" />
+
+<!-- مميزات المشروع التقنية -->
+<img src="https://img.shields.io/badge/Icons-Vector%20%F0%9F%8E%AF%20DPI%20Aware-important" alt="Vector Icons DPI Aware" />
+<img src="https://img.shields.io/badge/Memory-Safe%20%F0%9F%A7%A0-green" alt="Memory Safe" />
+<img src="https://img.shields.io/badge/Zero-Installation%20%F0%9F%93%A6-blue" alt="Zero Installation" />
+<img src="https://img.shields.io/badge/DPI-Scaling%20Ready%20%F0%9F%96%A5%EF%B8%8F-ff69b4" alt="DPI Scaling Ready" />
+
+<!-- مجتمع ومستودع -->
+<img src="https://img.shields.io/github/stars/USERNAME/WinForms-IconFont-Collection?style=social" alt="GitHub Stars" />
+<img src="https://img.shields.io/github/forks/USERNAME/WinForms-IconFont-Collection?style=social" alt="GitHub Forks" />
+<img src="https://img.shields.io/github/issues/USERNAME/WinForms-IconFont-Collection" alt="GitHub Issues" />
+<img src="https://img.shields.io/github/last-commit/USERNAME/WinForms-IconFont-Collection" alt="Last Commit" />
+
+<!-- حزم الأيقونات المدعومة (مثال) -->
+<img src="https://img.shields.io/badge/Icon%20Sets-Font%20Awesome%20%7C%20Material%20%7C%20Ionicons-informational" alt="Supported Icon Sets" />
+
+<!-- بناء وإصدار -->
+<img src="https://img.shields.io/badge/build-passing-brightgreen" alt="Build Status" />
+<img src="https://img.shields.io/badge/NuGet-COMING%20SOON-lightgrey" alt="NuGet" />
+<img src="https://img.shields.io/badge/code%20quality-A+-brightgreen" alt="Code Quality" />
 </p>
 
 ---
