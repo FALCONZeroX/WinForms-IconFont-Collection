@@ -22,6 +22,7 @@
 </p>
 
 ---
+
 ## The Problem: Why Traditional Icons Fail on Modern Screens
 
 If you’ve ever built a Windows Forms application and tested it on a high‑DPI monitor (4K, 125%, 150%, 200% scaling), you’ve witnessed the **icon blur**. A beautifully designed 32×32 pixel icon becomes a smeared, fuzzy mess the moment the operating system tries to stretch it to match the screen’s scaling factor.  
@@ -33,9 +34,9 @@ This isn’t a bug in your code – it’s a fundamental limitation of **raster 
 A PNG or ICO file stores an icon as a fixed grid of colored pixels. At 100% DPI (96 DPI standard), every pixel maps perfectly to a physical screen pixel. But modern screens have much higher pixel densities. To keep UI elements physically the same size, Windows tells applications to render at a larger logical scale – for example, **150%** means every control (and every icon) must be drawn 1.5× larger.
 
 With a bitmap, there is no extra detail beyond the original grid. The graphics engine must **interpolate** – guess what the extra pixels should look like. This interpolation creates:
-- **Blur and softness** : edges become undefined.
-- **Jagged “stair‑step” artifacts** : diagonal lines look pixelated.
-- **Inconsistent appearance** : icons designed at 16×16 look completely different from those forced to render at 24×24 or 32×32.
+- **Blur and softness**: edges become undefined.
+- **Jagged “stair‑step” artifacts**: diagonal lines look pixelated.
+- **Inconsistent appearance**: icons designed at 16×16 look completely different from those forced to render at 24×24 or 32×32.
 
 Even the common “multi‑resolution ICO” trick (embedding several fixed sizes like 16×16, 32×32, 48×48) fails at fractional scaling values like 125% or 175%, because the scaling factor rarely matches an exact pre‑made size. The result is always a compromise.
 
@@ -52,9 +53,9 @@ Even the common “multi‑resolution ICO” trick (embedding several fixed size
 ملف PNG أو ICO يخزّن الأيقونة على هيئة شبكة ثابتة من البكسلات الملوّنة. عند دقة 100% (96 DPI)، كل بكسل يقابل تماماً بكسل شاشة حقيقي. لكن الشاشات الحديثة تملك كثافة بكسلات أعلى بكثير. وللحفاظ على الحجم الفعلي للعناصر، يطلب ويندوز من التطبيقات أن ترسم بمقياس منطقي أكبر – مثلاً **150%** تعني أن كل عنصر (وكل أيقونة) يجب رسمه بحجم 1.5 ضعف.
 
 مع الصورة النقطية، لا توجد تفاصيل إضافية خارج الشبكة الأصلية. محرك الرسم يضطر إلى **الاستكمال (Interpolation)** – أي تخمين كيف يجب أن تبدو البكسلات الإضافية. هذا الاستكمال ينتج عنه:
-- **ضبابية وتلاشي** : الحواف تصبح غير محددة.
-- **تشوهات (Stair‑step)** : الخطوط القطرية تبدو مكعبة.
-- **مظهر غير متجانس** : أيقونات 16×16 تبدو مختلفة تماماً عند رسمها بحجم 24×24 أو 32×32.
+- **ضبابية وتلاشي**: الحواف تصبح غير محددة.
+- **تشوهات (Stair‑step)**: الخطوط القطرية تبدو مكعبة.
+- **مظهر غير متجانس**: أيقونات 16×16 تبدو مختلفة تماماً عند رسمها بحجم 24×24 أو 32×32.
 
 حتى حيلة الأيقونات متعددة الأحجام (ICO تحتوي على عدة طبقات 16×16، 32×32، 48×48) تفشل عند معاملات تكبير كسرية مثل 125% أو 175%، لأن المعامل نادراً ما يطابق أحد الأحجام الجاهزة. والنتيجة دائماً حل وسط غير مرضٍ.
 
@@ -66,26 +67,25 @@ Icon fonts (`.ttf` / `.otf`) solve every scaling problem mentioned above **by de
 
 ### The Vector Advantage
 
-- **Infinite resolution** : A vector outline is resolution‑independent. When you render it at 16pt, 64pt, or 256pt, the operating system recalculates the exact shape using the same mathematical curves. The result is **perfect sharpness at any DPI level** – no interpolation, no blur.
-- **Sub‑pixel rendering** : Modern font engines apply anti‑aliasing (ClearType) that leverages the physical arrangement of LCD sub‑pixels, making icon edges even smoother and more readable than a bitmap could ever achieve.
-- **Consistency across the entire application** : Because icon fonts are rendered by the same text layout engine as labels and buttons, they automatically respect the system’s DPI settings. You set a font size in points, and the system handles the rest.
+- **Infinite resolution**: A vector outline is resolution‑independent. When you render it at 16pt, 64pt, or 256pt, the operating system recalculates the exact shape using the same mathematical curves. The result is **perfect sharpness at any DPI level** – no interpolation, no blur.
+- **Sub‑pixel rendering**: Modern font engines apply anti‑aliasing (ClearType) that leverages the physical arrangement of LCD sub‑pixels, making icon edges even smoother and more readable than a bitmap could ever achieve.
+- **Consistency across the entire application**: Because icon fonts are rendered by the same text layout engine as labels and buttons, they automatically respect the system’s DPI settings. You set a font size in points, and the system handles the rest.
 - **Scalability (Flexibility when resizing)**: Raster images (such as PNG or ICO files) come in fixed sizes; if you try to scale them up or down, they do not adapt well because their dimensions are predetermined. In contrast, using an icon font offers complete flexibility during application development, as the icons are treated just like standard characters.
 
-## 🔒 The Problem of including fonts: Why include the font inside the .exe file, better than relying on pre-installed Windows Fonts
+---
+
+## 🔒 The Problem of Including Fonts
 
 When you use a custom icon font in a Windows Forms application, you must deliver the font file (`.ttf` / `.otf`) to every user’s machine so that the operating system can render the icons. How you deliver it directly impacts security, reliability, and maintenance.
 
 ### The Problem
-
 Fonts are normally stored in `C:\Windows\Fonts` and are available to all applications. To make a custom font available, you have three options:
 
-| Approach                        | Problems                                                                                                                                                                                                                                                                                                                                                      |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1. Install font globally**    | - Requires administrator rights (UAC prompt).<br>- Pollutes the system font folder permanently.<br>- May conflict with other versions of the same font installed by other software.<br>- Uninstalling your app does not remove the font – user must manually clean up.<br>- Breaks on locked‑down corporate machines where font installation is forbidden. |
-| **2. Ship font as a loose file**| - The `.ttf` must be placed next to the `.exe` – easy to delete, rename, or lose.<br>- Network deployments and shortcuts break if the file is missing.<br>- Extra file means extra support headaches.                                                                                                                                                        |
-| **3. Embed font as resource**   | ✅ **No admin rights needed.**<br>✅ **Single‑file deployment** – font lives inside the `.exe`.<br>✅ **Impossible to lose or misplace.**<br>✅ **Isolated** – no other app can see or interfere with the font.<br>✅ **Clean uninstall** – nothing left behind.                                                                                            |
-
----
+| Approach | Problems |
+| :--- | :--- |
+| **1. Install font globally** | - Requires administrator rights (UAC prompt).<br>- Pollutes the system font folder permanently.<br>- May conflict with other versions of the same font.<br>- Uninstalling your app does not remove the font.<br>- Breaks on locked‑down corporate environments. |
+| **2. Ship font as a loose file**| - The `.ttf` must be placed next to the `.exe` – easy to delete or lose.<br>- Network deployments and shortcuts break if the file is missing.<br>- Extra file means extra support headaches. |
+| **3. Embed font as resource** | ✅ **No admin rights needed.**<br>✅ **Single‑file deployment** – font lives inside the `.exe`.<br>✅ **Impossible to lose or misplace.**<br>✅ **Isolated** – no other app can see or interfere with it.<br>✅ **Clean uninstall** – nothing left behind. |
 
 ### Why Embedding as a Resource is the Best Solution
 
@@ -98,41 +98,33 @@ Embedding the font as a **binary resource** inside your `.exe` works by loading 
 
 > ⚠️ **Critical implementation note:** The memory block holding the font data must not be freed until the `PrivateFontCollection` is disposed. Premature cleanup causes rendering crashes. Our architecture uses **deferred cleanup** (tracking all `IntPtr` pointers and freeing them only on application exit) to guarantee safety.
 
----
-
-
 ### Practical Benefits for WinForms Developers
-
-- **Zero installation on the client machine** : By embedding the font file directly inside your `.exe` as a resource, you bypass the need to install anything in the Windows Fonts folder. The font is loaded entirely from memory and stays private to your application.
-- **Single‑file deployment** : The icon set travels with your executable – no extra PNG files to lose or mismanage.
-- **Flexibility** : You can change the icon color, size, or even apply text effects (bold, outline) just by modifying the `Font` object’s properties. No need to ask a designer for a new asset file.
+- **Zero installation on the client machine**: By embedding the font file directly inside your `.exe` as a resource, you bypass the need to install anything in the Windows Fonts folder. The font is loaded entirely from memory and stays private to your application.
+- **Single‑file deployment**: The icon set travels with your executable – no extra PNG files to lose or mismanage.
+- **Flexibility**: You can change the icon color, size, or even apply text effects (bold, outline) just by modifying the `Font` object’s properties. No need to ask a designer for a new asset file.
 
 ---
-#### مميزات الخطوط التي تحتوي على الايقونات (Vector)
-- **دقة غير محدودة** : المخطط المتجهي Vector مستقل عن الدقة. عندما ترسمه بحجم 16 أو 64 أو 256 نقطة، يعيد النظام حساب الشكل بدقة باستخدام نفس المنحنيات الرياضية. والنتيجة **حدة كاملة عند أي مستوى DPI** – بلا استكمال ولا ضبابية.
-- **عرض تحت البكسلي (Sub‑pixel)** : محركات الخطوط الحديثة تطبق صقل الحواف (ClearType) الذي يستغل الترتيب الفيزيائي للبكسلات الثانوية في شاشات LCD، مما يجعل حواف الأيقونة أكثر نعومة وقراءةً مما يمكن لأي صورة نقطية تحقيقه.
-- **تجانس تام عبر التطبيق** : لأن خطوط الأيقونات ترسم بواسطة نفس محرك تنسيق النصوص، فهي تحترم تلقائياً إعدادات DPI للنظام. أنت تحدد حجم الخط بالنقاط، والنظام يتولى الباقي.
-- **مرونة عند التكبير والتصغير**: اذا كانت لديك صورة نقطية من النوع png او ico فهي تأتي بحجم محدد مسبقا واذا اردت تكبيرها او تصغيرها في لا تستجيب لان حجمها محدد مسبقا ولكن عند استخدام خط يحتوي على الايقونات فستحصل على مرونة كاملة في عملية تطوير التطبيقات لأنك ستعامل الايقونات وكأنها حروف عادية.
 
+### 🌐 مميزات الخطوط التي تحتوي على الأيقونات (Vector)
+- **دقة غير محدودة**: المخطط المتجهي Vector مستقل عن الدقة. عندما ترسمه بحجم 16 أو 64 أو 256 نقطة، يعيد النظام حساب الشكل بدقة باستخدام نفس المنحنيات الرياضية. والنتيجة **حدة كاملة عند أي مستوى DPI** – بلا استكمال ولا ضبابية.
+- **عرض تحت البكسلي (Sub‑pixel)**: محركات الخطوط الحديثة تطبق صقل الحواف (ClearType) الذي يستغل الترتيب الفيزيائي للبكسلات الثانوية في شاشات LCD، مما يجعل حواف الأيقونة أكثر نعومة وقراءةً مما يمكن لأي صورة نقطية تحقيقه.
+- **تجانس تام عبر التطبيق**: لأن خطوط الأيقونات ترسم بواسطة نفس محرك تنسيق النصوص، فهي تحترم تلقائياً إعدادات DPI للنظام. أنت تحدد حجم الخط بالنقاط، والنظام يتولى الباقي.
+- **مرونة عند التكبير والتصغير**: إذا كانت لديك صورة نقطية من النوع png أو ico فهي تأتي بحجم محدد مسبقاً وإذا أردت تكبيرها أو تصغيرها فهي لا تستجيب بشكل جيد لأن أبعادها مقيدة، ولكن عند استخدام خط يحتوي على الأيقونات فستحصل على مرونة كاملة في عملية تطوير التطبيقات لأنك ستعامل الأيقونات وكأنها حروف عادية.
 
-### 🌐 مشكلة تضمين الخط: لماذا تضمين الخط داخل ملف .exe مهم بدلا من الاعتماد على خطوط الويندوز المثبتة مسبقا
+### 🌐 مشكلة تضمين الخط: لماذا تضمين الخط داخل ملف .exe مهم بدلاً من الاعتماد على خطوط الويندوز المثبتة مسبقاً؟
 عندما تستخدم خط أيقونات مخصصاً في تطبيق Windows Forms، يجب أن يصل ملف الخط (`.ttf` / `.otf`) إلى جهاز كل مستخدم ليتمكن النظام من رسم الأيقونات. الطريقة التي تختارها للتوصيل تؤثر مباشرة على الأمان والموثوقية والصيانة.
 
 #### المشكلة
 الخطوط عادةً ما تخزن في `C:\Windows\Fonts` وتكون متاحة لجميع التطبيقات. هناك ثلاث طرق لجعل خط مخصص متاحاً:
 
-| الطريقة                           | المشاكل                                                                                                                                                                                                                                                             |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1. تثبيت الخط بشكل نظامي**      | - يتطلب صلاحيات مدير (ظهور UAC).<br>- يلوث مجلد خطوط النظام بشكل دائم.<br>- قد يتعارض مع نسخ أخرى من نفس الخط من برامج أخرى.<br>- إزالة التطبيق لا تزيل الخط – يضطر المستخدم للتنظيف يدوياً.<br>- يفشل في بيئات الشركات المقفلة حيث يمنع تثبيت الخطوط.           |
-| **2. توزيع الخط كملف منفصل**      | - يجب أن يوضع بجانب `.exe` – سهل الحذف أو التغيير أو الضياع.<br>- الانتشار الشبكي والاختصارات تنكسر إذا اختفى الملف.<br>- ملف إضافي يعني صداع دعم فني إضافي.                                                                                                         |
-| **3. تضمين الخط كمورد**           | ✅ **لا حاجة لصلاحيات مدير.**<br>✅ **نشر أحادي الملف** – الخط يعيش داخل `.exe`.<br>✅ **مستحيل ضياعه أو تغييره.**<br>✅ **معزول** – لا تطبيق آخر يمكنه رؤية الخط أو التداخل معه.<br>✅ **إزالة نظيفة** – لا يترك أثراً بعد الحذف.                                   |
+| الطريقة | المشاكل |
+| :--- | :--- |
+| **1. تثبيت الخط بشكل نظامي** | - يتطلب صلاحيات مدير (ظهور UAC).<br>- يلوث مجلد خطوط النظام بشكل دائم.<br>- قد يتعارض مع نسخ أخرى من نفس الخط من برامج أخرى.<br>- إزالة التطبيق لا تزيل الخط – يضطر المستخدم للتنظيف يدوياً.<br>- يفشل في بيئات الشركات المقفلة حيث يُمنع تثبيت الخطوط. |
+| **2. توزيع الخط كملف منفصل** | - يجب أن يوضع بجانب `.exe` – سهل الحذف أو التغيير أو الضياع.<br>- الانتشار الشبكي والاختصارات تنكسر إذا اختفى الملف.<br>- ملف إضافي يعني صداع دعم فني إضافي. |
+| **3. تضمين الخط كمورد** | ✅ **لا حاجة لصلاحيات مدير.**<br>✅ **نشر أحادي الملف** – الخط يعيش داخل `.exe`.<br>✅ **مستحيل ضياعه أو تغييره.**<br>✅ **معزول** – لا تطبيق آخر يمكنه رؤية الخط أو التداخل معه.<br>✅ **إزالة نظيفة** – لا يترك أثراً بعد الحذف. |
 
----
-
-#### لماذا التضمين كمورد هو الحل الأفضل
-
+#### لماذا التضمين كمورد هو الحل الأفضل؟
 تضمين الخط **كمورد ثنائي** داخل `.exe` يتم عبر تحميل بيانات الخط إلى ذاكرة غير مدارة وتسجيلها مع GDI+ باستخدام `PrivateFontCollection.AddMemoryFont`. الخط يوجد **فقط في ذاكرة عمليتك** وهو غير مرئي تماماً لبقية النظام. هذا الأسلوب:
-
 - **يتجاوز الحاجة لصلاحيات المسؤول** – لا تنصيب، ولا نوافذ UAC منبثقة.
 - **يضمن النسخة الدقيقة التي اختبرتها** – لا خطر من استبدال المستخدم لها بنسخة غير متوافقة.
 - **يمكّن النشر الحقيقي أحادي الملف** (xcopy، ClickOnce، MSIX) بدون أي ارتباطات خارجية.
@@ -141,15 +133,14 @@ Embedding the font as a **binary resource** inside your `.exe` works by loading 
 > ⚠️ **ملاحظة تنفيذية حرجة:** كتلة الذاكرة التي تحوي بيانات الخط يجب ألا تُحرّر قبل التخلص من `PrivateFontCollection`. التحرير المبكر يسبب أعطالاً في الرسم. بنيتنا تستخدم **التنظيف المؤجل** (تتبع جميع مؤشرات `IntPtr` وتحريرها فقط عند خروج التطبيق) لضمان السلامة الكاملة.
 
 #### فوائد عملية لمطوري WinForms
-- **صفر تثبيت على جهاز العميل** : عبر تضمين ملف الخط كمورد (شرح الطريقة في الاسفل) داخل `.exe`، تتجاوز الحاجة لتثبيت أي شيء في مجلد الخطوط. يُحمّل الخط بالكامل من الذاكرة ويبقى خاصاً بتطبيقك.
-- **نشر أحادي الملف** : مجموعة الأيقونات تسافر داخل الملف التنفيذي – لا ملفات PNG ضائعة أو منسية.
-- **مرونة** : تستطيع تغيير لون الأيقونة أو حجمها أو حتى تطبيق تأثيرات (خط عريض، حدود) بمجرد تعديل خصائص كائن `Font`. لا حاجة لطلب ملف جديد من المصمم.
-
-إليك الكود الكامل لملف الـ `README.md` جاهزاً للنسخ واللصق المباشر في مستودعك. تم تنسيقه باحترافية عالية ليتضمن شرح تضمين الموارد، كود الذاكرة العام (Generic)، وشرح الـ Unicode والملفات التفاعلية باللغتين العربية والإنجليزية.
+- **صفر تثبيت على جهاز العميل**: عبر تضمين ملف الخط كمورد داخل `.exe`، تتجاوز الحاجة لتثبيت أي شيء في مجلد الخطوط. يُحمّل الخط بالكامل من الذاكرة ويبقى خاصاً بتطبيقك.
+- **نشر أحادي الملف**: مجموعة الأيقونات تسافر داخل الملف التنفيذي – لا ملفات PNG ضائعة أو منسية.
+- **مرونة**: تستطيع تغيير لون الأيقونة أو حجمها أو حتى تطبيق تأثيرات (خط عريض، حدود) بمجرد تعديل خصائص كائن `Font`. لا حاجة لطلب ملف جديد من المصمم.
 
 ---
 
 # 📖 How to Use Icon Fonts in WinForms | دليل استخدام أيقونات الخطوط
+
 ---
 
 ## 🛠️ Step 1: Embedding the Font into Resources | أولاً: تضمين الخط داخل موارد المشروع
@@ -161,16 +152,18 @@ Before writing code, the font file (`.ttf` or `.otf`) must be bundled inside the
 1. In **Solution Explorer**, right-click the project and select **Properties**.
 2. Go to **Resources**; if it does not exist, click the link to create it.
 3. Click the **Add Resource** drop-down menu and select **Add Existing File…** (or click the **+** icon).
-4. In the file selection window, change the file type filter to **File** and select the font.
+4. In the file selection window, change the file type filter to **All Files** or **Font Files** and select your font.
 Your font is now included in the project resources.
 
 ---
+
 1. من **Solution Explorer**، اضغط بزر الفأرة الأيمن على المشروع واختر **Properties**.
 2. اذهب إلى تبويب **Resources**، وإذا لم يكن موجوداً اضغط على الرابط لإنشائه.
-3. اضغط على القائمة المنسدلة **Add Resource** واختر **Add Existing File…** او اضغط علامه +.
-4. في نافذة اختيار الملف، غيّر فلتر Type إلى **File ** ومن ثم قم باختيار الخط 
-الان خطك موجود في Resources المشروع
+3. اضغط على القائمة المنسدلة **Add Resource** واختر **Add Existing File…** أو اضغط على علامة **+**.
+4. في نافذة اختيار الملف، غيّر فلتر النوع إلى اختيار كافة الملفات ومن ثم قم باختيار الخط المطلوب.
+الآن خطك أصبح متاحاً وموجوداً في Resources المشروع كـ `byte[]`.
 
+---
 
 ## 💻 Step 2: Safe Memory Loading Code | ثانياً: كود تحميل الخط إلى الذاكرة
 
@@ -227,9 +220,9 @@ namespace WinForms_IconFont_Demo
             // Copy the raw byte array into the allocated unmanaged memory pointer
             Marshal.Copy(fontResourceData, 0, fontPtr, fontResourceData.Length);
 
-            // Register the font with the native OS graphics subsystem
-            uint dummy = 0;
-            AddFontMemResourceEx(fontPtr, (uint)fontResourceData.Length, IntPtr.Zero, ref dummy);
+            // Register the font with the native OS graphics subsystem (explicitly 1 font package)
+            uint numFonts = 1;
+            AddFontMemResourceEx(fontPtr, (uint)fontResourceData.Length, IntPtr.Zero, ref numFonts);
 
             // Append the font to our managed PrivateFontCollection
             _privateFonts.AddMemoryFont(fontPtr, fontResourceData.Length);
@@ -305,8 +298,8 @@ To adapt this code to your specific project, you only need to modify **two speci
 ### 1️⃣ `LoadAllFonts()` Method: (تعديل الخط والحجم)
 
 Update the resource reference to match your actual `.ttf` file name inside your Resources.
-
 قم بتحديث مرجع المورد ليتطابق مع الاسم الفعلي لملف `.ttf` الموجود ضمن مجلد الموارد (Resources) لديك.
+
 ```csharp
 // Replace 'Design_icons' with the exact name of your resource file. 
 // You can also change the font size value (e.g. 24, 40) right here.
@@ -314,28 +307,28 @@ _iconFontPrimary = CreateFontFromResource(Properties.Resources.YOUR_FONT_RESOURC
 
 ```
 
-### 2️⃣ `ApplyFontsToControls()` Method: (تغيير الايقونات بالكود)
+### 2️⃣ `ApplyFontsToControls()` Method: (تغيير الأيقونات بالكود)
 
 Assign the font variable to your specific WinForms controls (Buttons, Labels, Tabs) and input the correct Unicode for the icon you want to render.
-
 قم بتعيين متغير الخط لعناصر تحكم WinForms المحددة (الأزرار، والتسميات، وعلامات التبويب)، وأدخل رمز Unicode الصحيح للأيقونة التي ترغب في عرضها.
+
 ```csharp
 yourButtonName.Font = _iconFontPrimary; // Set the font target
-yourButtonName.Text = "\uXXXX";        // Insert the specific Unicode value
+yourButtonName.Text = "\uXXXX";        // Insert the specific Unicode value (e.g., "\ue908")
 
 ```
 
 ---
 
-## 🔤 What is Unicode & How to Find Icons | وكيف تجد الأيقونات؟ Unicode ما هو الـ   
+## 🔤 What is Unicode & How to Find Icons | ما هو الـ Unicode وكيف تجد الأيقونات؟
 
-### 💡 What is Unicode? | Unicode ما هو الـ  
+### 💡 What is Unicode? | ما هو الـ Unicode؟
 
 Custom icon fonts do not use standard letters (like 'A', 'B', 'C'). Instead, they map vector icon designs to special placeholders called **Unicode Character Points** (usually looking like `\ue908` or `\uf1ba`). When you assign an icon font to a button and change its text to one of these codes, Windows Forms draws the high-resolution vector symbol instead of text.
 
-أيقونات الخطوط لا تستخدم الأحرف العادية (مثل أ، ب، ج). بدلاً من ذلك، تقوم بربط الأيقونات الشعاعية برموز برمجية خاصة تُسمى **Unicode Character Points** (تظهر عادةً على شكل `\ue908` أو `\uf1ba`). عندما تقوم بتعيين الخط المخصص لزر ما وتكتب هذا الكود في خاصية الـ Text، يقوم السيستم برسم الأيقونة بدقة عالية بدلاً من النص.
+أيقونات الخطوط لا تستخدم الأحرف العادية (مثل أ، ب، ج). بدلاً من ذلك، تقوم بربط الأيقونات الشعاعية برموز برمجية خاصة تُسمى **Unicode Character Points** (تظهر عادةً على شكل `\ue908` أو `\uf1ba`). عندما تقوم بتعيين الخط المخصص لزر ما وتكتب هذا الكود في خاصية الـ Text، يقوم النظام برسم الأيقونة بدقة عالية بدلاً من النص العادي.
 
-### 🌐 Finding Icons Using the Repository's HTML Indexes (العثور على الأيقونات باستخدام فهارس HTML الخاصة بالمستودع)
+### 🌐 Finding Icons Using the Repository's HTML Indexes | العثور على الأيقونات باستخدام فهارس HTML الخاصة بالمستودع
 
 To make finding icons effortless, **every font pack included in this repository comes with its own Interactive HTML index file** located in the same directory.
 
@@ -356,7 +349,10 @@ To make finding icons effortless, **every font pack included in this repository 
 > 3. يمكنك استخدام **شريط البحث** المدمج في أعلى الصفحة للبحث عن أيقونة معينة بالاسم (مثال: ابحث عن "save" أو "home").
 > 4. ستجد بجانب كل أيقونة رمز الـ **Unicode** الخاص بها.
 > 5. لتبنيها داخل كود C#، قم بإضافة الرمز `\u` قبل الكود (مثال: إذا كان الرمز في صفحة الـ HTML هو `e908`، اكتبه في فيجوال ستوديو بهذا الشكل `"\ue908"`).
+> 
+> 
 
+---
 
 # 📦 Available Icon Font Packs | حزم خطوط الأيقونات المتوفرة
 
@@ -375,7 +371,7 @@ The collection contains over **9,000+ scalable vector icons** divided into **26 
 ### 🗂️ Detailed Directory & Icon Counts | تفاصيل المجلدات وأعداد الأيقونات
 
 | # | Package Name (اسم الحزمة) | Total Icons (عدد الأيقونات) | Directory Name (اسم المجلد) |
-|---|---------------------------|----------------------------|----------------------------|
+| --- | --- | --- | --- |
 | 1 | **FALCON Icon Collection Pack 1** | 2001 | `FALCON_Icons_Collection_Pack1` |
 | 2 | **General Icons Filled Pack 3** | 1053 | `Gereral_Icons_Filled_Pack3` |
 | 3 | **FALCON Icon Collection Pack 2** | 699 | `FALCON_Icon_Collection_Pack2` |
@@ -402,9 +398,10 @@ The collection contains over **9,000+ scalable vector icons** divided into **26 
 | 24 | **Buildings Icons** | 62 | `Buildings_Icons` |
 | 25 | **Users Icons** | 53 | `Users_Icons` |
 | 26 | **Game Sport Icons** | 50 | `Game_Sports_Icons` |
-| 📐 | **Total Icons Library** | **9,061 Icons** | |
+| 📐 | **Total Icons Library** | **9,061 Icons** |  |
 
 ---
+
 # 📂 Folder Structure & Contents | محتويات وهيكلية المجلدات
 
 Each icon package directory in this repository follows a clean, standardized layout generated by IcoMoon. It provides everything you need from raw font files to interactive preview web pages.
@@ -418,29 +415,30 @@ Inside every individual folder, you will find the following assets:
 داخل كل مجلد فرعي، ستجد الملفات والعناصر التالية:
 
 ### 1. 📂 `fonts/` (Directory / مجلد ملفات)
-*   **English:** Contains the core scalable font files The `.ttf` file inside this folder is the one you will import into Visual Studio's `Resources.resx`.
 
-*   **العربية:** يحتوي على ملفات الخطوط الأساسية ملف الـ `.ttf` الموجود داخل هذا المجلد هو الملف الذي ستقوم بتضمينه داخل موارد مشروعك `Resources.resx`.
+* **English:** Contains the core scalable font files. The `.ttf` file inside this folder is the one you will import into Visual Studio's `Resources.resx`.
+* **العربية:** يحتوي على ملفات الخطوط الأساسية. ملف الـ `.ttf` الموجود داخل هذا المجلد هو الملف الذي ستقوم بتضمينه داخل موارد مشروعك `Resources.resx`.
 
 ### 2. 🌐 `[Package_Name].html` (Interactive Document / صفحة ويب تفاعلية)
-*   **English:** The visual index/cheat-sheet for the specific pack (e.g., `Arrows_Icons.html`). Open this in any browser to search, filter, and copy the precise Unicode points for your C# code.
-  
-*   **العربية:** الفهرس المرئي المخصص للحزمة (مثل `Arrows_Icons.html`). يمكنك فتحه في أي متصفح للبحث عن الأيقونات، وتصفيتها، ونسخ أكواد الـ Unicode الخاصة بها لاستخدامها في كود C#.
+
+* **English:** The visual index/cheat-sheet for the specific pack (e.g., `Arrows_Icons.html`). Open this in any browser to search, filter, and copy the precise Unicode points for your C# code.
+* **العربية:** الفهرس المرئي المخصص للحزمة (مثل `Arrows_Icons.html`). يمكنك فتحه في أي متصفح للبحث عن الأيقونات، وتصفيتها، ونسخ أكواد الـ Unicode الخاصة بها لاستخدامها في كود C#.
 
 ### 3. 📄 `selection.json` (JSON Source File / ملف بيانات المشروع)
-*   **English:** The metadata configuration file containing the project definition, glyph mappings, and character codes. You can re-import this file back into tools like IcoMoon to edit or expand the font pack later.
-  
-*   **العربية:** ملف البيانات الوصفية (Metadata) الذي يحتوي على إعدادات المشروع وخريطة الرموز وأكوادها. يمكنك إعادة استيراد هذا الملف في أدوات مثل IcoMoon لتعديل حزمة الخطوط أو توسيعها لاحقاً.
+
+* **English:** The metadata configuration file containing the project definition, glyph mappings, and character codes. You can re-import this file back into tools like IcoMoon to edit or expand the font pack later.
+* **العربية:** ملف البيانات الوصفية (Metadata) الذي يحتوي على إعدادات المشروع وخريطة الرموز وأكوادها. يمكنك إعادة استيراد هذا الملف في أدوات مثل IcoMoon لتعديل حزمة الخطوط أو توسيعها لاحقاً.
 
 ### 4. 🎨 `style.css` (CSS Source File / ملف التنسيق)
-*   **English:** Contains the CSS rules and class mappings for web projects. While not strictly used in Windows Forms, it serves as a valuable reference for internal font naming conventions.
-  
-*   **العربية:** يحتوي على قواعد التنسيق وربط الكلاسات المخصصة لمشاريع الويب. بالرغم من عدم استخدامه مباشرة في تطبيقات Windows Forms، إلا أنه يمثل مرجعاً ممتازاً لمعرفة الأسماء البرمجية الداخلية للأيقونات.
+
+* **English:** Contains the CSS rules and class mappings for web projects. While not strictly used in Windows Forms, it serves as a valuable reference for internal font naming conventions.
+* **العربية:** يحتوي على قواعد التنسيق وربط الكلاسات المخصصة لمشاريع الويب. بالرغم من عدم استخدامه مباشرة في تطبيقات Windows Forms، إلا أنه يمثل مرجعاً ممتازاً لمعرفة الأسماء البرمجية الداخلية للأيقونات.
 
 ### 5. 📂 `demo-files/` (Directory / مجلد ملفات العرض)
-*   **English:** Internal components and assets required to properly render and style the interactive HTML preview page.
-  
-*   **العربية:** المكونات والملفات المساعدة المطلوبة لتشغيل وعرض صفحة الـ HTML التفاعلية وتنسيقها بشكل صحيح.
+
+* **English:** Internal components and assets required to properly render and style the interactive HTML preview page.
+* **العربية:** المكونات والملفات المساعدة المطلوبة لتشغيل وعرض صفحة الـ HTML التفاعلية وتنسيقها بشكل صحيح.
+
 ---
 
 ## 🤝 Contributing
@@ -449,15 +447,12 @@ We welcome contributions of any kind – icon pack suggestions, performance impr
 
 ## 📄 License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details. You are free to use, modify, and distribute the code in personal or commercial projects, provided the original copyright notice remains intact.
+This project is licensed under the **MIT License**. See the [LICENSE](https://www.google.com/search?q=LICENSE) file for details. You are free to use, modify, and distribute the code in personal or commercial projects, provided the original copyright notice remains intact.
 
 ---
 
 ### 🌐 النسخة العربية – المساهمة والترخيص
 
-نرحب بجميع المساهمات – اقتراح حزم أيقونات، تحسين الأداء، ترجمة الوثائق، أو إصلاح الأخطاء. افتح issue لمناقشة أفكارك أو أرسل pull request. المشروع مرخص تحت **MIT** – أنت حر في الاستخدام والتعديل والتوزيع في المشاريع الخاصة والتجارية مع الاحتفاظ بإشعار الحقوق الأصلي.
+نرحب بجميع المساهمات – اقتراح حزم أيقونات، تحسين الأداء، ترجمة الوثائق، أو إصلاح الأخطاء. افتح issue لمناقشة أفكارك أو أرسل pull request. المشروع مرخص تحت رخصة **MIT** المشاعة – أنت حر في الاستخدام والتعديل والتوزيع في المشاريع الخاصة والتجارية مع الاحتفاظ بإشعار الحقوق الأصلي.
 
 ---
-
-<p align="center">✨ Made with love for the WinForms community – crisp icons, zero compromises. ✨</p>
-```
