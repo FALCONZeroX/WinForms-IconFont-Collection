@@ -1,18 +1,15 @@
 # 🎨 WinForms-IconFont-Collection
 
 <p align="center">
-<!-- دعم إصدارات .NET -->
 <img src="https://img.shields.io/badge/.NET%20Framework-4.7.2%2B-512BD4?logo=dotnet&logoColor=white" alt=".NET Framework 4.7.2+" />
 <img src="https://img.shields.io/badge/.NET-6%2B-512BD4?logo=dotnet&logoColor=white" alt=".NET 6+" />
 <img src="https://img.shields.io/badge/.NET-8%2B-512BD4?logo=dotnet&logoColor=white" alt=".NET 8+" />
 
-<!-- مميزات المشروع التقنية -->
 <img src="https://img.shields.io/badge/Icons-Vector%20%F0%9F%8E%AF%20DPI%20Aware-important" alt="Vector Icons DPI Aware" />
 <img src="https://img.shields.io/badge/Memory-Safe%20%F0%9F%A7%A0-green" alt="Memory Safe" />
 <img src="https://img.shields.io/badge/Zero-Installation%20%F0%9F%93%A6-blue" alt="Zero Installation" />
 <img src="https://img.shields.io/badge/DPI-Scaling%20Ready%20%F0%9F%96%A5%EF%B8%8F-ff69b4" alt="DPI Scaling Ready" />
 
-<!-- مجتمع ومستودع -->
 <img src="https://img.shields.io/github/stars/FALCONzeroX/WinForms-IconFont-Collection?style=social" alt="GitHub Stars" />
 <img src="https://img.shields.io/github/forks/FALCONzeroX/WinForms-IconFont-Collection?style=social" alt="GitHub Forks" />
 <img src="https://img.shields.io/github/issues/FALCONzeroX/WinForms-IconFont-Collection" alt="GitHub Issues" />
@@ -44,7 +41,7 @@ Even the common “multi‑resolution ICO” trick (embedding several fixed size
 
 ---
 
-### 🌐 النسخة العربية – المشكلة: لماذا تبدو الأيقونات التقليدية سيئة على الشاشات الحديثة
+### 🌐 المشكلة: لماذا تبدو الأيقونات التقليدية سيئة على الشاشات الحديثة
 
 إذا قمت سابقاً ببناء تطبيق Windows Forms وجربته على شاشة عالية الدقة (4K، أو إعدادات تكبير مثل 125% أو 150% أو 200%)، فأنت بالتأكيد لاحظت **ضبابية الأيقونات**. أيقونة صممت بدقة 32×32 بكسل تتحول إلى فوضى مشوشة عندما يحاول النظام تمديدها لتتناسب مع معامل التكبير.
 
@@ -56,7 +53,7 @@ Even the common “multi‑resolution ICO” trick (embedding several fixed size
 
 مع الصورة النقطية، لا توجد تفاصيل إضافية خارج الشبكة الأصلية. محرك الرسم يضطر إلى **الاستكمال (Interpolation)** – أي تخمين كيف يجب أن تبدو البكسلات الإضافية. هذا الاستكمال ينتج عنه:
 - **ضبابية وتلاشي** : الحواف تصبح غير محددة.
-- **تشوهات مدرجة (Stair‑step)** : الخطوط القطرية تبدو مكعبة.
+- **تشوهات (Stair‑step)** : الخطوط القطرية تبدو مكعبة.
 - **مظهر غير متجانس** : أيقونات 16×16 تبدو مختلفة تماماً عند رسمها بحجم 24×24 أو 32×32.
 
 حتى حيلة الأيقونات متعددة الأحجام (ICO تحتوي على عدة طبقات 16×16، 32×32، 48×48) تفشل عند معاملات تكبير كسرية مثل 125% أو 175%، لأن المعامل نادراً ما يطابق أحد الأحجام الجاهزة. والنتيجة دائماً حل وسط غير مرضٍ.
