@@ -162,6 +162,7 @@ Before writing code, the font file (`.ttf` or `.otf`) must be bundled inside the
 2. **Switch Resource Type:** At the top toolbar of the window, change the dropdown from **Strings** to **Files**.
 3. **Add the Font:** Drag and drop your font file (e.g., `Design_icons.ttf`) directly into the designer.
 4. **Verify Name:** Visual Studio will automatically generate a property matching the file name. For example, `Design_icons.ttf` becomes accessible via `Properties.Resources.Design_icons` as a raw `byte[]`.
+   
 1. **فتح الموارد (Resources):** في Visual Studio، قم بتوسيع مجلد **Properties** داخل Solution Explorer وانقر نقراً مزدوجاً فوق **Resources.resx** (أو انقر بزر الماوس الأيمن على المشروع -> Properties -> Resources).
 2. **تغيير نوع المورد:** من شريط الأدوات العلوي للنافذة، غيّر القائمة المنسدلة من **Strings** إلى **Files**.
 3. **إضافة الخط:** قم بسحب وإفلات ملف الخط (على سبيل المثال، `Design_icons.ttf`) مباشرةً داخل واجهة المصمم (designer).
