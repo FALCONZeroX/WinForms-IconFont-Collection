@@ -325,9 +325,9 @@ yourButtonName.Text = "\uXXXX";        // Insert the specific Unicode value
 
 ---
 
-## 🔤 What is Unicode & How to Find Icons | ثالثاً: ما هو الـ Unicode وكيف تجد الأيقونات؟
+## 🔤 What is Unicode & How to Find Icons | وكيف تجد الأيقونات؟ Unicode ما هو الـ   
 
-### 💡 What is Unicode? | ما هو الـ Unicode؟
+### 💡 What is Unicode? | Unicode ما هو الـ  
 
 Custom icon fonts do not use standard letters (like 'A', 'B', 'C'). Instead, they map vector icon designs to special placeholders called **Unicode Character Points** (usually looking like `\ue908` or `\uf1ba`). When you assign an icon font to a button and change its text to one of these codes, Windows Forms draws the high-resolution vector symbol instead of text.
 
