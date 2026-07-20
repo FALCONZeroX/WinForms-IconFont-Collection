@@ -1,72 +1,87 @@
-# WinForms-IconFont-Collection 🚀
+```markdown
+# 🎨 WinForms-IconFont-Collection
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Platform: .NET](https://img.shields.io/badge/Platform-.NET%20%7C%20Windows%20Forms-blue.svg)]()
-[![Language: C#](https://img.shields.io/badge/Language-C%23-green.svg)]()
-[![Maintenance: Active](https://img.shields.io/badge/Maintenance-Active-brightgreen.svg)]()
-
-A robust, scalable, and memory-safe architecture to embed and use custom vector-based Font Icons inside Windows Forms applications (.NET Framework & .NET Core). This approach completely eliminates user-side font installations and bypasses the notorious UI degradation caused by high-DPI scaling.
-
-تجميعة وبنية برمجية قوية، قابلة للتوسيع، وآمنة الذاكرة لتضمين واستخدام خطوط الأيقونات الموجهة (Vector) داخل تطبيقات Windows Forms (.NET Framework & .NET Core). يلغي هذا الحل تماماً الحاجة لتثبيت الخطوط على أجهزة المستخدمين، ويتجنب تشوه واجهات المستخدم الناتج عن تغيير دقة الشاشة (DPI Scaling).
-
----
-
-## 📌 The Problem vs. The Solution / المشكلة والحل الرسمّي
-
-### English
-Traditional desktop asset pipelines rely heavily on rasterized images (`.png`, `.ico`). In Windows Forms, when a user changes their display scaling (e.g., 125%, 150%, or 4K displays), GDI+ scales these static pixel maps aggressively, leading to severely **blurry, pixelated, or pixel-stretched user interfaces**. 
-
-By migrating to vector-based **Icon Fonts**, graphics are drawn procedurally via mathematical paths, keeping your icons **razor-sharp at any resolution**. 
-
-#### ⚠️ The Naive Implementation Memory Trap
-Many developers attempt to use `PrivateFontCollection` to load font bytes from embedded resources but immediately call `Marshal.FreeCoTaskMem()` right after adding the font. **This breaks font rendering.** GDI+ requires the underlying unmanaged memory block to remain allocated in the RAM for as long as the OS graphics engine needs to repaint the controls. Freeing it early reverts your text to the system fallback font. 
-
-This repository demonstrates the correct architecture: leveraging the native Win32 API `AddFontMemResourceEx` to register the font globally inside the application context, and deferring memory management securely to the form's lifecycle.
-
-### العربية
-تعتمد واجهات سطح المكتب التقليدية بشكل كبير على الصور النقطية (`.png`, `.ico`). في بيئة Windows Forms، عندما يقوم المستخدم بتغيير حجم تكبير الشاشة (مثل 125% أو 150% أو شاشات 4K)، يقوم المحرك الرسومي بتكبير هذه البكسلات الثابتة مما يؤدي إلى **واجهة مستخدم ضبابية ومشوهة تماماً**.
-
-عند الانتقال إلى **خطوط الأيقونات (Icon Fonts)** الموجهة، يتم رسم الرسومات برمجياً عبر مسارات رياضية، مما يحافظ على **حدة ونقاء الأيقونات عند أي دقة شاشة**.
-
-#### ⚠️ فخ الذاكرة في التطبيق التقليدي
-يحاول العديد من المطورين استخدام `PrivateFontCollection` لتحميل بيانات الخط من الموارد المحتواة، ولكنهم يقعون في خطأ استدعاء `Marshal.FreeCoTaskMem()` مباشرة بعد إضافة الخط. **هذا يدمر رندرة الأيقونات**، لأن محرك جرافيكس الويندوز يتطلب بقاء كتلة الذاكرة غير المدارة حية في الRAM طوال فترة تشغيل الواجهة لإعادة الرسم عند الحاجة. تحريرها مبكراً يعيد الأيقونات إلى خط النظام الافتراضي (فتظهر كمربعات فارغة).
-
-يقدم هذا المستودع الهيكلية الصحيحة: استخدام دالة الويندوز الأصلية `AddFontMemResourceEx` لتسجيل الخط رسمياً داخل سياق جرافيكس التطبيق، وتأجيل تفريغ الذاكرة بأمان ليرتبط بدورة حياة الواجهة (Form Lifecycle).
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License" />
+  <img src="https://img.shields.io/badge/Platform-.NET%20%7C%20Windows%20Forms-512BD4.svg" alt=".NET | Windows Forms" />
+  <img src="https://img.shields.io/badge/Language-C%23-239120.svg" alt="C#" />
+  <img src="https://img.shields.io/badge/Maintenance-Active-brightgreen.svg" alt="Maintenance Active" />
+</p>
 
 ---
 
-## 🔥 Key Architecture Features / المميزات الهندسية الرئيسية
+## 📖 Introduction & The Problem It Solves
 
-| Feature / الميزة | Description / الوصف |
-| :--- | :--- |
-| **Perfect Scaling / دقة مثالية** | Sharp, vector-rendered icons at any DPI or resolution level (1080p to 4K+). |
-| **Zero-Installation / بدون تثبيت خارجي** | Compiled straight into the `.exe` binary as an embedded resource. No client setup. |
-| **Advanced Decoupled Pattern / نمط متقدم مفصول** | Reusable method signature allowing infinite font pack registrations dynamically via a single line. |
-| **Strict Memory Safety / أمان كامل للذاكرة** | Total prevention of memory leaks using safe deferred pointer cleanups tied to `FormClosed`. |
+### 🐞 The Classic WinForms Icon Nightmare
 
----
+Traditional WinForms applications rely on PNG or ICO files for icons. While convenient, these bitmap‑based formats fail spectacularly on modern high‑DPI displays (4K, 150 %, 200 % scaling). The runtime stretches a fixed grid of pixels, resulting in **blurry, jagged, and unprofessional-looking icons** – a deal‑breaker for polished desktop software.
 
-## 🛠️ Visual Studio Setup Guide / دليل إعداد الموارد
+### ✅ The Vector Solution: Embedded Icon Fonts
 
-Before running the code, embed your `.ttf` or `.otf` files properly:
-1. Open **Solution Explorer** in Visual Studio.
-2. Double-click **Properties** ➡️ Navigate to the **Resources** tab.
-3. Switch the top dropdown from *Strings* to **Files**.
-4. Drag and drop your custom icon font file into the area (e.g., let's assume it's saved as `Design_icons`).
+Icon fonts (`.ttf` / `.otf`) store icons as **vector outlines**, exactly like the system fonts you already use. By embedding a carefully crafted icon font directly inside your executable as a binary resource, you gain:
 
-قم بتضمين ملفات الخطوط (`.ttf` / `.otf`) داخل المشروع:
-1. افتح **Solution Explorer** في Visual Studio.
-2. اضغط مرتين على **Properties** ➡️ انتقل إلى تبويب **Resources**.
-3. قم بتغيير الخيار العلوي من *Strings* إلى **Files**.
-4. اسحب وأسقط ملف الخط الخاص بك داخل النافذة (سنفترض أن اسمه البرمجي `Design_icons`).
+- **Infinite scalability** – icons stay razor‑sharp at any DPI or font size.
+- **True zero‑installation** – no need to install the font on the end‑user’s machine.
+- **Single‑file deployment** – the entire icon set travels inside the `.exe`.
+
+### 🧠 The Hidden Memory Trap (Why Naïve Code Breaks)
+
+The `PrivateFontCollection.AddMemoryFont(IntPtr, int)` method registers a font from a memory block. Many developers, after seeing examples, rush to call `Marshal.FreeCoTaskMem(ptr)` immediately after adding the font, assuming the data has been copied. **That assumption is wrong.** GDI+ keeps a reference to the original memory block; if you free it early, the font rendering will become corrupt, throw access violations, or simply stop working.
+
+The correct, production‑grade pattern is **deferred cleanup**: store every allocated `IntPtr` and release them only after the `PrivateFontCollection` is disposed and the application no longer needs the fonts.
+
+This repository provides exactly that **correct, memory‑safe architecture**, ready to plug into any WinForms project.
 
 ---
 
-## 💻 Production-Ready Code / التطبيق البرمجي الاحترافي
+### 🌐 النسخة العربية – المقدمة والمشكلة
 
-### Approach A: Basic Setup (Single Font Pack) / الحل الأساسي (لحزمة خطوط واحدة)
+#### 🐞 المشكلة الكلاسيكية للأيقونات في Windows Forms
 
-Best suited for lightweight desktop applications utilizing only one specialized icon font resource.
+تعتمد التطبيقات التقليدية على صور PNG أو ICO للأيقونات. في الشاشات عالية الدقة (4K و scaling 150 % وأكثر) تصبح هذه الأيقونات **ضبابية ومشوهة تماماً** لأن النظام يضطر إلى تمديد شبكة ثابتة من البكسلات – وهذا يضر بجودة واجهة التطبيق.
+
+#### ✅ الحل المتجهي: خطوط الأيقونات المضمنة
+
+خطوط الأيقونات (`.ttf` / `.otf`) تخزّن الرسوم **كمخططات متجهة (vector)** تماماً مثل الخطوط النظامية. عند تضمين خط أيقونات كمورد ثنائي داخل الملف التنفيذي نحصل على:
+- **وضوح لا نهائي** عند أي مقياس DPI أو حجم خط.
+- **صفر تثبيت** على جهاز العميل.
+- **نشر أحادي الملف** – الأيقونات تسافر داخل `.exe`.
+
+#### 🧠 فخ الذاكرة الخفي
+
+الدالة `PrivateFontCollection.AddMemoryFont(IntPtr, int)` تسجل الخط من كتلة ذاكرة. كثير من المطورين يحررون الذاكرة فوراً بعد الإضافة معتقدين أن البيانات نُسخت – **وهذا خطأ**. GDI+ يحتفظ بمؤشر إلى الكتلة الأصلية، وتحريرها مبكراً يسبب أعطالاً أو توقف عرض الخط.
+
+الحل الصحيح هو **التنظيف المؤجل**: تخزين المؤشرات وتحريرها فقط بعد الانتهاء الكامل من استخدام الخط. هذا المستودع يقدم هذه البنية الآمنة القابلة للتوصيل مباشرة.
+
+---
+
+## 🏗️ Key Architecture Features
+
+| Feature                          | Description                                                                                                                                                   |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🎯 **Perfect Scaling**           | Crisp, vector‑based rendering at any DPI. No more blurry icons, ever.                                                                                         |
+| 📦 **Zero‑Installation**         | Font data compiled inside the `.exe`. No registry changes, no font installation.                                                                              |
+| 🧩 **Advanced Decoupled Architecture** | A reusable one‑line function pattern that loads infinite icon font packs dynamically with zero code duplication.                                           |
+| 🔐 **Strict Memory Safety**      | Proper `IntPtr` lifecycle management. All pointers are tracked and bulk‑released on application exit (`FormClosed`), guaranteeing 100 % garbage‑collector safety. |
+
+---
+
+### 🌐 النسخة العربية – خصائص البنية الرئيسية
+
+| الميزة                          | الوصف                                                                                       |
+| ------------------------------- | ------------------------------------------------------------------------------------------- |
+| 🎯 **تحجيم مثالي**              | عرض متجهي حاد عند أي DPI. لا مزيد من الأيقونات الضبابية.                                   |
+| 📦 **تثبيت صفري**               | بيانات الخط مدمجة في `.exe`. لا حاجة لتسجيل النظام أو تثبيت خطوط.                          |
+| 🧩 **بنية منفصلة متقدمة**       | نمط دالة قابلة لإعادة الاستخدام يحمّل حزماً لا نهائية من خطوط الأيقونات ديناميكياً.         |
+| 🔐 **سلامة ذاكرة صارمة**        | إدارة دورة حياة المؤشرات `IntPtr`، تتبع المؤشرات وتحريرها دفعةً واحدة عند إغلاق التطبيق.   |
+
+---
+
+## 🚀 Step‑by‑Step Implementation Guide
+
+### 📌 Approach A: Basic Setup (Single Font Pack)
+
+Perfect for simple applications. The font is loaded once and cleaned up when the form closes.
 
 ```csharp
 using System;
@@ -75,185 +90,193 @@ using System.Drawing.Text;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace IconFontDemo
+public partial class MainForm : Form
 {
-    public partial class Form1 : Form
+    // Store the private font collection and the unmanaged memory pointer
+    private PrivateFontCollection _privateFonts = null!;
+    private IntPtr _fontMemoryPointer = IntPtr.Zero;
+
+    public MainForm()
     {
-        // Thread-safe collection to hold our internal embedded font
-        private PrivateFontCollection privateFonts = new PrivateFontCollection();
-        private Font customFont;
-        
-        // Unmanaged memory pointer tracked for clean application lifetime disposal
-        private IntPtr fontPtr = IntPtr.Zero; 
+        InitializeComponent();
+        this.Load += MainForm_Load;
+        this.FormClosed += MainForm_FormClosed;
+    }
 
-        // Native Win32 API import to register the unmanaged memory font block into GDI+
-        [DllImport("gdi32.dll")]
-        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
+    private void MainForm_Load(object? sender, EventArgs e)
+    {
+        // 1. Retrieve the font data from embedded resources
+        byte[] fontData = Properties.Resources.IconFont; // .ttf stored as binary resource
 
-        public Form1()
+        // 2. Allocate unmanaged memory and copy the font data there
+        _fontMemoryPointer = Marshal.AllocCoTaskMem(fontData.Length);
+        Marshal.Copy(fontData, 0, _fontMemoryPointer, fontData.Length);
+
+        // 3. Register the font with a PrivateFontCollection
+        _privateFonts = new PrivateFontCollection();
+        _privateFonts.AddMemoryFont(_fontMemoryPointer, fontData.Length);
+
+        // 4. Create a Font object using the registered family
+        Font iconFont = new Font(_privateFonts.Families[0], 24f, FontStyle.Regular);
+
+        // 5. Use the font wherever needed (e.g., assign to a label)
+        Label iconLabel = new Label
         {
-            InitializeComponent();
-            LoadFontFromResources();
-            ApplyFontToControls();
-            
-            // Critical: Bind cleanup to the form close lifecycle event
-            this.FormClosed += Form1_FormClosed;
-        }
+            Text = "\uE800",          // Unicode point of the desired icon
+            Font = iconFont,
+            AutoSize = true
+        };
+        this.Controls.Add(iconLabel);
+    }
 
-        private void LoadFontFromResources()
+    private void MainForm_FormClosed(object? sender, FormClosedEventArgs e)
+    {
+        // 6. Dispose the font collection first, then free the memory
+        _privateFonts?.Dispose();
+        if (_fontMemoryPointer != IntPtr.Zero)
         {
-            // 1. Extract font raw byte array from embedded Assembly resources
-            byte[] fontData = Properties.Resources.Design_icons;
-
-            // 2. Allocate stable, unmanaged memory block matching resource length
-            fontPtr = Marshal.AllocCoTaskMem(fontData.Length);
-            Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
-
-            // 3. Force Windows Graphics Engine to recognize the memory font resource
-            uint dummy = 0;
-            AddFontMemResourceEx(fontPtr, (uint)fontData.Length, IntPtr.Zero, ref dummy);
-
-            // 4. Register the font family memory block inside the collection context
-            privateFonts.AddMemoryFont(fontPtr, fontData.Length);
-            
-            // 5. Instanciate the usable managed Font object with target size
-            customFont = new Font(privateFonts.Families[0], 40, FontStyle.Regular, GraphicsUnit.Point);
-        }
-
-        private void ApplyFontToControls()
-        {
-            button1.Font = customFont;
-            
-            // Set the Text property to the exact Unicode point corresponding to your icon
-            button1.Text = "\ue908"; 
-        }
-
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            // Clean up managed graphics resource trees
-            if (customFont != null) customFont.Dispose();
-            if (privateFonts != null) privateFonts.Dispose();
-            
-            // Safe unmanaged memory release strictly after GUI runtime operation completes
-            if (fontPtr != IntPtr.Zero)
-            {
-                Marshal.FreeCoTaskMem(fontPtr);
-                fontPtr = IntPtr.Zero;
-            }
+            Marshal.FreeCoTaskMem(_fontMemoryPointer);
+            _fontMemoryPointer = IntPtr.Zero;
         }
     }
 }
-
 ```
-### Approach B: Advanced Scalable Setup (Multiple Font Collections) / الحل المتقدم المشروح (لحزم متعددة)
-Highly recommended for Enterprise/Professional application architectures. It abstracts pointer management into a clean, reusable method while stacking multiple isolated font packages.
+
+### 📌 Approach B: Advanced Scalable Setup (Multiple Font Collections)
+
+Designed for large applications that need many icon packs or dynamic font loading. A single reusable method handles allocation, registration, and tracks all pointers for eventual bulk cleanup.
+
 ```csharp
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
-namespace MultiIconFontDemo
+/// <summary>
+/// Manages icon font resources safely and efficiently across the entire application.
+/// </summary>
+public static class IconFontManager
 {
-    public partial class Form1 : Form
+    // Track all unmanaged memory pointers for deferred cleanup
+    private static readonly List<IntPtr> _allocatedMemoryPointers = new List<IntPtr>();
+
+    // Keep PrivateFontCollection instances alive to prevent premature disposal
+    private static readonly List<PrivateFontCollection> _fontCollections = new List<PrivateFontCollection>();
+
+    /// <summary>
+    /// Loads a font from an in‑memory byte array and returns a ready‑to‑use Font object.
+    /// Automatically tracks all resources for later cleanup.
+    /// </summary>
+    /// <param name="fontResourceData">Raw font data (e.g., Properties.Resources.IconPack).</param>
+    /// <param name="fontSize">Desired font size in points.</param>
+    /// <returns>A Font object built from the embedded font data.</returns>
+    public static Font CreateIconFont(byte[] fontResourceData, float fontSize)
     {
-        private PrivateFontCollection privateFonts = new PrivateFontCollection();
-        
-        // Dynamic collection tracking distinct unmanaged pointers for global clean sweep
-        private List<IntPtr> fontPointers = new List<IntPtr>();
-        
-        // Managed font objects mapping distinct styling scopes
-        private Font iconPack1;
-        private Font iconPack2; 
+        if (fontResourceData == null || fontResourceData.Length == 0)
+            throw new ArgumentException("Font data must not be null or empty.", nameof(fontResourceData));
 
-        [DllImport("gdi32.dll")]
-        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
+        // 1. Allocate unmanaged memory and copy the font bytes
+        IntPtr memoryPointer = Marshal.AllocCoTaskMem(fontResourceData.Length);
+        Marshal.Copy(fontResourceData, 0, memoryPointer, fontResourceData.Length);
+        _allocatedMemoryPointers.Add(memoryPointer);   // track for bulk cleanup
 
-        public Form1()
+        // 2. Create a PrivateFontCollection and register the font in memory
+        var fontCollection = new PrivateFontCollection();
+        fontCollection.AddMemoryFont(memoryPointer, fontResourceData.Length);
+        _fontCollections.Add(fontCollection);          // keep the collection alive
+
+        // 3. Extract the first (and usually only) font family
+        FontFamily family = fontCollection.Families[0];
+
+        // 4. Return the Font object
+        return new Font(family, fontSize, FontStyle.Regular, GraphicsUnit.Point);
+    }
+
+    /// <summary>
+    /// Releases all unmanaged memory and disposes every PrivateFontCollection.
+    /// Call this method on application exit (e.g., Application.ApplicationExit or MainForm.FormClosed).
+    /// </summary>
+    public static void CleanupResources()
+    {
+        // Dispose all font collections first
+        foreach (PrivateFontCollection collection in _fontCollections)
         {
-            InitializeComponent();
-            LoadAllFonts();
-            ApplyFontsToControls();
-            
-            this.FormClosed += Form1_FormClosed;
+            collection?.Dispose();
         }
+        _fontCollections.Clear();
 
-        /// <summary>
-        /// Highly decoupled, reusable function to handle pointer registration automatically.
-        /// دالة ذكية قابلة لإعادة الاستخدام بالكامل، تقوم بحجز مؤشرات الذاكرة وتسجيلها برمجياً وتلقائياً
-        /// </summary>
-        private Font CreateFontFromResource(byte[] fontResourceData, float fontSize)
+        // Then free the unmanaged memory blocks
+        foreach (IntPtr ptr in _allocatedMemoryPointers)
         {
-            // Allocate fixed block memory area
-            IntPtr fontPtr = Marshal.AllocCoTaskMem(fontResourceData.Length);
-            Marshal.Copy(fontResourceData, 0, fontPtr, fontResourceData.Length);
-
-            // Register within OS graphics engine environment context
-            uint dummy = 0;
-            AddFontMemResourceEx(fontPtr, (uint)fontResourceData.Length, IntPtr.Zero, ref dummy);
-
-            // Load to local private collection instance
-            privateFonts.AddMemoryFont(fontPtr, fontResourceData.Length);
-            
-            // Push active pointer into tracking list to avoid memory leaks
-            fontPointers.Add(fontPtr); 
-
-            // Safely fetch the last indexed font family added to the array stack
-            int lastFontIndex = privateFonts.Families.Length - 1;
-            return new Font(privateFonts.Families[lastFontIndex], fontSize, FontStyle.Regular, GraphicsUnit.Point);
+            if (ptr != IntPtr.Zero)
+                Marshal.FreeCoTaskMem(ptr);
         }
-
-        private void LoadAllFonts()
-        {
-            // Load and instantiate different packages cleanly in single lines
-            iconPack1 = CreateFontFromResource(Properties.Resources.Design_icons, 40);
-            iconPack2 = CreateFontFromResource(Properties.Resources.Second_icons, 30); 
-        }
-
-        private void ApplyFontsToControls()
-        {
-            // Assigning Font Pack 1
-            button1.Font = iconPack1;
-            button1.Text = "\ue908"; 
-
-            // Assigning Font Pack 2
-            button2.Font = iconPack2;
-            button2.Text = "\uf247"; 
-        }
-
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            // Dispose managed objects
-            if (iconPack1 != null) iconPack1.Dispose();
-            if (iconPack2 != null) iconPack2.Dispose();
-            if (privateFonts != null) privateFonts.Dispose();
-            
-            // Bulk memory clean sweep loop execution iterating all tracked pointer references
-            foreach (IntPtr ptr in fontPointers)
-            {
-                if (ptr != IntPtr.Zero) 
-                {
-                    Marshal.FreeCoTaskMem(ptr);
-                }
-            }
-            fontPointers.Clear();
-        }
+        _allocatedMemoryPointers.Clear();
     }
 }
 
+// Usage example inside a form:
+// private void LoadIcons()
+// {
+//     Font homeIcon = IconFontManager.CreateIconFont(Properties.Resources.HomePack, 22f);
+//     Font settingsIcon = IconFontManager.CreateIconFont(Properties.Resources.SettingsPack, 22f);
+//     // ... assign to controls ...
+// }
+// Call IconFontManager.CleanupResources() once when the application exits.
 ```
-## 🚀 How to Expand the Project / طريقة التوسيع المستقبلي
-Thanks to this structural design, adding a 3rd or 4th font pack will only take seconds:
- 1. Embed your new font file .ttf via project Resources.
- 2. Define a globally scoped variable: private Font iconPack3;
- 3. Call the dynamic initialization method within LoadAllFonts():
-   ```csharp
-   iconPack3 = CreateFontFromResource(Properties.Resources.Your_New_Resource_Name, 36);
-   
-   ```
- 4. Call .Dispose() for iconPack3 inside the Form1_FormClosed handler routine.
-## 📄 License / الترخيص
-This framework architecture is open-source software licensed under the MIT License. Feel free to use it in both personal and commercial systems safely.
+
+---
+
+### 🌐 النسخة العربية – دليل التنفيذ خطوة بخطوة
+
+(الطريقة A) الإعداد الأساسي: تحميل حزمة خط واحدة وتنظيفها عند إغلاق النافذة. (الطريقة B) الإعداد المتقدم: استخدام `IconFontManager` ثابت يوفّر دالة `CreateIconFont` لتتبع كل المؤشرات وتحريرها دفعةً واحدة عند إنهاء التطبيق. الكود معروض بالكامل أعلاه.
+
+---
+
+## 🖼️ Step‑by‑Step Visual Guide: Adding a Font to Resources
+
+1. **Open your project properties**  
+   Right‑click the project in **Solution Explorer** → **Properties**.
+
+2. **Go to the Resources tab**  
+   Select **Resources** in the left sidebar. If you don’t see it, create one by clicking the link “This project does not contain a default resources file. Click here to create one.”
+
+3. **Add the font file**  
+   Click the **Add Resource** dropdown → **Add Existing File…** and choose your `.ttf` or `.otf` icon font.  
+   ⚠️ **Important:** In the file dialog, set the filter to “All Files (*.*)” so you can see font files. After adding, Visual Studio will treat it as a **binary** resource (you can verify the file type in the resource grid).
+
+4. **Access the font in code**  
+   Now you can use it as `Properties.Resources.FontFileName` (the name is the file name without extension, spaces replaced with underscores).
+
+> 🖥️ *Screenshot description*: The Resources tab shows a `.ttf` file listed with type “Binary”. This is the correct state – do **not** change it to “Text”.
+
+---
+
+### 🌐 النسخة العربية – الدليل المرئي لإضافة الخط إلى الموارد
+
+1. افتح خصائص المشروع (Properties) من قائمة Solution Explorer.
+2. انتقل إلى تبويب Resources – إذا لم يكن موجوداً أنشئ واحداً.
+3. أضف المورد عبر Add Resource → Add Existing File واختر ملف الخط `.ttf` / `.otf`. تأكد من أنه يظهر كنوع “Binary” في الشبكة.
+4. استخدمه في الكود عبر `Properties.Resources.FontFileName`.
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions of any kind – icon pack suggestions, performance improvements, documentation translation, or bug fixes. Please open an issue to discuss your ideas or submit a pull request directly. All contributions are valued, and kind, constructive communication is our standard.
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details. You are free to use, modify, and distribute the code in personal or commercial projects, provided the original copyright notice remains intact.
+
+---
+
+### 🌐 النسخة العربية – المساهمة والترخيص
+
+نرحب بجميع المساهمات – اقتراح حزم أيقونات، تحسين الأداء، ترجمة الوثائق، أو إصلاح الأخطاء. افتح issue لمناقشة أفكارك أو أرسل pull request. المشروع مرخص تحت **MIT** – أنت حر في الاستخدام والتعديل والتوزيع في المشاريع الخاصة والتجارية مع الاحتفاظ بإشعار الحقوق الأصلي.
+
+---
+
+<p align="center">✨ Made with love for the WinForms community – crisp icons, zero compromises. ✨</p>
 ```
