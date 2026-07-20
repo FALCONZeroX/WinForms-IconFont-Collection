@@ -66,9 +66,10 @@ Icon fonts (`.ttf` / `.otf`) solve every scaling problem mentioned above **by de
 
 ### The Vector Advantage
 
-- **Infinite resolution** : A vector outline is resolution‑independent. When you render it at 16pt, 64pt, or 256pt, the operating system recalculates the exact shape using the same mathematical curves. The result is **perfect sharpness at any DPI level** – no interpolation, no blur.
-- **Sub‑pixel rendering** : Modern font engines apply anti‑aliasing (ClearType) that leverages the physical arrangement of LCD sub‑pixels, making icon edges even smoother and more readable than a bitmap could ever achieve.
-- **Consistency across the entire application** : Because icon fonts are rendered by the same text layout engine as labels and buttons, they automatically respect the system’s DPI settings. You set a font size in points, and the system handles the rest.
+1- **Infinite resolution** : A vector outline is resolution‑independent. When you render it at 16pt, 64pt, or 256pt, the operating system recalculates the exact shape using the same mathematical curves. The result is **perfect sharpness at any DPI level** – no interpolation, no blur.
+2- **Sub‑pixel rendering** : Modern font engines apply anti‑aliasing (ClearType) that leverages the physical arrangement of LCD sub‑pixels, making icon edges even smoother and more readable than a bitmap could ever achieve.
+3- **Consistency across the entire application** : Because icon fonts are rendered by the same text layout engine as labels and buttons, they automatically respect the system’s DPI settings. You set a font size in points, and the system handles the rest.
+4- **Scalability (Flexibility when resizing)**: Raster images (such as PNG or ICO files) come in fixed sizes; if you try to scale them up or down, they do not adapt well because their dimensions are predetermined. In contrast, using an icon font offers complete flexibility during application development, as the icons are treated just like standard characters.
 
 ### Practical Benefits for WinForms Developers
 
@@ -76,23 +77,15 @@ Icon fonts (`.ttf` / `.otf`) solve every scaling problem mentioned above **by de
 - **Single‑file deployment** : The icon set travels with your executable – no extra PNG files to lose or mismanage.
 - **Flexibility** : You can change the icon color, size, or even apply text effects (bold, outline) just by modifying the `Font` object’s properties. No need to ask a designer for a new asset file.
 
----
+---### 🌐 لماذا خطوط الأيقونات هي الخيار الأفضل
 
-### 🌐 النسخة العربية – لماذا خطوط الأيقونات هي الخيار الأفضل
+خطوط الأيقونات (`.ttf` / `.otf`) تحل كل مشاكل التحجيم المذكورة **جوهرياً**. فبدلاً من تخزين البكسلات، فانت تخزن **مخططات رياضية** وهي عبارة عن صور من نوع (svg`.`) – تماماً مثل خطوط النظام التي تستخدمها للنصوص.
 
-خطوط الأيقونات (`.ttf` / `.otf`) تحل كل مشاكل التحجيم المذكورة **جوهرياً**. بدلاً من تخزين البكسلات، تخزن **مخططات رياضية** – تماماً مثل خطوط النظام التي تستخدمها للنصوص.
-
-#### الميزة المتجهية (Vector)
-
-- **دقة غير محدودة** : المخطط المتجهي مستقل عن الدقة. عندما ترسمه بحجم 16 أو 64 أو 256 نقطة، يعيد النظام حساب الشكل بدقة باستخدام نفس المنحنيات الرياضية. والنتيجة **حدة كاملة عند أي مستوى DPI** – بلا استكمال ولا ضبابية.
-- **عرض تحت البكسلي (Sub‑pixel)** : محركات الخطوط الحديثة تطبق صقل الحواف (ClearType) الذي يستغل الترتيب الفيزيائي للبكسلات الثانوية في شاشات LCD، مما يجعل حواف الأيقونة أكثر نعومة وقراءةً مما يمكن لأي صورة نقطية تحقيقه.
-- **تجانس تام عبر التطبيق** : لأن خطوط الأيقونات ترسم بواسطة نفس محرك تنسيق النصوص، فهي تحترم تلقائياً إعدادات DPI للنظام. أنت تحدد حجم الخط بالنقاط، والنظام يتولى الباقي.
-
-#### فوائد عملية لمطوري WinForms
-
-- **صفر تثبيت على جهاز العميل** : عبر تضمين ملف الخط كمورد داخل `.exe`، تتجاوز الحاجة لتثبيت أي شيء في مجلد الخطوط. يُحمّل الخط بالكامل من الذاكرة ويبقى خاصاً بتطبيقك.
-- **نشر أحادي الملف** : مجموعة الأيقونات تسافر داخل الملف التنفيذي – لا ملفات PNG ضائعة أو منسية.
-- **مرونة** : تستطيع تغيير لون الأيقونة أو حجمها أو حتى تطبيق تأثيرات (خط عريض، حدود) بمجرد تعديل خصائص كائن `Font`. لا حاجة لطلب ملف جديد من المصمم.
+#### مميزات الخطوط التي تحتوي على الايقونات (Vector)
+1- **دقة غير محدودة** : المخطط المتجهي Vector مستقل عن الدقة. عندما ترسمه بحجم 16 أو 64 أو 256 نقطة، يعيد النظام حساب الشكل بدقة باستخدام نفس المنحنيات الرياضية. والنتيجة **حدة كاملة عند أي مستوى DPI** – بلا استكمال ولا ضبابية.
+2- **عرض تحت البكسلي (Sub‑pixel)** : محركات الخطوط الحديثة تطبق صقل الحواف (ClearType) الذي يستغل الترتيب الفيزيائي للبكسلات الثانوية في شاشات LCD، مما يجعل حواف الأيقونة أكثر نعومة وقراءةً مما يمكن لأي صورة نقطية تحقيقه.
+3- **تجانس تام عبر التطبيق** : لأن خطوط الأيقونات ترسم بواسطة نفس محرك تنسيق النصوص، فهي تحترم تلقائياً إعدادات DPI للنظام. أنت تحدد حجم الخط بالنقاط، والنظام يتولى الباقي.
+4-**مرونة عند التكبير والتصغير**: اذا كانت لديك صورة نقطية من النوع png او ico فهي تأتي بحجم محدد مسبقا واذا اردت تكبيرها او تصغيرها في لا تستجيب لان حجمها محدد مسبقا ولكن عند استخدام خط يحتوي على الايقونات فستحصل على مرونة كاملة في عملية تطوير التطبيقات لأنك ستعامل الايقونات وكأنها حروف عادية 
 
 ---
 
