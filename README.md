@@ -150,11 +150,6 @@ Embedding the font as a **binary resource** inside your `.exe` works by loading 
 ---
 
 # 📖 How to Use Icon Fonts in WinForms | دليل استخدام أيقونات الخطوط
-
-This comprehensive guide walks you through incorporating custom vector icon fonts into your Windows Forms applications using a memory-safe approach.
-
-يوفر هذا الدليل شرحاً تفصيلياً لدمج أيقونات الخطوط الشعاعية داخل تطبيقات Windows Forms بطريقة آمنة تماماً على الذاكرة.
-
 ---
 
 ## 🛠️ Step 1: Embedding the Font into Resources | أولاً: تضمين الخط داخل موارد المشروع
