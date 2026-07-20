@@ -66,10 +66,10 @@ Icon fonts (`.ttf` / `.otf`) solve every scaling problem mentioned above **by de
 
 ### The Vector Advantage
 
-1- **Infinite resolution** : A vector outline is resolution‑independent. When you render it at 16pt, 64pt, or 256pt, the operating system recalculates the exact shape using the same mathematical curves. The result is **perfect sharpness at any DPI level** – no interpolation, no blur.
-2- **Sub‑pixel rendering** : Modern font engines apply anti‑aliasing (ClearType) that leverages the physical arrangement of LCD sub‑pixels, making icon edges even smoother and more readable than a bitmap could ever achieve.
-3- **Consistency across the entire application** : Because icon fonts are rendered by the same text layout engine as labels and buttons, they automatically respect the system’s DPI settings. You set a font size in points, and the system handles the rest.
-4- **Scalability (Flexibility when resizing)**: Raster images (such as PNG or ICO files) come in fixed sizes; if you try to scale them up or down, they do not adapt well because their dimensions are predetermined. In contrast, using an icon font offers complete flexibility during application development, as the icons are treated just like standard characters.
+- **Infinite resolution** : A vector outline is resolution‑independent. When you render it at 16pt, 64pt, or 256pt, the operating system recalculates the exact shape using the same mathematical curves. The result is **perfect sharpness at any DPI level** – no interpolation, no blur.
+- **Sub‑pixel rendering** : Modern font engines apply anti‑aliasing (ClearType) that leverages the physical arrangement of LCD sub‑pixels, making icon edges even smoother and more readable than a bitmap could ever achieve.
+- **Consistency across the entire application** : Because icon fonts are rendered by the same text layout engine as labels and buttons, they automatically respect the system’s DPI settings. You set a font size in points, and the system handles the rest.
+- **Scalability (Flexibility when resizing)**: Raster images (such as PNG or ICO files) come in fixed sizes; if you try to scale them up or down, they do not adapt well because their dimensions are predetermined. In contrast, using an icon font offers complete flexibility during application development, as the icons are treated just like standard characters.
 
 ### Practical Benefits for WinForms Developers
 
@@ -82,7 +82,7 @@ Icon fonts (`.ttf` / `.otf`) solve every scaling problem mentioned above **by de
 - **دقة غير محدودة** : المخطط المتجهي Vector مستقل عن الدقة. عندما ترسمه بحجم 16 أو 64 أو 256 نقطة، يعيد النظام حساب الشكل بدقة باستخدام نفس المنحنيات الرياضية. والنتيجة **حدة كاملة عند أي مستوى DPI** – بلا استكمال ولا ضبابية.
 - **عرض تحت البكسلي (Sub‑pixel)** : محركات الخطوط الحديثة تطبق صقل الحواف (ClearType) الذي يستغل الترتيب الفيزيائي للبكسلات الثانوية في شاشات LCD، مما يجعل حواف الأيقونة أكثر نعومة وقراءةً مما يمكن لأي صورة نقطية تحقيقه.
 - **تجانس تام عبر التطبيق** : لأن خطوط الأيقونات ترسم بواسطة نفس محرك تنسيق النصوص، فهي تحترم تلقائياً إعدادات DPI للنظام. أنت تحدد حجم الخط بالنقاط، والنظام يتولى الباقي.
--**مرونة عند التكبير والتصغير**: اذا كانت لديك صورة نقطية من النوع png او ico فهي تأتي بحجم محدد مسبقا واذا اردت تكبيرها او تصغيرها في لا تستجيب لان حجمها محدد مسبقا ولكن عند استخدام خط يحتوي على الايقونات فستحصل على مرونة كاملة في عملية تطوير التطبيقات لأنك ستعامل الايقونات وكأنها حروف عادية 
+-**مرونة عند التكبير والتصغير**: اذا كانت لديك صورة نقطية من النوع png او ico فهي تأتي بحجم محدد مسبقا واذا اردت تكبيرها او تصغيرها في لا تستجيب لان حجمها محدد مسبقا ولكن عند استخدام خط يحتوي على الايقونات فستحصل على مرونة كاملة في عملية تطوير التطبيقات لأنك ستعامل الايقونات وكأنها حروف عادية.
 
 ---
 
