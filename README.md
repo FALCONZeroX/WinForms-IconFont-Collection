@@ -453,7 +453,26 @@ Inside every individual folder, you will find the following assets:
 * **العربية:** المكونات والملفات المساعدة المطلوبة لتشغيل وعرض صفحة الـ HTML التفاعلية وتنسيقها بشكل صحيح.
 
 ---
+---
 
+## 👨‍💻 About the Developer | عن المطور
+
+<p align="center">
+  <img src="https://github.com/FALCONzeroX.png" width="120" height="120" style="border-radius: 50%;" alt="FALCONzeroX Profile Picture" />
+</p>
+
+<h3 align="center">FALCONzeroX</h3>
+
+<p align="center">
+  <b>Desktop Application Developer & Software Architect</b><br>
+  <span>Crafting clean, high-performance, and high-DPI aware Windows Forms applications.</span>
+</p>
+
+<p align="center">
+  <a href="https://github.com/FALCONzeroX"><img src="https://img.shields.io/badge/GitHub-FALCONzeroX-181717?style=flat-square&logo=github" alt="GitHub Profile" /></a>
+  <a href="https://github.com/FALCONzeroX/WinForms-IconFont-Collection/issues"><img src="https://img.shields.io/badge/Support-Open%20an%20Issue-green?style=flat-square&logo=github" alt="Open Issue" /></a>
+</p>
+---
 ## 🤝 Contributing
 
 We welcome contributions of any kind – icon pack suggestions, performance improvements, documentation translation, or bug fixes. Please open an issue to discuss your ideas or submit a pull request directly. All contributions are valued, and kind, constructive communication is our standard.
