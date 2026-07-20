@@ -484,9 +484,3 @@ We welcome contributions of any kind – icon pack suggestions, performance impr
 This project is licensed under the **MIT License**. See the [LICENSE](https://www.google.com/search?q=LICENSE) file for details. You are free to use, modify, and distribute the code in personal or commercial projects, provided the original copyright notice remains intact.
 
 ---
-
-### 🌐 النسخة العربية – المساهمة والترخيص
-
-نرحب بجميع المساهمات – اقتراح حزم أيقونات، تحسين الأداء، ترجمة الوثائق، أو إصلاح الأخطاء. افتح issue لمناقشة أفكارك أو أرسل pull request. المشروع مرخص تحت رخصة **MIT** المشاعة – أنت حر في الاستخدام والتعديل والتوزيع في المشاريع الخاصة والتجارية مع الاحتفاظ بإشعار الحقوق الأصلي.
-
----
