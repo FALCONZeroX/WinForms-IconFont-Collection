@@ -158,17 +158,19 @@ Before writing code, the font file (`.ttf` or `.otf`) must be bundled inside the
 
 قبل كتابة الكود، يجب دمج ملف الخط داخل ملف التطبيق التنفيذي عبر الخطوات التالية:
 
-1. **Open Resources:** In Visual Studio, expand **Properties** in the Solution Explorer and double-click **Resources.resx** (or right-click Project -> Properties -> Resources).
-2. **Switch Resource Type:** At the top toolbar of the window, change the dropdown from **Strings** to **Files**.
-3. **Add the Font:** Drag and drop your font file (e.g., `Design_icons.ttf`) directly into the designer.
-4. **Verify Name:** Visual Studio will automatically generate a property matching the file name. For example, `Design_icons.ttf` becomes accessible via `Properties.Resources.Design_icons` as a raw `byte[]`.
+1. In **Solution Explorer**, right-click the project and select **Properties**.
+2. Go to **Resources**; if it does not exist, click the link to create it.
+3. Click the **Add Resource** drop-down menu and select **Add Existing File…** (or click the **+** icon).
+4. In the file selection window, change the file type filter to **File** and select the font.
+Your font is now included in the project resources.
+
 ---
-   
-1. **فتح الموارد (Resources):** في Visual Studio، قم بتوسيع مجلد **Properties** داخل Solution Explorer وانقر نقراً مزدوجاً فوق **Resources.resx** (أو انقر بزر الماوس الأيمن على المشروع -> Properties -> Resources).
-2. **تغيير نوع المورد:** من شريط الأدوات العلوي للنافذة، غيّر القائمة المنسدلة من **Strings** إلى **Files**.
-3. **إضافة الخط:** قم بسحب وإفلات ملف الخط (على سبيل المثال، `Design_icons.ttf`) مباشرةً داخل واجهة المصمم (designer).
-4. **التحقق من الاسم:** سيقوم Visual Studio تلقائياً بإنشاء خاصية (property) تطابق اسم الملف؛ فعلى سبيل المثال، سيصبح الملف `Design_icons.ttf` متاحاً للاستخدام عبر `Properties.Resources.Design_icons` كـ `byte[]` خام.
----
+1. من **Solution Explorer**، اضغط بزر الفأرة الأيمن على المشروع واختر **Properties**.
+2. اذهب إلى تبويب **Resources**، وإذا لم يكن موجوداً اضغط على الرابط لإنشائه.
+3. اضغط على القائمة المنسدلة **Add Resource** واختر **Add Existing File…** او اضغط علامه +.
+4. في نافذة اختيار الملف، غيّر فلتر Type إلى **File ** ومن ثم قم باختيار الخط 
+الان خطك موجود في Resources المشروع
+
 
 ## 💻 Step 2: Safe Memory Loading Code | ثانياً: كود تحميل الخط إلى الذاكرة
 
