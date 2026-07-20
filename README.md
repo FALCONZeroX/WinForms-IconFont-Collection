@@ -77,7 +77,8 @@ Icon fonts (`.ttf` / `.otf`) solve every scaling problem mentioned above **by de
 - **Single‑file deployment** : The icon set travels with your executable – no extra PNG files to lose or mismanage.
 - **Flexibility** : You can change the icon color, size, or even apply text effects (bold, outline) just by modifying the `Font` object’s properties. No need to ask a designer for a new asset file.
 
----### 🌐 لماذا خطوط الأيقونات هي الخيار الأفضل
+---
+### 🌐 لماذا خطوط الأيقونات هي الخيار الأفضل
 
 خطوط الأيقونات (`.ttf` / `.otf`) تحل كل مشاكل التحجيم المذكورة **جوهرياً**. فبدلاً من تخزين البكسلات، فانت تخزن **مخططات رياضية** وهي عبارة عن صور من نوع (svg`.`) – تماماً مثل خطوط النظام التي تستخدمها للنصوص.
 
