@@ -424,18 +424,22 @@ Inside every individual folder, you will find the following assets:
 
 ### 2. 🌐 `[Package_Name].html` (Interactive Document / صفحة ويب تفاعلية)
 *   **English:** The visual index/cheat-sheet for the specific pack (e.g., `Arrows_Icons.html`). Open this in any browser to search, filter, and copy the precise Unicode points for your C# code.
+  
 *   **العربية:** الفهرس المرئي المخصص للحزمة (مثل `Arrows_Icons.html`). يمكنك فتحه في أي متصفح للبحث عن الأيقونات، وتصفيتها، ونسخ أكواد الـ Unicode الخاصة بها لاستخدامها في كود C#.
 
 ### 3. 📄 `selection.json` (JSON Source File / ملف بيانات المشروع)
 *   **English:** The metadata configuration file containing the project definition, glyph mappings, and character codes. You can re-import this file back into tools like IcoMoon to edit or expand the font pack later.
+  
 *   **العربية:** ملف البيانات الوصفية (Metadata) الذي يحتوي على إعدادات المشروع وخريطة الرموز وأكوادها. يمكنك إعادة استيراد هذا الملف في أدوات مثل IcoMoon لتعديل حزمة الخطوط أو توسيعها لاحقاً.
 
 ### 4. 🎨 `style.css` (CSS Source File / ملف التنسيق)
 *   **English:** Contains the CSS rules and class mappings for web projects. While not strictly used in Windows Forms, it serves as a valuable reference for internal font naming conventions.
+  
 *   **العربية:** يحتوي على قواعد التنسيق وربط الكلاسات المخصصة لمشاريع الويب. بالرغم من عدم استخدامه مباشرة في تطبيقات Windows Forms، إلا أنه يمثل مرجعاً ممتازاً لمعرفة الأسماء البرمجية الداخلية للأيقونات.
 
 ### 5. 📂 `demo-files/` (Directory / مجلد ملفات العرض)
 *   **English:** Internal components and assets required to properly render and style the interactive HTML preview page.
+  
 *   **العربية:** المكونات والملفات المساعدة المطلوبة لتشغيل وعرض صفحة الـ HTML التفاعلية وتنسيقها بشكل صحيح.
 ---
 
