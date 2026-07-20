@@ -99,48 +99,6 @@ Icon fonts (`.ttf` / `.otf`) solve every scaling problem mentioned above **by de
 
 ---
 
-## The Hidden Memory Trap (Why Naïve Implementations Fail)
-
-When developers first learn to embed fonts using `PrivateFontCollection.AddMemoryFont`, many fall into a dangerous trap. The method requires a pointer to unmanaged memory containing the font data. The natural instinct – drilled by years of “free what you allocate” – is to call `Marshal.FreeCoTaskMem(pointer)` immediately after the font is registered.
-
-**This immediately corrupts the font rendering.**  
-
-GDI+ (the underlying graphics engine) does **not** copy the font data into its own buffer during `AddMemoryFont`. Instead, it holds a reference to the original memory block. If you release that memory, subsequent drawing operations will attempt to read from a deallocated region, causing:
-
-- Access violations (crashes).
-- Glyphs that render as empty rectangles or garbage.
-- Font objects that become unusable without any obvious exception.
-
-The correct, production‑safe approach is **deferred cleanup**:
-1. Keep every allocated `IntPtr` alive as long as the `PrivateFontCollection` exists.
-2. Dispose the collection first (which tells GDI+ to release its internal references).
-3. Only then free the unmanaged memory.
-
-This repository exists to demonstrate and provide a robust, memory‑safe architecture that automates this pointer tracking and cleanup – eliminating the risk entirely.
-
----
-
-### 🌐 النسخة العربية – فخ الذاكرة الخفي (لماذا تفشل التطبيقات التقليدية)
-
-عندما يكتشف المطورون لأول مرة طريقة تضمين الخطوط عبر `PrivateFontCollection.AddMemoryFont`، يقع الكثيرون في فخ خطير. الدالة تتطلب مؤشراً لذاكرة غير مدارة تحتوي على بيانات الخط. الغريزة الطبيعية – التي ترسخت عبر سنوات من مبدأ “حرر ما تحجزه” – هي استدعاء `Marshal.FreeCoTaskMem(pointer)` فوراً بعد تسجيل الخط.
-
-**هذا يتلف عرض الخط فوراً.**
-
-محرك GDI+ لا يقوم بنسخ بيانات الخط إلى مخزن مؤقت خاص به أثناء `AddMemoryFont`. بدلاً من ذلك، يحتفظ بمرجع إلى كتلة الذاكرة الأصلية. إذا حررت تلك الذاكرة، فإن عمليات الرسم اللاحقة ستحاول القراءة من منطقة محررة، مما يسبب:
-
-- انتهاكات وصول (أعطال).
-- رموز تظهر كمستطيلات فارغة أو رموز عشوائية.
-- كائنات خطوط تصبح غير صالحة للاستخدام دون أي استثناء واضح.
-
-النهج الصحيح والآمن إنتاجياً هو **التنظيف المؤجل**:
-1. إبقاء كل مؤشر `IntPtr` حياً طالما أن `PrivateFontCollection` موجود.
-2. التخلص من المجموعة أولاً (مما يسمح لـ GDI+ بتحرير مراجعه الداخلية).
-3. فقط بعد ذلك يتم تحرير الذاكرة غير المدارة.
-
-هذا المستودع يقدم بنية قوية وآمنة ذاكرياً تعمل على أتمتة تتبع المؤشرات والتنظيف، مما يزيل هذا الخطر بالكامل.
-
----
-
 ## Summary: A Proper Foundation for WinForms Vector Icons
 
 The problem is clear: bitmap icons cannot survive the reality of modern high‑DPI desktops. Icon fonts solve this elegantly, but their correct loading and memory management require careful handling that many examples online get wrong.  
