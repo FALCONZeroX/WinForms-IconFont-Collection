@@ -317,7 +317,20 @@ yourButtonName.Font = _iconFontPrimary; // Set the font target
 yourButtonName.Text = "\uXXXX";        // Insert the specific Unicode value (e.g., "\ue908")
 
 ```
-
+> [!IMPORTANT]
+> ⚠️ **Important Integration Note | ملاحظة هامة جداً قبل استخدام الكود**
+>
+> **English:**
+> Before running the code, make sure to adjust the following names to match your current project structure:
+> 1. **Namespace:** Replace `WinForms_IconFont_Demo` with your project's actual namespace.
+> 2. **Form Class Name:** Change `MainForm` in the class definition (`public partial class MainForm : Form`) and constructor (`public MainForm()`) to match your Form's actual class name (e.g., `Form1`).
+>
+> ---
+>
+> **العربية:**
+> قبل البدء ببدء تشغيل أو نسخ الكود، يرجى التأكد من تعديل المسميات التالية لتتطابق مع هيكلية مشروعك:
+> 1. **مساحة الأسماء (Namespace):** استبدل `WinForms_IconFont_Demo` بـ Namespace الخاص بمشروعك الحقيقي.
+> 2. **اسم الفئة/النافذة (Form Class):** قم بتغيير الاسم `MainForm` في تعريف الفئة (`public partial class MainForm : Form`) وفي المشيد (`public MainForm()`) ليتطابق مع الاسم الفعلي للنافذة لديك (مثل `Form1`).
 ---
 
 ## 🔤 What is Unicode & How to Find Icons | ما هو الـ Unicode وكيف تجد الأيقونات؟
