@@ -1,4 +1,4 @@
-# 🎨 WinForms-IconFont-Collection
+# 🎨 WinForms IconFont Collection
 
 <p align="center">
 <img src="https://img.shields.io/badge/.NET%20Framework-4.7.2%2B-512BD4?logo=dotnet&logoColor=white" alt=".NET Framework 4.7.2+" />
