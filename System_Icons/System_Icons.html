@@ -1,0 +1,468 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>System Icons</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="demo-files/demo.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; }
+        body { background: #f4f6fa; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; padding: 24px; }
+        .container { max-width: 1440px; margin: 0 auto; background: #fff; border-radius: 28px; box-shadow: 0 12px 40px rgba(0,0,0,0.04); padding: 32px 28px; }
+        .toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 32px; gap: 16px; }
+        .toolbar h1 { font-size: 26px; font-weight: 600; letter-spacing: -0.3px; color: #0b1a33; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+        .toolbar h1 small { font-weight: 400; font-size: 16px; color: #5e6f8d; }
+        .search-box { position: relative; flex: 1; min-width: 220px; max-width: 380px; }
+        .search-box input { width: 100%; padding: 12px 18px 12px 48px; border: 1px solid #d9e0eb; border-radius: 60px; font-size: 15px; background: #f8faff; transition: 0.2s; outline: none; }
+        .search-box input:focus { border-color: #2a6bf0; background: #fff; box-shadow: 0 0 0 4px rgba(42,107,240,0.08); }
+        .search-box .icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #7a8aa5; font-size: 18px; }
+        .grid-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #eef2f7; }
+        .grid-header span { color: #2b3a5a; font-weight: 500; font-size: 14px; background: #eef2f7; padding: 4px 14px; border-radius: 40px; }
+        .glyph-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+        .glyph-card { background: #ffffff; border-radius: 18px; padding: 18px 10px 14px; text-align: center; transition: 0.15s; border: 1px solid #edf2f9; box-shadow: 0 2px 6px rgba(0,0,0,0.01); display: flex; flex-direction: column; align-items: center; }
+        .glyph-card:hover { border-color: #b7c9e0; background: #fafcff; box-shadow: 0 6px 14px rgba(0,20,50,0.04); transform: translateY(-2px); }
+        .glyph-card .icon-box { font-size: 30px; line-height: 1.2; margin-bottom: 8px; color: #0f1e3a; }
+        .glyph-card .icon-name { font-size: 12px; color: #2e405e; font-weight: 450; word-break: break-word; max-width: 100%; }
+        .glyph-card .codepoint { font-size: 11px; color: #7a8aa5; background: #f0f4fc; padding: 2px 12px; border-radius: 40px; margin-top: 6px; font-family: 'SF Mono', 'Menlo', monospace; letter-spacing: 0.2px; }
+        .test-drive { margin-top: 48px; padding-top: 28px; border-top: 1px solid #e6ecf5; }
+        .test-drive label { font-weight: 500; color: #1f324f; margin-right: 16px; font-size: 14px; }
+        .test-drive input[type="number"] { width: 80px; padding: 8px 12px; border: 1px solid #d0dae8; border-radius: 40px; text-align: center; font-size: 14px; background: #f9fcff; }
+        .test-drive input[type="text"] { width: 100%; max-width: 400px; padding: 12px 20px; border: 1px solid #d0dae8; border-radius: 60px; font-size: 15px; margin: 12px 0 16px; background: #f9fcff; }
+        .test-drive .preview { font-size: 48px; padding: 24px 20px; background: #f6f9ff; border-radius: 24px; border: 1px solid #e4ebf5; min-height: 90px; color: #11213a; }
+        .footer { margin-top: 40px; font-size: 13px; color: #6a7b99; text-align: center; border-top: 1px solid #eef2f7; padding-top: 22px; }
+        .footer a { color: #2a6bf0; text-decoration: none; font-weight: 500; }
+        .hidden { display: none; }
+        .flex { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+        @media (max-width: 600px) { .container { padding: 20px 14px; } .toolbar { flex-direction: column; align-items: stretch; } .search-box { max-width: 100%; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="toolbar">
+        <h1>System_icons <small>348 glyphs</small></h1>
+        <div class="search-box">
+            <span class="icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search icons... (name or codepoint)" autofocus>
+        </div>
+    </div>
+
+    <div class="grid-header">
+        <span id="resultCount">348 icons</span>
+        <span style="font-weight:400; color:#4b6180;">Grid</span>
+    </div>
+
+    <div id="glyphContainer" class="glyph-grid"></div>
+
+    <div class="test-drive">
+        <div class="flex" style="margin-bottom:4px;">
+            <label>Font size: <input type="number" id="fontSize" min="8" value="48"> px</label>
+        </div>
+        <input type="text" id="testText" placeholder="Type any text to test …" value="">
+        <div id="testDrive" class="preview" style="font-family: System_icons;">&nbsp;</div>
+    </div>
+
+    <div class="footer">Generated by <a href="https://github.com/FALCONZeroX">FALAH FATHEL</a> · optimized demo</div>
+</div>
+
+<script src="demo-files/demo.js"></script>
+<script>
+(function() {
+    // ----- GLYPH DATA (348 entries) -----
+    const glyphs = [
+        {name:"add-circle-line", code:"e900"},
+        {name:"add-box-fill", code:"e901"},
+        {name:"add-box-line", code:"e902"},
+        {name:"add-circle-fill", code:"e903"},
+        {name:"add-fill", code:"e904"},
+        {name:"add-large-fill", code:"e905"},
+        {name:"add-large-line", code:"e906"},
+        {name:"add-line", code:"e907"},
+        {name:"alarm-add-fill", code:"e908"},
+        {name:"alarm-add-line", code:"e909"},
+        {name:"alarm-fill", code:"e90a"},
+        {name:"alarm-line", code:"e90b"},
+        {name:"alarm-snooze-fill", code:"e90c"},
+        {name:"alarm-snooze-line", code:"e90d"},
+        {name:"alarm-warning-fill", code:"e90e"},
+        {name:"alarm-warning-line", code:"e90f"},
+        {name:"alert-fill", code:"e910"},
+        {name:"alert-line", code:"e911"},
+        {name:"apps-2-add-fill", code:"e912"},
+        {name:"apps-2-add-line", code:"e913"},
+        {name:"apps-2-ai-fill", code:"e914"},
+        {name:"apps-2-ai-line", code:"e915"},
+        {name:"apps-2-fill", code:"e916"},
+        {name:"apps-2-line", code:"e917"},
+        {name:"apps-ai-fill", code:"e918"},
+        {name:"apps-ai-line", code:"e919"},
+        {name:"apps-fill", code:"e91a"},
+        {name:"apps-line", code:"e91b"},
+        {name:"check-double-fill", code:"e91c"},
+        {name:"check-double-line", code:"e91d"},
+        {name:"check-fill", code:"e91e"},
+        {name:"check-line", code:"e91f"},
+        {name:"checkbox-blank-circle-fill", code:"e920"},
+        {name:"checkbox-blank-circle-line", code:"e921"},
+        {name:"checkbox-blank-fill", code:"e922"},
+        {name:"checkbox-blank-line", code:"e923"},
+        {name:"checkbox-circle-fill", code:"e924"},
+        {name:"checkbox-circle-line", code:"e925"},
+        {name:"checkbox-fill", code:"e926"},
+        {name:"checkbox-indeterminate-fill", code:"e927"},
+        {name:"checkbox-indeterminate-line", code:"e928"},
+        {name:"checkbox-line", code:"e929"},
+        {name:"checkbox-multiple-blank-fill", code:"e92a"},
+        {name:"checkbox-multiple-blank-line", code:"e92b"},
+        {name:"checkbox-multiple-fill", code:"e92c"},
+        {name:"checkbox-multiple-line", code:"e92d"},
+        {name:"close-circle-fill", code:"e92e"},
+        {name:"close-circle-line", code:"e92f"},
+        {name:"close-fill", code:"e930"},
+        {name:"close-large-fill", code:"e931"},
+        {name:"close-large-line", code:"e932"},
+        {name:"close-line", code:"e933"},
+        {name:"dashboard-fill", code:"e934"},
+        {name:"dashboard-horizontal-fill", code:"e935"},
+        {name:"dashboard-horizontal-line", code:"e936"},
+        {name:"dashboard-line", code:"e937"},
+        {name:"delete-back-2-fill", code:"e938"},
+        {name:"delete-back-2-line", code:"e939"},
+        {name:"delete-back-fill", code:"e93a"},
+        {name:"delete-back-line", code:"e93b"},
+        {name:"delete-bin-2-fill", code:"e93c"},
+        {name:"delete-bin-2-line", code:"e93d"},
+        {name:"delete-bin-3-fill", code:"e93e"},
+        {name:"delete-bin-3-line", code:"e93f"},
+        {name:"delete-bin-4-fill", code:"e940"},
+        {name:"delete-bin-4-line", code:"e941"},
+        {name:"delete-bin-5-fill", code:"e942"},
+        {name:"delete-bin-5-line", code:"e943"},
+        {name:"delete-bin-6-fill", code:"e944"},
+        {name:"delete-bin-6-line", code:"e945"},
+        {name:"delete-bin-7-fill", code:"e946"},
+        {name:"delete-bin-7-line", code:"e947"},
+        {name:"delete-bin-fill", code:"e948"},
+        {name:"delete-bin-line", code:"e949"},
+        {name:"divide-fill", code:"e94a"},
+        {name:"divide-line", code:"e94b"},
+        {name:"download-2-fill", code:"e94c"},
+        {name:"download-2-line", code:"e94d"},
+        {name:"download-cloud-2-fill", code:"e94e"},
+        {name:"download-cloud-2-line", code:"e94f"},
+        {name:"download-cloud-fill", code:"e950"},
+        {name:"download-cloud-line", code:"e951"},
+        {name:"download-fill", code:"e952"},
+        {name:"download-line", code:"e953"},
+        {name:"equal-fill", code:"e954"},
+        {name:"equal-line", code:"e955"},
+        {name:"error-warning-fill", code:"e956"},
+        {name:"error-warning-line", code:"e957"},
+        {name:"export-fill", code:"e958"},
+        {name:"export-line", code:"e959"},
+        {name:"external-link-fill", code:"e95a"},
+        {name:"external-link-line", code:"e95b"},
+        {name:"eye-2-fill", code:"e95c"},
+        {name:"eye-2-line", code:"e95d"},
+        {name:"eye-close-fill", code:"e95e"},
+        {name:"eye-close-line", code:"e95f"},
+        {name:"eye-fill", code:"e960"},
+        {name:"eye-line", code:"e961"},
+        {name:"eye-off-fill", code:"e962"},
+        {name:"eye-off-line", code:"e963"},
+        {name:"filter-2-fill", code:"e964"},
+        {name:"filter-2-line", code:"e965"},
+        {name:"filter-3-fill", code:"e966"},
+        {name:"filter-3-line", code:"e967"},
+        {name:"filter-fill", code:"e968"},
+        {name:"filter-line", code:"e969"},
+        {name:"filter-off-fill", code:"e96a"},
+        {name:"filter-off-line", code:"e96b"},
+        {name:"find-replace-fill", code:"e96c"},
+        {name:"find-replace-line", code:"e96d"},
+        {name:"forbid-2-fill", code:"e96e"},
+        {name:"forbid-2-line", code:"e96f"},
+        {name:"forbid-fill", code:"e970"},
+        {name:"forbid-line", code:"e971"},
+        {name:"function-add-fill", code:"e972"},
+        {name:"function-add-line", code:"e973"},
+        {name:"function-ai-fill", code:"e974"},
+        {name:"function-ai-line", code:"e975"},
+        {name:"function-fill", code:"e976"},
+        {name:"function-line", code:"e977"},
+        {name:"history-fill", code:"e978"},
+        {name:"history-line", code:"e979"},
+        {name:"hourglass-2-fill", code:"e97a"},
+        {name:"hourglass-2-line", code:"e97b"},
+        {name:"hourglass-fill", code:"e97c"},
+        {name:"hourglass-line", code:"e97d"},
+        {name:"import-fill", code:"e97e"},
+        {name:"import-line", code:"e97f"},
+        {name:"indeterminate-circle-fill", code:"e980"},
+        {name:"indeterminate-circle-line", code:"e981"},
+        {name:"information-2-fill", code:"e982"},
+        {name:"information-2-line", code:"e983"},
+        {name:"information-fill", code:"e984"},
+        {name:"information-line", code:"e985"},
+        {name:"information-off-fill", code:"e986"},
+        {name:"information-off-line", code:"e987"},
+        {name:"list-settings-fill", code:"e988"},
+        {name:"list-settings-line", code:"e989"},
+        {name:"loader-2-fill", code:"e98a"},
+        {name:"loader-2-line", code:"e98b"},
+        {name:"loader-3-fill", code:"e98c"},
+        {name:"loader-3-line", code:"e98d"},
+        {name:"loader-4-fill", code:"e98e"},
+        {name:"loader-4-line", code:"e98f"},
+        {name:"loader-5-fill", code:"e990"},
+        {name:"loader-5-line", code:"e991"},
+        {name:"loader-fill", code:"e992"},
+        {name:"loader-line", code:"e993"},
+        {name:"lock-2-fill", code:"e994"},
+        {name:"lock-2-line", code:"e995"},
+        {name:"lock-fill", code:"e996"},
+        {name:"lock-line", code:"e997"},
+        {name:"lock-password-fill", code:"e998"},
+        {name:"lock-password-line", code:"e999"},
+        {name:"lock-star-fill", code:"e99a"},
+        {name:"lock-star-line", code:"e99b"},
+        {name:"lock-unlock-fill", code:"e99c"},
+        {name:"lock-unlock-line", code:"e99d"},
+        {name:"login-box-fill", code:"e99e"},
+        {name:"login-box-line", code:"e99f"},
+        {name:"login-circle-fill", code:"e9a0"},
+        {name:"login-circle-line", code:"e9a1"},
+        {name:"logout-box-fill", code:"e9a2"},
+        {name:"logout-box-line", code:"e9a3"},
+        {name:"logout-box-r-fill", code:"e9a4"},
+        {name:"logout-box-r-line", code:"e9a5"},
+        {name:"logout-circle-fill", code:"e9a6"},
+        {name:"logout-circle-line", code:"e9a7"},
+        {name:"logout-circle-r-fill", code:"e9a8"},
+        {name:"logout-circle-r-line", code:"e9a9"},
+        {name:"loop-left-ai-fill", code:"e9aa"},
+        {name:"loop-left-ai-line", code:"e9ab"},
+        {name:"loop-left-fill", code:"e9ac"},
+        {name:"loop-left-line", code:"e9ad"},
+        {name:"loop-right-ai-fill", code:"e9ae"},
+        {name:"loop-right-ai-line", code:"e9af"},
+        {name:"loop-right-fill", code:"e9b0"},
+        {name:"loop-right-line", code:"e9b1"},
+        {name:"menu-2-fill", code:"e9b2"},
+        {name:"menu-2-line", code:"e9b3"},
+        {name:"menu-3-fill", code:"e9b4"},
+        {name:"menu-3-line", code:"e9b5"},
+        {name:"menu-4-fill", code:"e9b6"},
+        {name:"menu-4-line", code:"e9b7"},
+        {name:"menu-5-fill", code:"e9b8"},
+        {name:"menu-5-line", code:"e9b9"},
+        {name:"menu-add-fill", code:"e9ba"},
+        {name:"menu-add-line", code:"e9bb"},
+        {name:"menu-fill", code:"e9bc"},
+        {name:"menu-fold-2-fill", code:"e9bd"},
+        {name:"menu-fold-2-line", code:"e9be"},
+        {name:"menu-fold-3-fill", code:"e9bf"},
+        {name:"menu-fold-3-line", code:"e9c0"},
+        {name:"menu-fold-4-fill", code:"e9c1"},
+        {name:"menu-fold-4-line", code:"e9c2"},
+        {name:"menu-fold-fill", code:"e9c3"},
+        {name:"menu-fold-line", code:"e9c4"},
+        {name:"menu-line", code:"e9c5"},
+        {name:"menu-search-fill", code:"e9c6"},
+        {name:"menu-search-line", code:"e9c7"},
+        {name:"menu-unfold-2-fill", code:"e9c8"},
+        {name:"menu-unfold-2-line", code:"e9c9"},
+        {name:"menu-unfold-3-fill", code:"e9ca"},
+        {name:"menu-unfold-3-line", code:"e9cb"},
+        {name:"menu-unfold-4-fill", code:"e9cc"},
+        {name:"menu-unfold-4-line", code:"e9cd"},
+        {name:"menu-unfold-fill", code:"e9ce"},
+        {name:"menu-unfold-line", code:"e9cf"},
+        {name:"more-2-fill", code:"e9d0"},
+        {name:"more-2-line", code:"e9d1"},
+        {name:"more-fill", code:"e9d2"},
+        {name:"more-line", code:"e9d3"},
+        {name:"notification-badge-fill", code:"e9d4"},
+        {name:"notification-badge-line", code:"e9d5"},
+        {name:"progress-1-fill", code:"e9d6"},
+        {name:"progress-1-line", code:"e9d7"},
+        {name:"progress-2-fill", code:"e9d8"},
+        {name:"progress-2-line", code:"e9d9"},
+        {name:"progress-3-fill", code:"e9da"},
+        {name:"progress-3-line", code:"e9db"},
+        {name:"progress-4-fill", code:"e9dc"},
+        {name:"progress-4-line", code:"e9dd"},
+        {name:"progress-5-fill", code:"e9de"},
+        {name:"progress-5-line", code:"e9df"},
+        {name:"progress-6-fill", code:"e9e0"},
+        {name:"progress-6-line", code:"e9e1"},
+        {name:"progress-7-fill", code:"e9e2"},
+        {name:"progress-7-line", code:"e9e3"},
+        {name:"progress-8-fill", code:"e9e4"},
+        {name:"progress-8-line", code:"e9e5"},
+        {name:"prohibited-2-fill", code:"e9e6"},
+        {name:"prohibited-2-line", code:"e9e7"},
+        {name:"prohibited-fill", code:"e9e8"},
+        {name:"prohibited-line", code:"e9e9"},
+        {name:"question-fill", code:"e9ea"},
+        {name:"question-line", code:"e9eb"},
+        {name:"radio-button-fill", code:"e9ec"},
+        {name:"radio-button-line", code:"e9ed"},
+        {name:"refresh-fill", code:"e9ee"},
+        {name:"refresh-line", code:"e9ef"},
+        {name:"reset-left-fill", code:"e9f0"},
+        {name:"reset-left-line", code:"e9f1"},
+        {name:"reset-right-fill", code:"e9f2"},
+        {name:"reset-right-line", code:"e9f3"},
+        {name:"search-2-fill", code:"e9f4"},
+        {name:"search-2-line", code:"e9f5"},
+        {name:"search-ai-2-fill", code:"e9f6"},
+        {name:"search-ai-2-line", code:"e9f7"},
+        {name:"search-ai-3-fill", code:"e9f8"},
+        {name:"search-ai-3-line", code:"e9f9"},
+        {name:"search-ai-4-fill", code:"e9fa"},
+        {name:"search-ai-4-line", code:"e9fb"},
+        {name:"search-ai-fill", code:"e9fc"},
+        {name:"search-ai-line", code:"e9fd"},
+        {name:"search-eye-fill", code:"e9fe"},
+        {name:"search-eye-line", code:"e9ff"},
+        {name:"search-fill", code:"ea00"},
+        {name:"search-line", code:"ea01"},
+        {name:"settings-2-fill", code:"ea02"},
+        {name:"settings-2-line", code:"ea03"},
+        {name:"settings-3-fill", code:"ea04"},
+        {name:"settings-3-line", code:"ea05"},
+        {name:"settings-4-fill", code:"ea06"},
+        {name:"settings-4-line", code:"ea07"},
+        {name:"settings-5-fill", code:"ea08"},
+        {name:"settings-5-line", code:"ea09"},
+        {name:"settings-6-fill", code:"ea0a"},
+        {name:"settings-6-line", code:"ea0b"},
+        {name:"settings-fill", code:"ea0c"},
+        {name:"settings-line", code:"ea0d"},
+        {name:"share-2-fill", code:"ea0e"},
+        {name:"share-2-line", code:"ea0f"},
+        {name:"share-box-fill", code:"ea10"},
+        {name:"share-box-line", code:"ea11"},
+        {name:"share-circle-fill", code:"ea12"},
+        {name:"share-circle-line", code:"ea13"},
+        {name:"share-fill", code:"ea14"},
+        {name:"share-forward-2-fill", code:"ea15"},
+        {name:"share-forward-2-line", code:"ea16"},
+        {name:"share-forward-box-fill", code:"ea17"},
+        {name:"share-forward-box-line", code:"ea18"},
+        {name:"share-forward-fill", code:"ea19"},
+        {name:"share-forward-line", code:"ea1a"},
+        {name:"share-line", code:"ea1b"},
+        {name:"shield-check-fill", code:"ea1c"},
+        {name:"shield-check-line", code:"ea1d"},
+        {name:"shield-cross-fill", code:"ea1e"},
+        {name:"shield-cross-line", code:"ea1f"},
+        {name:"shield-fill", code:"ea20"},
+        {name:"shield-flash-fill", code:"ea21"},
+        {name:"shield-flash-line", code:"ea22"},
+        {name:"shield-keyhole-fill", code:"ea23"},
+        {name:"shield-keyhole-line", code:"ea24"},
+        {name:"shield-line", code:"ea25"},
+        {name:"shield-star-fill", code:"ea26"},
+        {name:"shield-star-line", code:"ea27"},
+        {name:"shield-user-fill", code:"ea28"},
+        {name:"shield-user-line", code:"ea29"},
+        {name:"side-bar-fill", code:"ea2a"},
+        {name:"side-bar-line", code:"ea2b"},
+        {name:"sidebar-fold-fill", code:"ea2c"},
+        {name:"sidebar-fold-line", code:"ea2d"},
+        {name:"sidebar-unfold-fill", code:"ea2e"},
+        {name:"sidebar-unfold-line", code:"ea2f"},
+        {name:"spam-2-fill", code:"ea30"},
+        {name:"spam-2-line", code:"ea31"},
+        {name:"spam-3-fill", code:"ea32"},
+        {name:"spam-3-line", code:"ea33"},
+        {name:"spam-fill", code:"ea34"},
+        {name:"spam-line", code:"ea35"},
+        {name:"star-fill", code:"ea36"},
+        {name:"star-half-fill", code:"ea37"},
+        {name:"star-half-line", code:"ea38"},
+        {name:"star-half-s-fill", code:"ea39"},
+        {name:"star-half-s-line", code:"ea3a"},
+        {name:"star-line", code:"ea3b"},
+        {name:"star-off-fill", code:"ea3c"},
+        {name:"star-off-line", code:"ea3d"},
+        {name:"star-s-fill", code:"ea3e"},
+        {name:"star-s-line", code:"ea3f"},
+        {name:"subtract-fill", code:"ea40"},
+        {name:"subtract-line", code:"ea41"},
+        {name:"thumb-down-fill", code:"ea42"},
+        {name:"thumb-down-line", code:"ea43"},
+        {name:"thumb-up-fill", code:"ea44"},
+        {name:"thumb-up-line", code:"ea45"},
+        {name:"time-fill", code:"ea46"},
+        {name:"time-line", code:"ea47"},
+        {name:"timer-2-fill", code:"ea48"},
+        {name:"timer-2-line", code:"ea49"},
+        {name:"timer-fill", code:"ea4a"},
+        {name:"timer-flash-fill", code:"ea4b"},
+        {name:"timer-flash-line", code:"ea4c"},
+        {name:"timer-line", code:"ea4d"},
+        {name:"toggle-fill", code:"ea4e"},
+        {name:"toggle-line", code:"ea4f"},
+        {name:"upload-2-fill", code:"ea50"},
+        {name:"upload-2-line", code:"ea51"},
+        {name:"upload-cloud-2-fill", code:"ea52"},
+        {name:"upload-cloud-2-line", code:"ea53"},
+        {name:"upload-cloud-fill", code:"ea54"},
+        {name:"upload-cloud-line", code:"ea55"},
+        {name:"upload-fill", code:"ea56"},
+        {name:"upload-line", code:"ea57"},
+        {name:"zoom-in-fill", code:"ea58"},
+        {name:"zoom-in-line", code:"ea59"},
+        {name:"zoom-out-fill", code:"ea5a"},
+        {name:"zoom-out-line", code:"ea5b"}
+    ];
+
+    const container = document.getElementById('glyphContainer');
+    const searchInput = document.getElementById('searchInput');
+    const resultCount = document.getElementById('resultCount');
+    const testDrive = document.getElementById('testDrive');
+    const fontSizeInput = document.getElementById('fontSize');
+    const testTextInput = document.getElementById('testText');
+
+    function renderGlyphs(filter = '') {
+        const q = filter.trim().toLowerCase();
+        let filtered = glyphs;
+        if (q) {
+            filtered = glyphs.filter(g => 
+                g.name.toLowerCase().includes(q) || 
+                g.code.includes(q)
+            );
+        }
+        resultCount.textContent = filtered.length + ' icon' + (filtered.length !== 1 ? 's' : '');
+        container.innerHTML = filtered.map(g => `
+            <div class="glyph-card">
+                <div class="icon-box icon-${g.name}"></div>
+                <div class="icon-name">icon-${g.name}</div>
+                <div class="codepoint">${g.code}</div>
+            </div>
+        `).join('');
+    }
+
+    function updateTestDrive() {
+        const size = parseInt(fontSizeInput.value, 10) || 48;
+        const txt = testTextInput.value || '';
+        testDrive.style.fontSize = size + 'px';
+        testDrive.textContent = txt || '\u00A0';
+    }
+
+    searchInput.addEventListener('input', function() {
+        renderGlyphs(this.value);
+    });
+
+    fontSizeInput.addEventListener('input', updateTestDrive);
+    testTextInput.addEventListener('input', updateTestDrive);
+
+    renderGlyphs();
+    updateTestDrive();
+})();
+</script>
+</body>
+</html>
