@@ -13,9 +13,9 @@
 <img src="https://img.shields.io/badge/DPI-Scaling%20Ready%20%F0%9F%96%A5%EF%B8%8F-ff69b4" alt="DPI Scaling Ready" />
 
 <!-- مجتمع ومستودع -->
-<img src="https://img.shields.io/github/stars/USERNAME/WinForms-IconFont-Collection?style=social" alt="GitHub Stars" />
-<img src="https://img.shields.io/github/forks/USERNAME/WinForms-IconFont-Collection?style=social" alt="GitHub Forks" />
-<img src="https://img.shields.io/github/issues/USERNAME/WinForms-IconFont-Collection" alt="GitHub Issues" />
+<img src="https://img.shields.io/github/stars/FALCONzeroX/WinForms-IconFont-Collection?style=social" alt="GitHub Stars" />
+<img src="https://img.shields.io/github/forks/FALCONzeroX/WinForms-IconFont-Collection?style=social" alt="GitHub Forks" />
+<img src="https://img.shields.io/github/issues/FALCONzeroX/WinForms-IconFont-Collection" alt="GitHub Issues" />
 <img src="https://img.shields.io/github/last-commit/USERNAME/WinForms-IconFont-Collection" alt="Last Commit" />
 
 <!-- حزم الأيقونات المدعومة (مثال) -->
