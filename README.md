@@ -419,6 +419,7 @@ Inside every individual folder, you will find the following assets:
 
 ### 1. 📂 `fonts/` (Directory / مجلد ملفات)
 *   **English:** Contains the core scalable font files The `.ttf` file inside this folder is the one you will import into Visual Studio's `Resources.resx`.
+
 *   **العربية:** يحتوي على ملفات الخطوط الأساسية ملف الـ `.ttf` الموجود داخل هذا المجلد هو الملف الذي ستقوم بتضمينه داخل موارد مشروعك `Resources.resx`.
 
 ### 2. 🌐 `[Package_Name].html` (Interactive Document / صفحة ويب تفاعلية)
