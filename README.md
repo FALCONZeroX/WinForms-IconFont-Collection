@@ -300,9 +300,10 @@ To adapt this code to your specific project, you only need to modify **two speci
 
 لتطويع هذا الكود ليناسب مشروعك الخاص، تحتاج فقط إلى تعديل **مكانيين محددين**:
 
-### 1️⃣ `LoadAllFonts()` Method:
+### 1️⃣ `LoadAllFonts()` Method: (تعديل الخط والحجم)
 
 Update the resource reference to match your actual `.ttf` file name inside your Resources.
+
 قم بتحديث مرجع المورد ليتطابق مع الاسم الفعلي لملف `.ttf` الموجود ضمن مجلد الموارد (Resources) لديك.
 ```csharp
 // Replace 'Design_icons' with the exact name of your resource file. 
@@ -311,9 +312,10 @@ _iconFontPrimary = CreateFontFromResource(Properties.Resources.YOUR_FONT_RESOURC
 
 ```
 
-### 2️⃣ `ApplyFontsToControls()` Method:
+### 2️⃣ `ApplyFontsToControls()` Method: (تغيير الايقونات بالكود)
 
 Assign the font variable to your specific WinForms controls (Buttons, Labels, Tabs) and input the correct Unicode for the icon you want to render.
+
 قم بتعيين متغير الخط لعناصر تحكم WinForms المحددة (الأزرار، والتسميات، وعلامات التبويب)، وأدخل رمز Unicode الصحيح للأيقونة التي ترغب في عرضها.
 ```csharp
 yourButtonName.Font = _iconFontPrimary; // Set the font target
