@@ -145,6 +145,220 @@ Embedding the font as a **binary resource** inside your `.exe` works by loading 
 - **نشر أحادي الملف** : مجموعة الأيقونات تسافر داخل الملف التنفيذي – لا ملفات PNG ضائعة أو منسية.
 - **مرونة** : تستطيع تغيير لون الأيقونة أو حجمها أو حتى تطبيق تأثيرات (خط عريض، حدود) بمجرد تعديل خصائص كائن `Font`. لا حاجة لطلب ملف جديد من المصمم.
 
+إليك الكود الكامل لملف الـ `README.md` جاهزاً للنسخ واللصق المباشر في مستودعك. تم تنسيقه باحترافية عالية ليتضمن شرح تضمين الموارد، كود الذاكرة العام (Generic)، وشرح الـ Unicode والملفات التفاعلية باللغتين العربية والإنجليزية.
+
+---
+
+# 📖 How to Use Icon Fonts in WinForms | دليل استخدام أيقونات الخطوط
+
+This comprehensive guide walks you through incorporating custom vector icon fonts into your Windows Forms applications using a memory-safe approach.
+
+يوفر هذا الدليل شرحاً تفصيلياً لدمج أيقونات الخطوط الشعاعية داخل تطبيقات Windows Forms بطريقة آمنة تماماً على الذاكرة.
+
+---
+
+## 🛠️ Step 1: Embedding the Font into Resources | أولاً: تضمين الخط داخل موارد المشروع
+
+Before writing code, the font file (`.ttf` or `.otf`) must be bundled inside the application executable.
+
+قبل كتابة الكود، يجب دمج ملف الخط داخل ملف التطبيق التنفيذي عبر الخطوات التالية:
+
+1. **Open Resources:** In Visual Studio, expand **Properties** in the Solution Explorer and double-click **Resources.resx** (or right-click Project -> Properties -> Resources).
+2. **Switch Resource Type:** At the top toolbar of the window, change the dropdown from **Strings** to **Files**.
+3. **Add the Font:** Drag and drop your font file (e.g., `Design_icons.ttf`) directly into the designer.
+4. **Verify Name:** Visual Studio will automatically generate a property matching the file name. For example, `Design_icons.ttf` becomes accessible via `Properties.Resources.Design_icons` as a raw `byte[]`.
+
+---
+
+## 💻 Step 2: Safe Memory Loading Code | ثانياً: كود تحميل الخط إلى الذاكرة
+
+Here is the clean, production-grade generic code. Copy this framework directly into your **Form** file (`Form1.cs`).
+
+هذا هو الكود العام والآمن، يمكنك نسخه ولصقه مباشرة داخل ملف النافذة لديك.
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Text;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+namespace WinForms_IconFont_Demo
+{
+    public partial class MainForm : Form
+    {
+        // 1. Unified collection to store and manage custom font families
+        private PrivateFontCollection _privateFonts = new PrivateFontCollection();
+
+        // 2. Generic font instances that will hold our custom icon fonts
+        private Font _iconFontPrimary;
+        private Font _iconFontSecondary;
+
+        // 3. Track unmanaged memory pointers to guarantee deferred, safe cleanup upon closing
+        private List<IntPtr> _fontPointers = new List<IntPtr>();
+
+        // Win32 API to register the memory-resident font into the Windows GDI subsystem
+        [DllImport("gdi32.dll")]
+        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
+
+        public MainForm()
+        {
+            InitializeComponent();
+            
+            // Execute the lifecycle steps
+            LoadAllFonts();
+            ApplyFontsToControls();
+
+            // Bind the cleanup event to prevent memory corruption/leaks
+            this.FormClosed += MainForm_FormClosed;
+        }
+
+        /// <summary>
+        /// A generic, reusable method to load a font from resources into unmanaged memory.
+        /// </summary>
+        private Font CreateFontFromResource(byte[] fontResourceData, float fontSize)
+        {
+            // Allocate unmanaged block of memory matching the font size
+            IntPtr fontPtr = Marshal.AllocCoTaskMem(fontResourceData.Length);
+            
+            // Copy the raw byte array into the allocated unmanaged memory pointer
+            Marshal.Copy(fontResourceData, 0, fontPtr, fontResourceData.Length);
+
+            // Register the font with the native OS graphics subsystem
+            uint dummy = 0;
+            AddFontMemResourceEx(fontPtr, (uint)fontResourceData.Length, IntPtr.Zero, ref dummy);
+
+            // Append the font to our managed PrivateFontCollection
+            _privateFonts.AddMemoryFont(fontPtr, fontResourceData.Length);
+
+            // Save pointer reference for bulk cleanup when the application exits
+            _fontPointers.Add(fontPtr);
+
+            // Instantiate the Font object using the most recently added index
+            int lastFontIndex = _privateFonts.Families.Length - 1;
+            return new Font(_privateFonts.Families[lastFontIndex], fontSize, FontStyle.Regular, GraphicsUnit.Point);
+        }
+
+        /// <summary>
+        /// PLACEHOLDER A: Load your custom fonts here.
+        /// </summary>
+        private void LoadAllFonts()
+        {
+            // Change 'Properties.Resources.YOUR_FONT' to your actual resource name, and adjust the size (e.g., 24, 32)
+            _iconFontPrimary = CreateFontFromResource(Properties.Resources.Design_icons, 24);
+            _iconFontSecondary = CreateFontFromResource(Properties.Resources.System_icons, 32);
+        }
+
+        /// <summary>
+        /// PLACEHOLDER B: Bind your fonts and glyphs to your UI controls.
+        /// </summary>
+        private void ApplyFontsToControls()
+        {
+            // Example for Primary Font (e.g., Toolbar Buttons)
+            button1.Font = _iconFontPrimary;
+            button1.Text = "\ue908"; // Replace with your Unicode glyph code
+
+            button2.Font = _iconFontPrimary;
+            button2.Text = "\ue937";
+
+            // Example for Secondary Font (e.g., Status Bar Icons)
+            button6.Font = _iconFontSecondary;
+            button6.Text = "\uf247"; 
+        }
+
+        /// <summary>
+        /// Clean up allocated resources cleanly upon form closure.
+        /// </summary>
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Dispose managed font wrappers
+            if (_iconFontPrimary != null) _iconFontPrimary.Dispose();
+            if (_iconFontSecondary != null) _iconFontSecondary.Dispose();
+            if (_privateFonts != null) _privateFonts.Dispose();
+
+            // Release all unmanaged memory buffers at once
+            foreach (IntPtr ptr in _fontPointers)
+            {
+                if (ptr != IntPtr.Zero)
+                {
+                    Marshal.FreeCoTaskMem(ptr);
+                }
+            }
+            _fontPointers.Clear();
+        }
+    }
+}
+
+```
+
+---
+
+## 🔍 Code Customization Guide | دليل تعديل الكود للمطورين
+
+To adapt this code to your specific project, you only need to modify **two specific places**:
+
+لتطويع هذا الكود ليناسب مشروعك الخاص، تحتاج فقط إلى تعديل **مكانيين محددين**:
+
+### 1️⃣ `LoadAllFonts()` Method:
+
+Update the resource reference to match your actual `.ttf` file name inside your Resources.
+
+```csharp
+// Replace 'Design_icons' with the exact name of your resource file. 
+// You can also change the font size value (e.g. 24, 40) right here.
+_iconFontPrimary = CreateFontFromResource(Properties.Resources.YOUR_FONT_RESOURCE_NAME, 24);
+
+```
+
+### 2️⃣ `ApplyFontsToControls()` Method:
+
+Assign the font variable to your specific WinForms controls (Buttons, Labels, Tabs) and input the correct Unicode for the icon you want to render.
+
+```csharp
+yourButtonName.Font = _iconFontPrimary; // Set the font target
+yourButtonName.Text = "\uXXXX";        // Insert the specific Unicode value
+
+```
+
+---
+
+## 🔤 What is Unicode & How to Find Icons | ثالثاً: ما هو الـ Unicode وكيف تجد الأيقونات؟
+
+### 💡 What is Unicode? | ما هو الـ Unicode؟
+
+Custom icon fonts do not use standard letters (like 'A', 'B', 'C'). Instead, they map vector icon designs to special placeholders called **Unicode Character Points** (usually looking like `\ue908` or `\uf1ba`). When you assign an icon font to a button and change its text to one of these codes, Windows Forms draws the high-resolution vector symbol instead of text.
+
+أيقونات الخطوط لا تستخدم الأحرف العادية (مثل أ، ب، ج). بدلاً من ذلك، تقوم بربط الأيقونات الشعاعية برموز برمجية خاصة تُسمى **Unicode Character Points** (تظهر عادةً على شكل `\ue908` أو `\uf1ba`). عندما تقوم بتعيين الخط المخصص لزر ما وتكتب هذا الكود في خاصية الـ Text، يقوم السيستم برسم الأيقونة بدقة عالية بدلاً من النص.
+
+### 🌐 Finding Icons Using the Repository's HTML Indexes
+
+To make finding icons effortless, **every font pack included in this repository comes with its own Interactive HTML index file** located in the same directory.
+
+لتسهيل العثور على الأيقونات، **يأتي كل خط في هذا المستودع مصحوباً بملف HTML تفاعلي خاص به** في نفس المجلد.
+
+> 🛠️ **How to use it:**
+> 1. Open the `.html` file corresponding to your font in any browser (Chrome, Edge, etc.).
+> 2. You will see a clean, visual grid displaying every single icon contained inside that font pack.
+> 3. Use the integrated **Search Bar** at the top of the webpage to quickly find specific icons (e.g., searching for "save", "settings", "user").
+> 4. Next to the icon, copy the provided Unicode value.
+> 5. In your C# code, prefix the code with `\u` (e.g., if the HTML index shows `e908`, paste it into Visual Studio as `"\ue908"`).
+> 
+> 
+
+> 🛠️ **طريقة الاستخدام:**
+> 1. افتح ملف الـ `.html` الخاص بالخط الذي تريده في أي متصفح إنترنت.
+> 2. ستظهر لك لوحة تفاعلية تعرض جميع الأيقونات الموجودة داخل هذا الخط بشكل مرئي.
+> 3. يمكنك استخدام **شريط البحث** المدمج في أعلى الصفحة للبحث عن أيقونة معينة بالاسم (مثال: ابحث عن "save" أو "home").
+> 4. ستجد بجانب كل أيقونة رمز الـ **Unicode** الخاص بها.
+> 5. لتبنيها داخل كود C#، قم بإضافة الرمز `\u` قبل الكود (مثال: إذا كان الرمز في صفحة الـ HTML هو `e908`، اكتبه في فيجوال ستوديو بهذا الشكل `"\ue908"`).
+> 
+> 
+
+```
+
+```
+
 ---
 
 ## Summary: A Proper Foundation for WinForms Vector Icons
