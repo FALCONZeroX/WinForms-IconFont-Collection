@@ -1,0 +1,1365 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>General Filled Icons</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="demo-files/demo.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+        body {
+            background: #f8fafc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            padding: 2rem 1.5rem;
+            color: #0b1a2e;
+        }
+        .demo-container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .header-bar {
+            background: #ffffff;
+            border-radius: 2rem;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2.5rem;
+        }
+        .header-bar h1 {
+            font-weight: 600;
+            font-size: 1.6rem;
+            letter-spacing: -0.02em;
+        }
+        .header-bar h1 small {
+            font-weight: 400;
+            font-size: 1rem;
+            color: #5e6f8d;
+            margin-left: 0.75rem;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .search-box input {
+            border: 1px solid #dce2ec;
+            border-radius: 60px;
+            padding: 0.65rem 1.5rem;
+            font-size: 0.95rem;
+            background: white;
+            min-width: 240px;
+            transition: 0.2s;
+        }
+        .search-box input:focus {
+            border-color: #3b6eff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 110, 255, 0.15);
+        }
+        .search-box .badge {
+            background: #eef2f7;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #1e2c44;
+        }
+        .glyph-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+        .glyph-card {
+            background: white;
+            border-radius: 1.25rem;
+            padding: 1.2rem 0.5rem 0.8rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            border: 1px solid #edf2f9;
+            transition: 0.15s ease;
+            cursor: default;
+        }
+        .glyph-card:hover {
+            border-color: #b9c8e0;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -8px rgba(0, 20, 50, 0.08);
+        }
+        .glyph-card .icon-wrap {
+            font-size: 2.6rem;
+            line-height: 1.2;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #0b1a2e;
+        }
+        .glyph-card .glyph-name {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #1f344f;
+            word-break: break-word;
+            background: #f4f8ff;
+            padding: 0.2rem 0.5rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 0.1rem;
+        }
+        .glyph-card .glyph-code {
+            display: block;
+            font-size: 0.7rem;
+            color: #6c81a0;
+            background: #f0f4fc;
+            padding: 0.2rem 0;
+            border-radius: 30px;
+            margin-top: 0.4rem;
+            font-family: 'SF Mono', 'Cascadia Code', monospace;
+            letter-spacing: 0.3px;
+        }
+        .test-drive-area {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-top: 3rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e9eef6;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .test-drive-area label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #1b314b;
+        }
+        .test-drive-area input[type="number"] {
+            width: 72px;
+            padding: 0.4rem 0.5rem;
+            border: 1px solid #d4deec;
+            border-radius: 40px;
+            text-align: center;
+        }
+        .test-drive-area input[type="text"] {
+            flex: 1;
+            min-width: 180px;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid #d4deec;
+            border-radius: 60px;
+            background: #fafcff;
+        }
+        .test-drive-area .preview-box {
+            font-size: 2.8rem;
+            padding: 0.2rem 1.2rem;
+            background: #f2f6fe;
+            border-radius: 60px;
+            min-width: 80px;
+            text-align: center;
+            color: #102a44;
+            font-family: 'Filled_icons', sans-serif;
+            letter-spacing: 2px;
+            border: 1px solid #e1e9f5;
+        }
+        .footer-note {
+            margin-top: 2.8rem;
+            text-align: center;
+            color: #657b9b;
+            font-size: 0.9rem;
+            border-top: 1px solid #e6edf6;
+            padding-top: 2rem;
+        }
+        .footer-note a {
+            color: #2f56c7;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 1rem;
+            color: #586f8f;
+            background: #f2f7ff;
+            border-radius: 2rem;
+        }
+        @media (max-width: 600px) {
+            .header-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+            .search-box input {
+                min-width: 100%;
+            }
+            .glyph-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+<div class="demo-container">
+
+    <!-- header -->
+    <div class="header-bar">
+        <h1>General Filled icons <small>1053 glyphs</small></h1>
+        <div class="search-box">
+            <span class="badge">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search icons... (e.g. sun, arrow, square)" autofocus>
+            <span class="badge" id="resultCount">1053</span>
+        </div>
+    </div>
+
+    <!-- glyph grid injected by JS -->
+    <div id="glyphGrid" class="glyph-grid"></div>
+
+    <!-- test drive -->
+    <div class="test-drive-area">
+        <label>Font size <input type="number" id="fontSize" min="8" value="42"> px</label>
+        <input type="text" id="testText" placeholder="Type any text…" value="icon-">
+        <div class="preview-box" id="testDrive" style="font-family:'Filled_icons'">&#xeaf5;</div>
+    </div>
+
+    <div class="footer-note">
+        Generated by <a href="https://github.com/FALCONZeroX">FALAH FATHEL</a> · Filled icons set
+    </div>
+</div>
+
+<script src="demo-files/demo.js"></script>
+<script>
+    (function() {
+        // ---------- glyphs data (full list) ----------
+        const glyphs = [
+            {"name":"sunglasses","code":"eaf5"},
+            {"name":"sunrise","code":"eaf6"},
+            {"name":"sunset-2","code":"eaf7"},
+            {"name":"sunset","code":"eaf8"},
+            {"name":"swipe-down","code":"eaf9"},
+            {"name":"swipe-left","code":"eafa"},
+            {"name":"swipe-right","code":"eafb"},
+            {"name":"swipe-up","code":"eafc"},
+            {"name":"table","code":"eafd"},
+            {"name":"tag","code":"eafe"},
+            {"name":"tags","code":"eaff"},
+            {"name":"temperature-minus","code":"eb00"},
+            {"name":"temperature-plus","code":"eb01"},
+            {"name":"template","code":"eb02"},
+            {"name":"test-pipe-2","code":"eb03"},
+            {"name":"thumb-down","code":"eb04"},
+            {"name":"thumb-up","code":"eb05"},
+            {"name":"ticket","code":"eb06"},
+            {"name":"tilt-shift","code":"eb07"},
+            {"name":"timeline-event","code":"eb08"},
+            {"name":"toggle-left","code":"eb09"},
+            {"name":"toggle-right","code":"eb0a"},
+            {"name":"tools-kitchen-2","code":"eb0b"},
+            {"name":"train","code":"eb0c"},
+            {"name":"transform","code":"eb0d"},
+            {"name":"transition-bottom","code":"eb0e"},
+            {"name":"transition-left","code":"eb0f"},
+            {"name":"transition-right","code":"eb10"},
+            {"name":"transition-top","code":"eb11"},
+            {"name":"trash-x","code":"eb12"},
+            {"name":"trash","code":"eb13"},
+            {"name":"triangle-inverted","code":"eb14"},
+            {"name":"triangle-square-circle","code":"eb15"},
+            {"name":"triangle","code":"eb16"},
+            {"name":"trolley","code":"eb17"},
+            {"name":"trophy","code":"eb18"},
+            {"name":"truck","code":"eb19"},
+            {"name":"ufo","code":"eb1a"},
+            {"name":"umbrella","code":"eb1b"},
+            {"name":"user","code":"eb1c"},
+            {"name":"versions","code":"eb1d"},
+            {"name":"video-minus","code":"eb1e"},
+            {"name":"video-plus","code":"eb1f"},
+            {"name":"video","code":"eb20"},
+            {"name":"windmill","code":"eb21"},
+            {"name":"windsock","code":"eb22"},
+            {"name":"woman","code":"eb23"},
+            {"name":"world","code":"eb24"},
+            {"name":"writing-sign","code":"eb25"},
+            {"name":"writing","code":"eb26"},
+            {"name":"x","code":"eb27"},
+            {"name":"xbox-a","code":"eb28"},
+            {"name":"xbox-b","code":"eb29"},
+            {"name":"xbox-x","code":"eb2a"},
+            {"name":"xbox-y","code":"eb2b"},
+            {"name":"yin-yang","code":"eb2c"},
+            {"name":"zeppelin","code":"eb2d"},
+            {"name":"zoom-cancel","code":"eb2e"},
+            {"name":"zoom-check","code":"eb2f"},
+            {"name":"zoom-code","code":"eb30"},
+            {"name":"zoom-exclamation","code":"eb31"},
+            {"name":"zoom-in-area","code":"eb32"},
+            {"name":"zoom-in","code":"eb33"},
+            {"name":"zoom-money","code":"eb34"},
+            {"name":"zoom-out-area","code":"eb35"},
+            {"name":"zoom-out","code":"eb36"},
+            {"name":"zoom-pan","code":"eb37"},
+            {"name":"zoom-question","code":"eb38"},
+            {"name":"zoom-scan","code":"eb39"},
+            {"name":"zoom","code":"eb3a"},
+            {"name":"shield-check","code":"eb3b"},
+            {"name":"shield-checkered","code":"eb3c"},
+            {"name":"shield-half","code":"eb3d"},
+            {"name":"shield-lock","code":"eb3e"},
+            {"name":"shield","code":"eb3f"},
+            {"name":"shirt","code":"eb40"},
+            {"name":"shopping-cart","code":"eb41"},
+            {"name":"sign-left","code":"eb42"},
+            {"name":"sign-right","code":"eb43"},
+            {"name":"sitemap","code":"eb44"},
+            {"name":"sort-ascending-2","code":"eb45"},
+            {"name":"sort-ascending-shapes","code":"eb46"},
+            {"name":"sort-descending-2","code":"eb47"},
+            {"name":"sort-descending-shapes","code":"eb48"},
+            {"name":"soup","code":"eb49"},
+            {"name":"spade","code":"eb4a"},
+            {"name":"sparkles-2","code":"eb4b"},
+            {"name":"sparkles","code":"eb4c"},
+            {"name":"speedboat","code":"eb4d"},
+            {"name":"spider","code":"eb4e"},
+            {"name":"square-arrow-down","code":"eb4f"},
+            {"name":"square-arrow-left","code":"eb50"},
+            {"name":"square-arrow-right","code":"eb51"},
+            {"name":"square-arrow-up","code":"eb52"},
+            {"name":"square-asterisk","code":"eb53"},
+            {"name":"square-check","code":"eb54"},
+            {"name":"square-chevron-down","code":"eb55"},
+            {"name":"square-chevron-left","code":"eb56"},
+            {"name":"square-chevron-right","code":"eb57"},
+            {"name":"square-chevron-up","code":"eb58"},
+            {"name":"square-chevrons-down","code":"eb59"},
+            {"name":"square-chevrons-left","code":"eb5a"},
+            {"name":"square-chevrons-right","code":"eb5b"},
+            {"name":"square-chevrons-up","code":"eb5c"},
+            {"name":"square-dot","code":"eb5d"},
+            {"name":"square-f0","code":"eb5e"},
+            {"name":"square-f1","code":"eb5f"},
+            {"name":"square-f2","code":"eb60"},
+            {"name":"square-f3","code":"eb61"},
+            {"name":"square-f4","code":"eb62"},
+            {"name":"square-f5","code":"eb63"},
+            {"name":"square-f6","code":"eb64"},
+            {"name":"square-f7","code":"eb65"},
+            {"name":"square-f8","code":"eb66"},
+            {"name":"square-f9","code":"eb67"},
+            {"name":"square-letter-a","code":"eb68"},
+            {"name":"square-letter-b","code":"eb69"},
+            {"name":"square-letter-c","code":"eb6a"},
+            {"name":"square-letter-d","code":"eb6b"},
+            {"name":"square-letter-e","code":"eb6c"},
+            {"name":"square-letter-f","code":"eb6d"},
+            {"name":"square-letter-g","code":"eb6e"},
+            {"name":"square-letter-h","code":"eb6f"},
+            {"name":"square-letter-i","code":"eb70"},
+            {"name":"square-letter-j","code":"eb71"},
+            {"name":"square-letter-k","code":"eb72"},
+            {"name":"square-letter-l","code":"eb73"},
+            {"name":"square-letter-m","code":"eb74"},
+            {"name":"square-letter-n","code":"eb75"},
+            {"name":"square-letter-o","code":"eb76"},
+            {"name":"square-letter-p","code":"eb77"},
+            {"name":"square-letter-q","code":"eb78"},
+            {"name":"square-letter-r","code":"eb79"},
+            {"name":"square-letter-s","code":"eb7a"},
+            {"name":"square-letter-t","code":"eb7b"},
+            {"name":"square-letter-u","code":"eb7c"},
+            {"name":"square-letter-v","code":"eb7d"},
+            {"name":"square-letter-w","code":"eb7e"},
+            {"name":"square-letter-x","code":"eb7f"},
+            {"name":"square-letter-y","code":"eb80"},
+            {"name":"square-letter-z","code":"eb81"},
+            {"name":"square-minus","code":"eb82"},
+            {"name":"square-number-0","code":"eb83"},
+            {"name":"square-number-1","code":"eb84"},
+            {"name":"square-number-2","code":"eb85"},
+            {"name":"square-number-3","code":"eb86"},
+            {"name":"square-number-4","code":"eb87"},
+            {"name":"square-number-5","code":"eb88"},
+            {"name":"square-number-6","code":"eb89"},
+            {"name":"square-number-7","code":"eb8a"},
+            {"name":"square-number-8","code":"eb8b"},
+            {"name":"square-number-9","code":"eb8c"},
+            {"name":"square-rotated","code":"eb8d"},
+            {"name":"square-rounded-arrow-down","code":"eb8e"},
+            {"name":"square-rounded-arrow-left","code":"eb8f"},
+            {"name":"square-rounded-arrow-right","code":"eb90"},
+            {"name":"square-rounded-arrow-up","code":"eb91"},
+            {"name":"square-rounded-check","code":"eb92"},
+            {"name":"square-rounded-chevron-down","code":"eb93"},
+            {"name":"square-rounded-chevron-left","code":"eb94"},
+            {"name":"square-rounded-chevron-right","code":"eb95"},
+            {"name":"square-rounded-chevron-up","code":"eb96"},
+            {"name":"square-rounded-chevrons-down","code":"eb97"},
+            {"name":"square-rounded-chevrons-left","code":"eb98"},
+            {"name":"square-rounded-chevrons-right","code":"eb99"},
+            {"name":"square-rounded-chevrons-up","code":"eb9a"},
+            {"name":"square-rounded-letter-a","code":"eb9b"},
+            {"name":"square-rounded-letter-b","code":"eb9c"},
+            {"name":"square-rounded-letter-c","code":"eb9d"},
+            {"name":"square-rounded-letter-d","code":"eb9e"},
+            {"name":"square-rounded-letter-e","code":"eb9f"},
+            {"name":"square-rounded-letter-f","code":"eba0"},
+            {"name":"square-rounded-letter-g","code":"eba1"},
+            {"name":"square-rounded-letter-h","code":"eba2"},
+            {"name":"square-rounded-letter-i","code":"eba3"},
+            {"name":"square-rounded-letter-j","code":"eba4"},
+            {"name":"square-rounded-letter-k","code":"eba5"},
+            {"name":"square-rounded-letter-l","code":"eba6"},
+            {"name":"square-rounded-letter-m","code":"eba7"},
+            {"name":"square-rounded-letter-n","code":"eba8"},
+            {"name":"square-rounded-letter-o","code":"eba9"},
+            {"name":"square-rounded-letter-p","code":"ebaa"},
+            {"name":"square-rounded-letter-q","code":"ebab"},
+            {"name":"square-rounded-letter-r","code":"ebac"},
+            {"name":"square-rounded-letter-s","code":"ebad"},
+            {"name":"square-rounded-letter-t","code":"ebae"},
+            {"name":"square-rounded-letter-u","code":"ebaf"},
+            {"name":"square-rounded-letter-v","code":"ebb0"},
+            {"name":"square-rounded-letter-w","code":"ebb1"},
+            {"name":"square-rounded-letter-x","code":"ebb2"},
+            {"name":"square-rounded-letter-y","code":"ebb3"},
+            {"name":"square-rounded-letter-z","code":"ebb4"},
+            {"name":"square-rounded-minus","code":"ebb5"},
+            {"name":"square-rounded-number-0","code":"ebb6"},
+            {"name":"square-rounded-number-1","code":"ebb7"},
+            {"name":"square-rounded-number-2","code":"ebb8"},
+            {"name":"square-rounded-number-3","code":"ebb9"},
+            {"name":"square-rounded-number-4","code":"ebba"},
+            {"name":"square-rounded-number-5","code":"ebbb"},
+            {"name":"square-rounded-number-6","code":"ebbc"},
+            {"name":"square-rounded-number-7","code":"ebbd"},
+            {"name":"square-rounded-number-8","code":"ebbe"},
+            {"name":"square-rounded-number-9","code":"ebbf"},
+            {"name":"square-rounded-plus","code":"ebc0"},
+            {"name":"square-rounded-x","code":"ebc1"},
+            {"name":"square-rounded","code":"ebc2"},
+            {"name":"square-x","code":"ebc3"},
+            {"name":"square","code":"ebc4"},
+            {"name":"squares","code":"ebc5"},
+            {"name":"stack-2","code":"ebc6"},
+            {"name":"stack-3","code":"ebc7"},
+            {"name":"stack","code":"ebc8"},
+            {"name":"star-half","code":"ebc9"},
+            {"name":"star","code":"ebca"},
+            {"name":"stars","code":"ebcb"},
+            {"name":"steering-wheel","code":"ebcc"},
+            {"name":"sun-high","code":"ebcd"},
+            {"name":"sun-low","code":"ebce"},
+            {"name":"sun","code":"ebcf"},
+            {"name":"nurse","code":"ebd0"},
+            {"name":"octagon-minus","code":"ebd1"},
+            {"name":"octagon-plus","code":"ebd2"},
+            {"name":"octagon","code":"ebd3"},
+            {"name":"oval-vertical","code":"ebd4"},
+            {"name":"oval","code":"ebd5"},
+            {"name":"pacman","code":"ebd6"},
+            {"name":"paint","code":"ebd7"},
+            {"name":"palette","code":"ebd8"},
+            {"name":"panorama-horizontal","code":"ebd9"},
+            {"name":"panorama-vertical","code":"ebda"},
+            {"name":"parking-circle","code":"ebdb"},
+            {"name":"paw","code":"ebdc"},
+            {"name":"pencil","code":"ebdd"},
+            {"name":"pennant-2","code":"ebde"},
+            {"name":"pennant","code":"ebdf"},
+            {"name":"pentagon","code":"ebe0"},
+            {"name":"phone-call","code":"ebe1"},
+            {"name":"phone-calling","code":"ebe2"},
+            {"name":"phone-check","code":"ebe3"},
+            {"name":"phone-x","code":"ebe4"},
+            {"name":"phone","code":"ebe5"},
+            {"name":"photo","code":"ebe6"},
+            {"name":"picture-in-picture-top","code":"ebe7"},
+            {"name":"picture-in-picture","code":"ebe8"},
+            {"name":"pig","code":"ebe9"},
+            {"name":"pill","code":"ebea"},
+            {"name":"pin","code":"ebeb"},
+            {"name":"pinned","code":"ebec"},
+            {"name":"pizza","code":"ebed"},
+            {"name":"plane-arrival","code":"ebee"},
+            {"name":"plane-departure","code":"ebef"},
+            {"name":"plane-tilt","code":"ebf0"},
+            {"name":"plane","code":"ebf1"},
+            {"name":"play-card-1","code":"ebf2"},
+            {"name":"play-card-10","code":"ebf3"},
+            {"name":"play-card-2","code":"ebf4"},
+            {"name":"play-card-3","code":"ebf5"},
+            {"name":"play-card-4","code":"ebf6"},
+            {"name":"play-card-5","code":"ebf7"},
+            {"name":"play-card-6","code":"ebf8"},
+            {"name":"play-card-7","code":"ebf9"},
+            {"name":"play-card-8","code":"ebfa"},
+            {"name":"play-card-9","code":"ebfb"},
+            {"name":"play-card-a","code":"ebfc"},
+            {"name":"play-card-j","code":"ebfd"},
+            {"name":"play-card-k","code":"ebfe"},
+            {"name":"play-card-q","code":"ebff"},
+            {"name":"play-card-star","code":"ec00"},
+            {"name":"play-card","code":"ec01"},
+            {"name":"player-eject","code":"ec02"},
+            {"name":"player-pause","code":"ec03"},
+            {"name":"player-play","code":"ec04"},
+            {"name":"player-record","code":"ec05"},
+            {"name":"player-skip-back","code":"ec06"},
+            {"name":"player-skip-forward","code":"ec07"},
+            {"name":"player-stop","code":"ec08"},
+            {"name":"player-track-next","code":"ec09"},
+            {"name":"player-track-prev","code":"ec0a"},
+            {"name":"playlist","code":"ec0b"},
+            {"name":"plus","code":"ec0c"},
+            {"name":"point","code":"ec0d"},
+            {"name":"pointer","code":"ec0e"},
+            {"name":"polaroid","code":"ec0f"},
+            {"name":"poo","code":"ec10"},
+            {"name":"presentation-analytics","code":"ec11"},
+            {"name":"presentation","code":"ec12"},
+            {"name":"puzzle","code":"ec13"},
+            {"name":"quote","code":"ec14"},
+            {"name":"radar","code":"ec15"},
+            {"name":"radioactive","code":"ec16"},
+            {"name":"receipt-dollar","code":"ec17"},
+            {"name":"receipt-euro","code":"ec18"},
+            {"name":"receipt-pound","code":"ec19"},
+            {"name":"receipt-rupee","code":"ec1a"},
+            {"name":"receipt-yen","code":"ec1b"},
+            {"name":"receipt-yuan","code":"ec1c"},
+            {"name":"receipt","code":"ec1d"},
+            {"name":"rectangle-vertical","code":"ec1e"},
+            {"name":"rectangle","code":"ec1f"},
+            {"name":"registered","code":"ec20"},
+            {"name":"relation-many-to-many","code":"ec21"},
+            {"name":"relation-one-to-many","code":"ec22"},
+            {"name":"relation-one-to-one","code":"ec23"},
+            {"name":"replace","code":"ec24"},
+            {"name":"report-analytics","code":"ec25"},
+            {"name":"report-money","code":"ec26"},
+            {"name":"rollercoaster","code":"ec27"},
+            {"name":"rosette-discount-check","code":"ec28"},
+            {"name":"rosette-discount","code":"ec29"},
+            {"name":"rosette","code":"ec2a"},
+            {"name":"salad","code":"ec2b"},
+            {"name":"satellite","code":"ec2c"},
+            {"name":"scale","code":"ec2d"},
+            {"name":"school","code":"ec2e"},
+            {"name":"scuba-diving-tank","code":"ec2f"},
+            {"name":"search","code":"ec30"},
+            {"name":"section","code":"ec31"},
+            {"name":"seedling","code":"ec32"},
+            {"name":"send","code":"ec33"},
+            {"name":"settings","code":"ec34"},
+            {"name":"ironing-1","code":"ec35"},
+            {"name":"ironing-2","code":"ec36"},
+            {"name":"ironing-3","code":"ec37"},
+            {"name":"ironing-steam","code":"ec38"},
+            {"name":"ironing","code":"ec39"},
+            {"name":"jetpack","code":"ec3a"},
+            {"name":"jewish-star","code":"ec3b"},
+            {"name":"key","code":"ec3c"},
+            {"name":"keyboard","code":"ec3d"},
+            {"name":"keyframe-align-center","code":"ec3e"},
+            {"name":"keyframe-align-horizontal","code":"ec3f"},
+            {"name":"keyframe-align-vertical","code":"ec40"},
+            {"name":"keyframe","code":"ec41"},
+            {"name":"keyframes","code":"ec42"},
+            {"name":"label-important","code":"ec43"},
+            {"name":"label","code":"ec44"},
+            {"name":"lasso-polygon","code":"ec45"},
+            {"name":"laurel-wreath-1","code":"ec46"},
+            {"name":"laurel-wreath-2","code":"ec47"},
+            {"name":"laurel-wreath-3","code":"ec48"},
+            {"name":"laurel-wreath","code":"ec49"},
+            {"name":"layout-2","code":"ec4a"},
+            {"name":"layout-align-bottom","code":"ec4b"},
+            {"name":"layout-align-center","code":"ec4c"},
+            {"name":"layout-align-left","code":"ec4d"},
+            {"name":"layout-align-middle","code":"ec4e"},
+            {"name":"layout-align-right","code":"ec4f"},
+            {"name":"layout-align-top","code":"ec50"},
+            {"name":"layout-board-split","code":"ec51"},
+            {"name":"layout-board","code":"ec52"},
+            {"name":"layout-bottombar-collapse","code":"ec53"},
+            {"name":"layout-bottombar-expand","code":"ec54"},
+            {"name":"layout-bottombar","code":"ec55"},
+            {"name":"layout-cards","code":"ec56"},
+            {"name":"layout-dashboard","code":"ec57"},
+            {"name":"layout-distribute-horizontal","code":"ec58"},
+            {"name":"layout-distribute-vertical","code":"ec59"},
+            {"name":"layout-grid","code":"ec5a"},
+            {"name":"layout-kanban","code":"ec5b"},
+            {"name":"layout-list","code":"ec5c"},
+            {"name":"layout-navbar-collapse","code":"ec5d"},
+            {"name":"layout-navbar-expand","code":"ec5e"},
+            {"name":"layout-navbar","code":"ec5f"},
+            {"name":"layout-sidebar-left-collapse","code":"ec60"},
+            {"name":"layout-sidebar-left-expand","code":"ec61"},
+            {"name":"layout-sidebar-right-collapse","code":"ec62"},
+            {"name":"layout-sidebar-right-expand","code":"ec63"},
+            {"name":"layout-sidebar-right","code":"ec64"},
+            {"name":"layout-sidebar","code":"ec65"},
+            {"name":"layout","code":"ec66"},
+            {"name":"leaf","code":"ec67"},
+            {"name":"lego","code":"ec68"},
+            {"name":"lemon-2","code":"ec69"},
+            {"name":"library-plus","code":"ec6a"},
+            {"name":"library","code":"ec6b"},
+            {"name":"lifebuoy","code":"ec6c"},
+            {"name":"link","code":"ec6d"},
+            {"name":"list-check","code":"ec6e"},
+            {"name":"list-details","code":"ec6f"},
+            {"name":"list","code":"ec70"},
+            {"name":"live-photo","code":"ec71"},
+            {"name":"live-view","code":"ec72"},
+            {"name":"location","code":"ec73"},
+            {"name":"lock-square-rounded","code":"ec74"},
+            {"name":"lock","code":"ec75"},
+            {"name":"lungs","code":"ec76"},
+            {"name":"macro","code":"ec77"},
+            {"name":"magnet","code":"ec78"},
+            {"name":"mail-opened","code":"ec79"},
+            {"name":"mail","code":"ec7a"},
+            {"name":"man","code":"ec7b"},
+            {"name":"manual-gearbox","code":"ec7c"},
+            {"name":"map-pin","code":"ec7d"},
+            {"name":"medical-cross","code":"ec7e"},
+            {"name":"meeple","code":"ec7f"},
+            {"name":"melon","code":"ec80"},
+            {"name":"menu-2","code":"ec81"},
+            {"name":"message-2","code":"ec82"},
+            {"name":"message-chatbot","code":"ec83"},
+            {"name":"message-circle","code":"ec84"},
+            {"name":"message-report","code":"ec85"},
+            {"name":"message","code":"ec86"},
+            {"name":"messages","code":"ec87"},
+            {"name":"meteor","code":"ec88"},
+            {"name":"michelin-star","code":"ec89"},
+            {"name":"mickey","code":"ec8a"},
+            {"name":"microphone","code":"ec8b"},
+            {"name":"microscope","code":"ec8c"},
+            {"name":"microwave","code":"ec8d"},
+            {"name":"military-rank","code":"ec8e"},
+            {"name":"milk","code":"ec8f"},
+            {"name":"mood-angry","code":"ec90"},
+            {"name":"mood-confuzed","code":"ec91"},
+            {"name":"mood-crazy-happy","code":"ec92"},
+            {"name":"mood-empty","code":"ec93"},
+            {"name":"mood-happy","code":"ec94"},
+            {"name":"mood-kid","code":"ec95"},
+            {"name":"mood-neutral","code":"ec96"},
+            {"name":"mood-sad","code":"ec97"},
+            {"name":"mood-smile","code":"ec98"},
+            {"name":"mood-wrrr","code":"ec99"},
+            {"name":"moon","code":"ec9a"},
+            {"name":"motorbike","code":"ec9b"},
+            {"name":"mountain","code":"ec9c"},
+            {"name":"mouse","code":"ec9d"},
+            {"name":"mug","code":"ec9e"},
+            {"name":"mushroom","code":"ec9f"},
+            {"name":"navigation","code":"eca0"},
+            {"name":"file-power","code":"eca1"},
+            {"name":"file-rss","code":"eca2"},
+            {"name":"file-sad","code":"eca3"},
+            {"name":"file-scissors","code":"eca4"},
+            {"name":"file-settings","code":"eca5"},
+            {"name":"file-signal","code":"eca6"},
+            {"name":"file-smile","code":"eca7"},
+            {"name":"file-star","code":"eca8"},
+            {"name":"file-text","code":"eca9"},
+            {"name":"file-time","code":"ecaa"},
+            {"name":"file-typography","code":"ecab"},
+            {"name":"file-unknown","code":"ecac"},
+            {"name":"file-upload","code":"ecad"},
+            {"name":"file-vector","code":"ecae"},
+            {"name":"file-x","code":"ecaf"},
+            {"name":"file","code":"ecb0"},
+            {"name":"files","code":"ecb1"},
+            {"name":"filter","code":"ecb2"},
+            {"name":"filters","code":"ecb3"},
+            {"name":"fish-bone","code":"ecb4"},
+            {"name":"flag-2","code":"ecb5"},
+            {"name":"flag-3","code":"ecb6"},
+            {"name":"flag","code":"ecb7"},
+            {"name":"flame","code":"ecb8"},
+            {"name":"flare","code":"ecb9"},
+            {"name":"flask-2","code":"ecba"},
+            {"name":"flask","code":"ecbb"},
+            {"name":"flower","code":"ecbc"},
+            {"name":"folder-open","code":"ecbd"},
+            {"name":"folder","code":"ecbe"},
+            {"name":"folders","code":"ecbf"},
+            {"name":"forbid-2","code":"ecc0"},
+            {"name":"forbid","code":"ecc1"},
+            {"name":"fountain","code":"ecc2"},
+            {"name":"function","code":"ecc3"},
+            {"name":"garden-cart","code":"ecc4"},
+            {"name":"gas-station","code":"ecc5"},
+            {"name":"gauge","code":"ecc6"},
+            {"name":"ghost-2","code":"ecc7"},
+            {"name":"ghost-3","code":"ecc8"},
+            {"name":"ghost","code":"ecc9"},
+            {"name":"gift-card","code":"ecca"},
+            {"name":"gift","code":"eccb"},
+            {"name":"glass-full","code":"eccc"},
+            {"name":"glass","code":"eccd"},
+            {"name":"globe","code":"ecce"},
+            {"name":"golf","code":"eccf"},
+            {"name":"gps","code":"ecd0"},
+            {"name":"graph","code":"ecd1"},
+            {"name":"grid-pattern","code":"ecd2"},
+            {"name":"guitar-pick","code":"ecd3"},
+            {"name":"hanger-2","code":"ecd4"},
+            {"name":"headphones","code":"ecd5"},
+            {"name":"headset","code":"ecd6"},
+            {"name":"heart-broken","code":"ecd7"},
+            {"name":"heart","code":"ecd8"},
+            {"name":"helicopter-landing","code":"ecd9"},
+            {"name":"helicopter","code":"ecda"},
+            {"name":"help-circle","code":"ecdb"},
+            {"name":"help-hexagon","code":"ecdc"},
+            {"name":"help-octagon","code":"ecdd"},
+            {"name":"help-square-rounded","code":"ecde"},
+            {"name":"help-square","code":"ecdf"},
+            {"name":"help-triangle","code":"ece0"},
+            {"name":"help","code":"ece1"},
+            {"name":"hexagon-letter-a","code":"ece2"},
+            {"name":"hexagon-letter-b","code":"ece3"},
+            {"name":"hexagon-letter-c","code":"ece4"},
+            {"name":"hexagon-letter-d","code":"ece5"},
+            {"name":"hexagon-letter-e","code":"ece6"},
+            {"name":"hexagon-letter-f","code":"ece7"},
+            {"name":"hexagon-letter-g","code":"ece8"},
+            {"name":"hexagon-letter-h","code":"ece9"},
+            {"name":"hexagon-letter-i","code":"ecea"},
+            {"name":"hexagon-letter-j","code":"eceb"},
+            {"name":"hexagon-letter-k","code":"ecec"},
+            {"name":"hexagon-letter-l","code":"eced"},
+            {"name":"hexagon-letter-m","code":"ecee"},
+            {"name":"hexagon-letter-n","code":"ecef"},
+            {"name":"hexagon-letter-o","code":"ecf0"},
+            {"name":"hexagon-letter-p","code":"ecf1"},
+            {"name":"hexagon-letter-q","code":"ecf2"},
+            {"name":"hexagon-letter-r","code":"ecf3"},
+            {"name":"hexagon-letter-s","code":"ecf4"},
+            {"name":"hexagon-letter-t","code":"ecf5"},
+            {"name":"hexagon-letter-u","code":"ecf6"},
+            {"name":"hexagon-letter-v","code":"ecf7"},
+            {"name":"hexagon-letter-w","code":"ecf8"},
+            {"name":"hexagon-letter-x","code":"ecf9"},
+            {"name":"hexagon-letter-y","code":"ecfa"},
+            {"name":"hexagon-letter-z","code":"ecfb"},
+            {"name":"hexagon-minus","code":"ecfc"},
+            {"name":"hexagon-number-0","code":"ecfd"},
+            {"name":"hexagon-number-1","code":"ecfe"},
+            {"name":"hexagon-number-2","code":"ecff"},
+            {"name":"hexagon-number-3","code":"ed00"},
+            {"name":"hexagon-number-4","code":"ed01"},
+            {"name":"hexagon-number-5","code":"ed02"},
+            {"name":"hexagon-number-6","code":"ed03"},
+            {"name":"hexagon-number-7","code":"ed04"},
+            {"name":"hexagon-number-8","code":"ed05"},
+            {"name":"hexagon-number-9","code":"ed06"},
+            {"name":"hexagon-plus","code":"ed07"},
+            {"name":"hexagon","code":"ed08"},
+            {"name":"home-2","code":"ed09"},
+            {"name":"home","code":"ed0a"},
+            {"name":"hospital-circle","code":"ed0b"},
+            {"name":"hourglass","code":"ed0c"},
+            {"name":"icons","code":"ed0d"},
+            {"name":"id","code":"ed0e"},
+            {"name":"info-circle","code":"ed0f"},
+            {"name":"info-hexagon","code":"ed10"},
+            {"name":"info-octagon","code":"ed11"},
+            {"name":"info-square-rounded","code":"ed12"},
+            {"name":"info-square","code":"ed13"},
+            {"name":"info-triangle","code":"ed14"},
+            {"name":"inner-shadow-bottom-left","code":"ed15"},
+            {"name":"inner-shadow-bottom-right","code":"ed16"},
+            {"name":"inner-shadow-bottom","code":"ed17"},
+            {"name":"inner-shadow-left","code":"ed18"},
+            {"name":"inner-shadow-right","code":"ed19"},
+            {"name":"inner-shadow-top-left","code":"ed1a"},
+            {"name":"inner-shadow-top-right","code":"ed1b"},
+            {"name":"inner-shadow-top","code":"ed1c"},
+            {"name":"columns-1","code":"e900"},
+            {"name":"columns-2","code":"e901"},
+            {"name":"columns-3","code":"e902"},
+            {"name":"compass","code":"e903"},
+            {"name":"cone-2","code":"e904"},
+            {"name":"cone","code":"e905"},
+            {"name":"confetti","code":"e906"},
+            {"name":"container","code":"e907"},
+            {"name":"contrast-2","code":"e908"},
+            {"name":"contrast","code":"e909"},
+            {"name":"cookie-man","code":"e90a"},
+            {"name":"cookie","code":"e90b"},
+            {"name":"copy-check","code":"e90c"},
+            {"name":"copy-minus","code":"e90d"},
+            {"name":"copy-plus","code":"e90e"},
+            {"name":"copy-x","code":"e90f"},
+            {"name":"copy","code":"e910"},
+            {"name":"copyleft","code":"e911"},
+            {"name":"copyright","code":"e912"},
+            {"name":"credit-card","code":"e913"},
+            {"name":"crop-1-1","code":"e914"},
+            {"name":"crop-16-9","code":"e915"},
+            {"name":"crop-3-2","code":"e916"},
+            {"name":"crop-5-4","code":"e917"},
+            {"name":"crop-7-5","code":"e918"},
+            {"name":"crop-landscape","code":"e919"},
+            {"name":"crop-portrait","code":"e91a"},
+            {"name":"cross","code":"e91b"},
+            {"name":"crown","code":"e91c"},
+            {"name":"current-location","code":"e91d"},
+            {"name":"dashboard","code":"e91e"},
+            {"name":"database","code":"e91f"},
+            {"name":"device-cctv","code":"e920"},
+            {"name":"device-desktop","code":"e921"},
+            {"name":"device-floppy","code":"e922"},
+            {"name":"device-gamepad-2","code":"e923"},
+            {"name":"device-gamepad-3","code":"e924"},
+            {"name":"device-gamepad","code":"e925"},
+            {"name":"device-heart-monitor","code":"e926"},
+            {"name":"device-imac","code":"e927"},
+            {"name":"device-ipad","code":"e928"},
+            {"name":"device-mobile","code":"e929"},
+            {"name":"device-remote","code":"e92a"},
+            {"name":"device-speaker","code":"e92b"},
+            {"name":"device-tablet","code":"e92c"},
+            {"name":"device-tv-old","code":"e92d"},
+            {"name":"device-tv","code":"e92e"},
+            {"name":"device-unknown","code":"e92f"},
+            {"name":"device-usb","code":"e930"},
+            {"name":"device-vision-pro","code":"e931"},
+            {"name":"device-watch","code":"e932"},
+            {"name":"dialpad","code":"e933"},
+            {"name":"diamond","code":"e934"},
+            {"name":"diamonds","code":"e935"},
+            {"name":"dice-1","code":"e936"},
+            {"name":"dice-2","code":"e937"},
+            {"name":"dice-3","code":"e938"},
+            {"name":"dice-4","code":"e939"},
+            {"name":"dice-5","code":"e93a"},
+            {"name":"dice-6","code":"e93b"},
+            {"name":"dice","code":"e93c"},
+            {"name":"direction-arrows","code":"e93d"},
+            {"name":"direction-sign","code":"e93e"},
+            {"name":"directions","code":"e93f"},
+            {"name":"disc","code":"e940"},
+            {"name":"discount","code":"e941"},
+            {"name":"dots-vertical","code":"e942"},
+            {"name":"dots","code":"e943"},
+            {"name":"download","code":"e944"},
+            {"name":"drop-circle","code":"e945"},
+            {"name":"droplet-half-2","code":"e946"},
+            {"name":"droplet-half","code":"e947"},
+            {"name":"droplet","code":"e948"},
+            {"name":"droplets","code":"e949"},
+            {"name":"dual-screen","code":"e94a"},
+            {"name":"dumpling","code":"e94b"},
+            {"name":"ease-in-control-point","code":"e94c"},
+            {"name":"ease-in-out-control-points","code":"e94d"},
+            {"name":"ease-out-control-point","code":"e94e"},
+            {"name":"edit","code":"e94f"},
+            {"name":"egg-cracked","code":"e950"},
+            {"name":"egg-fried","code":"e951"},
+            {"name":"egg","code":"e952"},
+            {"name":"elevator","code":"e953"},
+            {"name":"engine","code":"e954"},
+            {"name":"escalator-down","code":"e955"},
+            {"name":"escalator-up","code":"e956"},
+            {"name":"escalator","code":"e957"},
+            {"name":"exchange","code":"e958"},
+            {"name":"exclamation-circle","code":"e959"},
+            {"name":"explicit","code":"e95a"},
+            {"name":"exposure","code":"e95b"},
+            {"name":"external-link","code":"e95c"},
+            {"name":"eye-table","code":"e95d"},
+            {"name":"eye","code":"e95e"},
+            {"name":"eyeglass-2","code":"e95f"},
+            {"name":"eyeglass","code":"e960"},
+            {"name":"face-mask","code":"e961"},
+            {"name":"favicon","code":"e962"},
+            {"name":"feather","code":"e963"},
+            {"name":"fence","code":"e964"},
+            {"name":"ferry","code":"e965"},
+            {"name":"fidget-spinner","code":"e966"},
+            {"name":"file-analytics","code":"e967"},
+            {"name":"file-check","code":"e968"},
+            {"name":"file-code-2","code":"e969"},
+            {"name":"file-code","code":"e96a"},
+            {"name":"file-cv","code":"e96b"},
+            {"name":"file-delta","code":"e96c"},
+            {"name":"file-description","code":"e96d"},
+            {"name":"file-diff","code":"e96e"},
+            {"name":"file-digit","code":"e96f"},
+            {"name":"file-dollar","code":"e970"},
+            {"name":"file-dots","code":"e971"},
+            {"name":"file-download","code":"e972"},
+            {"name":"file-euro","code":"e973"},
+            {"name":"file-function","code":"e974"},
+            {"name":"file-horizontal","code":"e975"},
+            {"name":"file-info","code":"e976"},
+            {"name":"file-invoice","code":"e977"},
+            {"name":"file-lambda","code":"e978"},
+            {"name":"file-minus","code":"e979"},
+            {"name":"file-music","code":"e97a"},
+            {"name":"file-neutral","code":"e97b"},
+            {"name":"file-pencil","code":"e97c"},
+            {"name":"file-percent","code":"e97d"},
+            {"name":"file-phone","code":"e97e"},
+            {"name":"caret-down","code":"e97f"},
+            {"name":"caret-left-right","code":"e980"},
+            {"name":"caret-left","code":"e981"},
+            {"name":"caret-right","code":"e982"},
+            {"name":"caret-up-down","code":"e983"},
+            {"name":"caret-up","code":"e984"},
+            {"name":"carousel-horizontal","code":"e985"},
+            {"name":"carousel-vertical","code":"e986"},
+            {"name":"cash-banknote","code":"e987"},
+            {"name":"category","code":"e988"},
+            {"name":"charging-pile","code":"e989"},
+            {"name":"chart-area-line","code":"e98a"},
+            {"name":"chart-area","code":"e98b"},
+            {"name":"chart-bubble","code":"e98c"},
+            {"name":"chart-candle","code":"e98d"},
+            {"name":"chart-donut","code":"e98e"},
+            {"name":"chart-dots-2","code":"e98f"},
+            {"name":"chart-dots-3","code":"e990"},
+            {"name":"chart-dots","code":"e991"},
+            {"name":"chart-funnel","code":"e992"},
+            {"name":"chart-grid-dots","code":"e993"},
+            {"name":"chart-pie-2","code":"e994"},
+            {"name":"chart-pie-3","code":"e995"},
+            {"name":"chart-pie-4","code":"e996"},
+            {"name":"chart-pie","code":"e997"},
+            {"name":"check","code":"e998"},
+            {"name":"chef-hat","code":"e999"},
+            {"name":"cherry","code":"e99a"},
+            {"name":"chess-bishop","code":"e99b"},
+            {"name":"chess-king","code":"e99c"},
+            {"name":"chess-knight","code":"e99d"},
+            {"name":"chess-queen","code":"e99e"},
+            {"name":"chess-rook","code":"e99f"},
+            {"name":"chess","code":"e9a0"},
+            {"name":"chevron-down","code":"e9a1"},
+            {"name":"chevron-right","code":"e9a2"},
+            {"name":"christmas-tree","code":"e9a3"},
+            {"name":"circle-arrow-down-left","code":"e9a4"},
+            {"name":"circle-arrow-down-right","code":"e9a5"},
+            {"name":"circle-arrow-down","code":"e9a6"},
+            {"name":"circle-arrow-left","code":"e9a7"},
+            {"name":"circle-arrow-right","code":"e9a8"},
+            {"name":"circle-arrow-up-left","code":"e9a9"},
+            {"name":"circle-arrow-up-right","code":"e9aa"},
+            {"name":"circle-arrow-up","code":"e9ab"},
+            {"name":"circle-caret-down","code":"e9ac"},
+            {"name":"circle-caret-left","code":"e9ad"},
+            {"name":"circle-caret-right","code":"e9ae"},
+            {"name":"circle-caret-up","code":"e9af"},
+            {"name":"circle-check","code":"e9b0"},
+            {"name":"circle-chevron-down","code":"e9b1"},
+            {"name":"circle-chevron-left","code":"e9b2"},
+            {"name":"circle-chevron-right","code":"e9b3"},
+            {"name":"circle-chevron-up","code":"e9b4"},
+            {"name":"circle-chevrons-down","code":"e9b5"},
+            {"name":"circle-chevrons-left","code":"e9b6"},
+            {"name":"circle-chevrons-right","code":"e9b7"},
+            {"name":"circle-chevrons-up","code":"e9b8"},
+            {"name":"circle-dot","code":"e9b9"},
+            {"name":"circle-key","code":"e9ba"},
+            {"name":"circle-letter-a","code":"e9bb"},
+            {"name":"circle-letter-b","code":"e9bc"},
+            {"name":"circle-letter-c","code":"e9bd"},
+            {"name":"circle-letter-d","code":"e9be"},
+            {"name":"circle-letter-e","code":"e9bf"},
+            {"name":"circle-letter-f","code":"e9c0"},
+            {"name":"circle-letter-g","code":"e9c1"},
+            {"name":"circle-letter-h","code":"e9c2"},
+            {"name":"circle-letter-i","code":"e9c3"},
+            {"name":"circle-letter-j","code":"e9c4"},
+            {"name":"circle-letter-k","code":"e9c5"},
+            {"name":"circle-letter-l","code":"e9c6"},
+            {"name":"circle-letter-m","code":"e9c7"},
+            {"name":"circle-letter-n","code":"e9c8"},
+            {"name":"circle-letter-o","code":"e9c9"},
+            {"name":"circle-letter-p","code":"e9ca"},
+            {"name":"circle-letter-q","code":"e9cb"},
+            {"name":"circle-letter-r","code":"e9cc"},
+            {"name":"circle-letter-s","code":"e9cd"},
+            {"name":"circle-letter-t","code":"e9ce"},
+            {"name":"circle-letter-u","code":"e9cf"},
+            {"name":"circle-letter-v","code":"e9d0"},
+            {"name":"circle-letter-w","code":"e9d1"},
+            {"name":"circle-letter-x","code":"e9d2"},
+            {"name":"circle-letter-y","code":"e9d3"},
+            {"name":"circle-letter-z","code":"e9d4"},
+            {"name":"circle-number-0","code":"e9d5"},
+            {"name":"circle-number-1","code":"e9d6"},
+            {"name":"circle-number-2","code":"e9d7"},
+            {"name":"circle-number-3","code":"e9d8"},
+            {"name":"circle-number-4","code":"e9d9"},
+            {"name":"circle-number-5","code":"e9da"},
+            {"name":"circle-number-6","code":"e9db"},
+            {"name":"circle-number-7","code":"e9dc"},
+            {"name":"circle-number-8","code":"e9dd"},
+            {"name":"circle-number-9","code":"e9de"},
+            {"name":"circle-percentage","code":"e9df"},
+            {"name":"circle-plus","code":"e9e0"},
+            {"name":"circle-rectangle","code":"e9e1"},
+            {"name":"circle-x","code":"e9e2"},
+            {"name":"circle","code":"e9e3"},
+            {"name":"circles","code":"e9e4"},
+            {"name":"click","code":"e9e5"},
+            {"name":"clipboard-check","code":"e9e6"},
+            {"name":"clipboard-data","code":"e9e7"},
+            {"name":"clipboard-list","code":"e9e8"},
+            {"name":"clipboard-plus","code":"e9e9"},
+            {"name":"clipboard-smile","code":"e9ea"},
+            {"name":"clipboard-text","code":"e9eb"},
+            {"name":"clipboard-typography","code":"e9ec"},
+            {"name":"clipboard-x","code":"e9ed"},
+            {"name":"clipboard","code":"e9ee"},
+            {"name":"clock-hour-1","code":"e9ef"},
+            {"name":"clock-hour-10","code":"e9f0"},
+            {"name":"clock-hour-11","code":"e9f1"},
+            {"name":"clock-hour-12","code":"e9f2"},
+            {"name":"clock-hour-2","code":"e9f3"},
+            {"name":"clock-hour-3","code":"e9f4"},
+            {"name":"clock-hour-4","code":"e9f5"},
+            {"name":"clock-hour-5","code":"e9f6"},
+            {"name":"clock-hour-6","code":"e9f7"},
+            {"name":"clock-hour-7","code":"e9f8"},
+            {"name":"clock-hour-8","code":"e9f9"},
+            {"name":"clock-hour-9","code":"e9fa"},
+            {"name":"clock","code":"e9fb"},
+            {"name":"cloud-computing","code":"e9fc"},
+            {"name":"cloud-data-connection","code":"e9fd"},
+            {"name":"cloud","code":"e9fe"},
+            {"name":"clover","code":"e9ff"},
+            {"name":"clubs","code":"ea00"},
+            {"name":"code-circle-2","code":"ea01"},
+            {"name":"code-circle","code":"ea02"},
+            {"name":"coin-bitcoin","code":"ea03"},
+            {"name":"coin-euro","code":"ea04"},
+            {"name":"coin-monero","code":"ea05"},
+            {"name":"coin-pound","code":"ea06"},
+            {"name":"coin-rupee","code":"ea07"},
+            {"name":"coin-taka","code":"ea08"},
+            {"name":"coin-yen","code":"ea09"},
+            {"name":"coin-yuan","code":"ea0a"},
+            {"name":"coin","code":"ea0b"},
+            {"name":"battery-1","code":"ea0c"},
+            {"name":"battery-2","code":"ea0d"},
+            {"name":"battery-3","code":"ea0e"},
+            {"name":"battery-4","code":"ea0f"},
+            {"name":"battery-automotive","code":"ea10"},
+            {"name":"battery-vertical-1","code":"ea11"},
+            {"name":"battery-vertical-2","code":"ea12"},
+            {"name":"battery-vertical-3","code":"ea13"},
+            {"name":"battery-vertical-4","code":"ea14"},
+            {"name":"battery-vertical","code":"ea15"},
+            {"name":"battery","code":"ea16"},
+            {"name":"bed-flat","code":"ea17"},
+            {"name":"bed","code":"ea18"},
+            {"name":"beer","code":"ea19"},
+            {"name":"bell-minus","code":"ea1a"},
+            {"name":"bell-plus","code":"ea1b"},
+            {"name":"bell-ringing-2","code":"ea1c"},
+            {"name":"bell-ringing","code":"ea1d"},
+            {"name":"bell-x","code":"ea1e"},
+            {"name":"bell-z","code":"ea1f"},
+            {"name":"bell","code":"ea20"},
+            {"name":"bike","code":"ea21"},
+            {"name":"binary-tree-2","code":"ea22"},
+            {"name":"binary-tree","code":"ea23"},
+            {"name":"binoculars","code":"ea24"},
+            {"name":"biohazard","code":"ea25"},
+            {"name":"blade","code":"ea26"},
+            {"name":"blender","code":"ea27"},
+            {"name":"blob","code":"ea28"},
+            {"name":"bolt","code":"ea29"},
+            {"name":"bomb","code":"ea2a"},
+            {"name":"bone","code":"ea2b"},
+            {"name":"bong","code":"ea2c"},
+            {"name":"book","code":"ea2d"},
+            {"name":"bookmark","code":"ea2e"},
+            {"name":"bookmarks","code":"ea2f"},
+            {"name":"boom","code":"ea30"},
+            {"name":"bottle","code":"ea31"},
+            {"name":"bounce-left","code":"ea32"},
+            {"name":"bounce-right","code":"ea33"},
+            {"name":"bow","code":"ea34"},
+            {"name":"bowl-chopsticks","code":"ea35"},
+            {"name":"bowl-spoon","code":"ea36"},
+            {"name":"bowl","code":"ea37"},
+            {"name":"box-align-bottom-left","code":"ea38"},
+            {"name":"box-align-bottom-right","code":"ea39"},
+            {"name":"box-align-bottom","code":"ea3a"},
+            {"name":"box-align-left","code":"ea3b"},
+            {"name":"box-align-right","code":"ea3c"},
+            {"name":"box-align-top-left","code":"ea3d"},
+            {"name":"box-align-top-right","code":"ea3e"},
+            {"name":"box-align-top","code":"ea3f"},
+            {"name":"box-multiple","code":"ea40"},
+            {"name":"brand-angular","code":"ea41"},
+            {"name":"brand-apple","code":"ea42"},
+            {"name":"brand-bitbucket","code":"ea43"},
+            {"name":"brand-discord","code":"ea44"},
+            {"name":"brand-dribbble","code":"ea45"},
+            {"name":"brand-facebook","code":"ea46"},
+            {"name":"brand-github","code":"ea47"},
+            {"name":"brand-google","code":"ea48"},
+            {"name":"brand-instagram","code":"ea49"},
+            {"name":"brand-kick","code":"ea4a"},
+            {"name":"brand-linkedin","code":"ea4b"},
+            {"name":"brand-messenger","code":"ea4c"},
+            {"name":"brand-open-source","code":"ea4d"},
+            {"name":"brand-opera","code":"ea4e"},
+            {"name":"brand-patreon","code":"ea4f"},
+            {"name":"brand-paypal","code":"ea50"},
+            {"name":"brand-pinterest","code":"ea51"},
+            {"name":"brand-sketch","code":"ea52"},
+            {"name":"brand-snapchat","code":"ea53"},
+            {"name":"brand-spotify","code":"ea54"},
+            {"name":"brand-steam","code":"ea55"},
+            {"name":"brand-stripe","code":"ea56"},
+            {"name":"brand-tabler","code":"ea57"},
+            {"name":"brand-tiktok","code":"ea58"},
+            {"name":"brand-tinder","code":"ea59"},
+            {"name":"brand-tumblr","code":"ea5a"},
+            {"name":"brand-twitter","code":"ea5b"},
+            {"name":"brand-vercel","code":"ea5c"},
+            {"name":"brand-vimeo","code":"ea5d"},
+            {"name":"brand-weibo","code":"ea5e"},
+            {"name":"brand-whatsapp","code":"ea5f"},
+            {"name":"brand-windows","code":"ea60"},
+            {"name":"brand-x","code":"ea61"},
+            {"name":"brand-youtube","code":"ea62"},
+            {"name":"bread","code":"ea63"},
+            {"name":"briefcase-2","code":"ea64"},
+            {"name":"briefcase","code":"ea65"},
+            {"name":"brightness-auto","code":"ea66"},
+            {"name":"brightness-down","code":"ea67"},
+            {"name":"brightness-up","code":"ea68"},
+            {"name":"brightness","code":"ea69"},
+            {"name":"bubble-text","code":"ea6a"},
+            {"name":"bubble","code":"ea6b"},
+            {"name":"bug","code":"ea6c"},
+            {"name":"building-bridge-2","code":"ea6d"},
+            {"name":"building-broadcast-tower","code":"ea6e"},
+            {"name":"bulb","code":"ea6f"},
+            {"name":"bus","code":"ea70"},
+            {"name":"butterfly","code":"ea71"},
+            {"name":"cactus","code":"ea72"},
+            {"name":"calculator","code":"ea73"},
+            {"name":"calendar-event","code":"ea74"},
+            {"name":"calendar-month","code":"ea75"},
+            {"name":"calendar-week","code":"ea76"},
+            {"name":"calendar","code":"ea77"},
+            {"name":"camera","code":"ea78"},
+            {"name":"campfire","code":"ea79"},
+            {"name":"candle","code":"ea7a"},
+            {"name":"cannabis","code":"ea7b"},
+            {"name":"capsule-horizontal","code":"ea7c"},
+            {"name":"capsule","code":"ea7d"},
+            {"name":"capture","code":"ea7e"},
+            {"name":"car-4wd","code":"ea7f"},
+            {"name":"car-crane","code":"ea80"},
+            {"name":"car-fan","code":"ea81"},
+            {"name":"car-suv","code":"ea82"},
+            {"name":"car","code":"ea83"},
+            {"name":"carambola","code":"ea84"},
+            {"name":"caravan","code":"ea85"},
+            {"name":"cardboards","code":"ea86"},
+            {"name":"cards","code":"ea87"},
+            {"name":"accessible","code":"ea88"},
+            {"name":"ad-circle","code":"ea89"},
+            {"name":"ad","code":"ea8a"},
+            {"name":"adjustments-horizontal","code":"ea8b"},
+            {"name":"adjustments","code":"ea8c"},
+            {"name":"aerial-lift","code":"ea8d"},
+            {"name":"affiliate","code":"ea8e"},
+            {"name":"air-balloon","code":"ea8f"},
+            {"name":"alarm-minus","code":"ea90"},
+            {"name":"alarm-plus","code":"ea91"},
+            {"name":"alarm-snooze","code":"ea92"},
+            {"name":"alarm","code":"ea93"},
+            {"name":"alert-circle","code":"ea94"},
+            {"name":"alert-hexagon","code":"ea95"},
+            {"name":"alert-octagon","code":"ea96"},
+            {"name":"alert-square-rounded","code":"ea97"},
+            {"name":"alert-square","code":"ea98"},
+            {"name":"alert-triangle","code":"ea99"},
+            {"name":"alien","code":"ea9a"},
+            {"name":"align-box-bottom-center","code":"ea9b"},
+            {"name":"align-box-bottom-left","code":"ea9c"},
+            {"name":"align-box-bottom-right","code":"ea9d"},
+            {"name":"align-box-center-middle","code":"ea9e"},
+            {"name":"align-box-left-bottom","code":"ea9f"},
+            {"name":"align-box-left-middle","code":"eaa0"},
+            {"name":"align-box-left-top","code":"eaa1"},
+            {"name":"align-box-right-bottom","code":"eaa2"},
+            {"name":"align-box-right-middle","code":"eaa3"},
+            {"name":"align-box-right-top","code":"eaa4"},
+            {"name":"align-box-top-center","code":"eaa5"},
+            {"name":"align-box-top-left","code":"eaa6"},
+            {"name":"align-box-top-right","code":"eaa7"},
+            {"name":"analyze","code":"eaa8"},
+            {"name":"app-window","code":"eaa9"},
+            {"name":"apple","code":"eaaa"},
+            {"name":"apps","code":"eaab"},
+            {"name":"archive","code":"eaac"},
+            {"name":"arrow-autofit-content","code":"eaad"},
+            {"name":"arrow-autofit-down","code":"eaae"},
+            {"name":"arrow-autofit-height","code":"eaaf"},
+            {"name":"arrow-autofit-left","code":"eab0"},
+            {"name":"arrow-autofit-right","code":"eab1"},
+            {"name":"arrow-autofit-up","code":"eab2"},
+            {"name":"arrow-autofit-width","code":"eab3"},
+            {"name":"arrow-badge-down","code":"eab4"},
+            {"name":"arrow-badge-left","code":"eab5"},
+            {"name":"arrow-badge-right","code":"eab6"},
+            {"name":"arrow-badge-up","code":"eab7"},
+            {"name":"arrow-big-down-line","code":"eab8"},
+            {"name":"arrow-big-down-lines","code":"eab9"},
+            {"name":"arrow-big-down","code":"eaba"},
+            {"name":"arrow-big-left-line","code":"eabb"},
+            {"name":"arrow-big-left-lines","code":"eabc"},
+            {"name":"arrow-big-left","code":"eabd"},
+            {"name":"arrow-big-right-line","code":"eabe"},
+            {"name":"arrow-big-right-lines","code":"eabf"},
+            {"name":"arrow-big-right","code":"eac0"},
+            {"name":"arrow-big-up-line","code":"eac1"},
+            {"name":"arrow-big-up-lines","code":"eac2"},
+            {"name":"arrow-big-up","code":"eac3"},
+            {"name":"arrow-down-circle","code":"eac4"},
+            {"name":"arrow-down-rhombus","code":"eac5"},
+            {"name":"arrow-down-square","code":"eac6"},
+            {"name":"arrow-guide","code":"eac7"},
+            {"name":"arrow-left-circle","code":"eac8"},
+            {"name":"arrow-left-rhombus","code":"eac9"},
+            {"name":"arrow-left-square","code":"eaca"},
+            {"name":"arrow-move-down","code":"eacb"},
+            {"name":"arrow-move-left","code":"eacc"},
+            {"name":"arrow-move-right","code":"eacd"},
+            {"name":"arrow-move-up","code":"eace"},
+            {"name":"arrow-right-circle","code":"eacf"},
+            {"name":"arrow-right-rhombus","code":"ead0"},
+            {"name":"arrow-right-square","code":"ead1"},
+            {"name":"arrow-up-circle","code":"ead2"},
+            {"name":"arrow-up-rhombus","code":"ead3"},
+            {"name":"arrow-up-square","code":"ead4"},
+            {"name":"artboard","code":"ead5"},
+            {"name":"article","code":"ead6"},
+            {"name":"aspect-ratio","code":"ead7"},
+            {"name":"assembly","code":"ead8"},
+            {"name":"asset","code":"ead9"},
+            {"name":"atom-2","code":"eada"},
+            {"name":"automatic-gearbox","code":"eadb"},
+            {"name":"award","code":"eadc"},
+            {"name":"baby-carriage","code":"eadd"},
+            {"name":"backspace","code":"eade"},
+            {"name":"badge-3d","code":"eadf"},
+            {"name":"badge-4k","code":"eae0"},
+            {"name":"badge-8k","code":"eae1"},
+            {"name":"badge-ad","code":"eae2"},
+            {"name":"badge-ar","code":"eae3"},
+            {"name":"badge-cc","code":"eae4"},
+            {"name":"badge-hd","code":"eae5"},
+            {"name":"badge-sd","code":"eae6"},
+            {"name":"badge-tm","code":"eae7"},
+            {"name":"badge-vo","code":"eae8"},
+            {"name":"badge-vr","code":"eae9"},
+            {"name":"badge-wc","code":"eaea"},
+            {"name":"badge","code":"eaeb"},
+            {"name":"badges","code":"eaec"},
+            {"name":"ball-bowling","code":"eaed"},
+            {"name":"balloon","code":"eaee"},
+            {"name":"ballpen","code":"eaef"},
+            {"name":"bandage","code":"eaf0"},
+            {"name":"barbell","code":"eaf1"},
+            {"name":"barrier-block","code":"eaf2"},
+            {"name":"basket","code":"eaf3"},
+            {"name":"bath","code":"eaf4"}
+        ];
+
+        // ---------- DOM refs ----------
+        const grid = document.getElementById('glyphGrid');
+        const searchInput = document.getElementById('searchInput');
+        const resultCount = document.getElementById('resultCount');
+
+        // ---------- render function ----------
+        function render(filter = '') {
+            const term = filter.trim().toLowerCase();
+            const filtered = term === '' ? glyphs : glyphs.filter(g => g.name.includes(term));
+            resultCount.textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="no-results">✨ No icons found for “${filter.trim()}”</div>`;
+                return;
+            }
+
+            let html = '';
+            for (let g of filtered) {
+                const hex = '&#x' + g.code + ';';
+                html += `
+                    <div class="glyph-card">
+                        <span class="icon-wrap">${hex}</span>
+                        <span class="glyph-name">icon-${g.name}</span>
+                        <span class="glyph-code">${g.code}</span>
+                    </div>
+                `;
+            }
+            grid.innerHTML = html;
+        }
+
+        // ---------- live search ----------
+        searchInput.addEventListener('input', function() {
+            render(this.value);
+        });
+
+        // ---------- test drive ----------
+        const fontSizeInput = document.getElementById('fontSize');
+        const testTextInput = document.getElementById('testText');
+        const testDrive = document.getElementById('testDrive');
+
+        function updateTestDrive() {
+            const size = parseInt(fontSizeInput.value, 10) || 42;
+            testDrive.style.fontSize = size + 'px';
+            // show the actual text as icon (if it matches a glyph name)
+            const val = testTextInput.value.trim();
+            const match = glyphs.find(g => 'icon-' + g.name === val);
+            if (match) {
+                testDrive.textContent = '&#x' + match.code + ';';
+            } else {
+                // fallback: show first glyph (sunglasses)
+                testDrive.textContent = '&#xeaf5;';
+            }
+        }
+
+        fontSizeInput.addEventListener('input', updateTestDrive);
+        testTextInput.addEventListener('input', updateTestDrive);
+
+        // ---------- initial render ----------
+        render();
+        updateTestDrive();
+
+        // set initial test text to an existing icon
+        testTextInput.value = 'icon-sunglasses';
+        updateTestDrive();
+
+    })();
+</script>
+</body>
+</html>
