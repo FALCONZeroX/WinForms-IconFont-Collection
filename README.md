@@ -16,14 +16,11 @@
 <img src="https://img.shields.io/github/stars/FALCONzeroX/WinForms-IconFont-Collection?style=social" alt="GitHub Stars" />
 <img src="https://img.shields.io/github/forks/FALCONzeroX/WinForms-IconFont-Collection?style=social" alt="GitHub Forks" />
 <img src="https://img.shields.io/github/issues/FALCONzeroX/WinForms-IconFont-Collection" alt="GitHub Issues" />
-<img src="https://img.shields.io/github/last-commit/USERNAME/WinForms-IconFont-Collection" alt="Last Commit" />
+<img src="https://img.shields.io/github/last-commit/FALCONzeroX/WinForms-IconFont-Collection" alt="Last Commit" />
 
-<!-- حزم الأيقونات المدعومة (مثال) -->
 <img src="https://img.shields.io/badge/Icon%20Sets-Font%20Awesome%20%7C%20Material%20%7C%20Ionicons-informational" alt="Supported Icon Sets" />
 
-<!-- بناء وإصدار -->
 <img src="https://img.shields.io/badge/build-passing-brightgreen" alt="Build Status" />
-<img src="https://img.shields.io/badge/NuGet-COMING%20SOON-lightgrey" alt="NuGet" />
 <img src="https://img.shields.io/badge/code%20quality-A+-brightgreen" alt="Code Quality" />
 </p>
 
