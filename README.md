@@ -23,13 +23,7 @@
 <img src="https://img.shields.io/badge/build-passing-brightgreen" alt="Build Status" />
 <img src="https://img.shields.io/badge/code%20quality-A+-brightgreen" alt="Code Quality" />
 </p>
-<p align="center">
-  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License" />
-  <img src="https://img.shields.io/badge/Platform-.NET%20%7C%20Windows%20Forms-512BD4.svg" alt=".NET | Windows Forms" />
-  <img src="https://img.shields.io/badge/Language-C%23-239120.svg" alt="C#" />
-  <img src="https://img.shields.io/badge/Icons-Vector%20%F0%9F%8E%AF%20DPI%20Aware-important" alt="Vector Icons DPI Aware" />
-  <img src="https://img.shields.io/badge/Memory-Safe%20%F0%9F%A7%A0-green" alt="Memory Safe" />
-</p>
+
 ---
 ## The Problem: Why Traditional Icons Fail on Modern Screens
 
