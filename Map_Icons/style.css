@@ -1,0 +1,543 @@
+@font-face {
+  font-family: 'Map_icons';
+  src:  url('fonts/Map_icons.eot?p75jcb');
+  src:  url('fonts/Map_icons.eot?p75jcb#iefix') format('embedded-opentype'),
+    url('fonts/Map_icons.ttf?p75jcb') format('truetype'),
+    url('fonts/Map_icons.woff?p75jcb') format('woff'),
+    url('fonts/Map_icons.svg?p75jcb#Map_icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Map_icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-barricade-fill:before {
+  content: "\e900";
+}
+.icon-anchor-fill:before {
+  content: "\e901";
+}
+.icon-anchor-line:before {
+  content: "\e902";
+}
+.icon-barricade-line:before {
+  content: "\e903";
+}
+.icon-bike-fill:before {
+  content: "\e904";
+}
+.icon-bike-line:before {
+  content: "\e905";
+}
+.icon-bus-2-fill:before {
+  content: "\e906";
+}
+.icon-bus-2-line:before {
+  content: "\e907";
+}
+.icon-bus-fill:before {
+  content: "\e908";
+}
+.icon-bus-line:before {
+  content: "\e909";
+}
+.icon-bus-wifi-fill:before {
+  content: "\e90a";
+}
+.icon-bus-wifi-line:before {
+  content: "\e90b";
+}
+.icon-car-fill:before {
+  content: "\e90c";
+}
+.icon-car-line:before {
+  content: "\e90d";
+}
+.icon-car-washing-fill:before {
+  content: "\e90e";
+}
+.icon-car-washing-line:before {
+  content: "\e90f";
+}
+.icon-caravan-fill:before {
+  content: "\e910";
+}
+.icon-caravan-line:before {
+  content: "\e911";
+}
+.icon-charging-pile-2-fill:before {
+  content: "\e912";
+}
+.icon-charging-pile-2-line:before {
+  content: "\e913";
+}
+.icon-charging-pile-fill:before {
+  content: "\e914";
+}
+.icon-charging-pile-line:before {
+  content: "\e915";
+}
+.icon-china-railway-fill:before {
+  content: "\e916";
+}
+.icon-china-railway-line:before {
+  content: "\e917";
+}
+.icon-compass-2-fill:before {
+  content: "\e918";
+}
+.icon-compass-2-line:before {
+  content: "\e919";
+}
+.icon-compass-3-fill:before {
+  content: "\e91a";
+}
+.icon-compass-3-line:before {
+  content: "\e91b";
+}
+.icon-compass-4-fill:before {
+  content: "\e91c";
+}
+.icon-compass-4-line:before {
+  content: "\e91d";
+}
+.icon-compass-discover-fill:before {
+  content: "\e91e";
+}
+.icon-compass-discover-line:before {
+  content: "\e91f";
+}
+.icon-compass-fill:before {
+  content: "\e920";
+}
+.icon-compass-line:before {
+  content: "\e921";
+}
+.icon-direction-fill:before {
+  content: "\e922";
+}
+.icon-direction-line:before {
+  content: "\e923";
+}
+.icon-e-bike-2-fill:before {
+  content: "\e924";
+}
+.icon-e-bike-2-line:before {
+  content: "\e925";
+}
+.icon-e-bike-fill:before {
+  content: "\e926";
+}
+.icon-e-bike-line:before {
+  content: "\e927";
+}
+.icon-earth-fill:before {
+  content: "\e928";
+}
+.icon-earth-line:before {
+  content: "\e929";
+}
+.icon-flight-land-fill:before {
+  content: "\e92a";
+}
+.icon-flight-land-line:before {
+  content: "\e92b";
+}
+.icon-flight-takeoff-fill:before {
+  content: "\e92c";
+}
+.icon-flight-takeoff-line:before {
+  content: "\e92d";
+}
+.icon-footprint-fill:before {
+  content: "\e92e";
+}
+.icon-footprint-line:before {
+  content: "\e92f";
+}
+.icon-gas-station-fill:before {
+  content: "\e930";
+}
+.icon-gas-station-line:before {
+  content: "\e931";
+}
+.icon-globe-fill:before {
+  content: "\e932";
+}
+.icon-globe-line:before {
+  content: "\e933";
+}
+.icon-guide-fill:before {
+  content: "\e934";
+}
+.icon-guide-line:before {
+  content: "\e935";
+}
+.icon-hotel-bed-fill:before {
+  content: "\e936";
+}
+.icon-hotel-bed-line:before {
+  content: "\e937";
+}
+.icon-lifebuoy-fill:before {
+  content: "\e938";
+}
+.icon-lifebuoy-line:before {
+  content: "\e939";
+}
+.icon-luggage-cart-fill:before {
+  content: "\e93a";
+}
+.icon-luggage-cart-line:before {
+  content: "\e93b";
+}
+.icon-luggage-deposit-fill:before {
+  content: "\e93c";
+}
+.icon-luggage-deposit-line:before {
+  content: "\e93d";
+}
+.icon-map-2-fill:before {
+  content: "\e93e";
+}
+.icon-map-2-line:before {
+  content: "\e93f";
+}
+.icon-map-fill:before {
+  content: "\e940";
+}
+.icon-map-line:before {
+  content: "\e941";
+}
+.icon-map-pin-2-fill:before {
+  content: "\e942";
+}
+.icon-map-pin-2-line:before {
+  content: "\e943";
+}
+.icon-map-pin-3-fill:before {
+  content: "\e944";
+}
+.icon-map-pin-3-line:before {
+  content: "\e945";
+}
+.icon-map-pin-4-fill:before {
+  content: "\e946";
+}
+.icon-map-pin-4-line:before {
+  content: "\e947";
+}
+.icon-map-pin-5-fill:before {
+  content: "\e948";
+}
+.icon-map-pin-5-line:before {
+  content: "\e949";
+}
+.icon-map-pin-add-fill:before {
+  content: "\e94a";
+}
+.icon-map-pin-add-line:before {
+  content: "\e94b";
+}
+.icon-map-pin-fill:before {
+  content: "\e94c";
+}
+.icon-map-pin-line:before {
+  content: "\e94d";
+}
+.icon-map-pin-range-fill:before {
+  content: "\e94e";
+}
+.icon-map-pin-range-line:before {
+  content: "\e94f";
+}
+.icon-map-pin-time-fill:before {
+  content: "\e950";
+}
+.icon-map-pin-time-line:before {
+  content: "\e951";
+}
+.icon-map-pin-user-fill:before {
+  content: "\e952";
+}
+.icon-map-pin-user-line:before {
+  content: "\e953";
+}
+.icon-motorbike-fill:before {
+  content: "\e954";
+}
+.icon-motorbike-line:before {
+  content: "\e955";
+}
+.icon-navigation-fill:before {
+  content: "\e956";
+}
+.icon-navigation-line:before {
+  content: "\e957";
+}
+.icon-oil-fill:before {
+  content: "\e958";
+}
+.icon-oil-line:before {
+  content: "\e959";
+}
+.icon-parking-box-fill:before {
+  content: "\e95a";
+}
+.icon-parking-box-line:before {
+  content: "\e95b";
+}
+.icon-parking-fill:before {
+  content: "\e95c";
+}
+.icon-parking-line:before {
+  content: "\e95d";
+}
+.icon-passport-fill:before {
+  content: "\e95e";
+}
+.icon-passport-line:before {
+  content: "\e95f";
+}
+.icon-pin-distance-fill:before {
+  content: "\e960";
+}
+.icon-pin-distance-line:before {
+  content: "\e961";
+}
+.icon-plane-fill:before {
+  content: "\e962";
+}
+.icon-plane-line:before {
+  content: "\e963";
+}
+.icon-planet-fill:before {
+  content: "\e964";
+}
+.icon-planet-line:before {
+  content: "\e965";
+}
+.icon-police-car-fill:before {
+  content: "\e966";
+}
+.icon-police-car-line:before {
+  content: "\e967";
+}
+.icon-pushpin-2-fill:before {
+  content: "\e968";
+}
+.icon-pushpin-2-line:before {
+  content: "\e969";
+}
+.icon-pushpin-fill:before {
+  content: "\e96a";
+}
+.icon-pushpin-line:before {
+  content: "\e96b";
+}
+.icon-riding-fill:before {
+  content: "\e96c";
+}
+.icon-riding-line:before {
+  content: "\e96d";
+}
+.icon-road-map-fill:before {
+  content: "\e96e";
+}
+.icon-road-map-line:before {
+  content: "\e96f";
+}
+.icon-roadster-fill:before {
+  content: "\e970";
+}
+.icon-roadster-line:before {
+  content: "\e971";
+}
+.icon-rocket-2-fill:before {
+  content: "\e972";
+}
+.icon-rocket-2-line:before {
+  content: "\e973";
+}
+.icon-rocket-fill:before {
+  content: "\e974";
+}
+.icon-rocket-line:before {
+  content: "\e975";
+}
+.icon-route-fill:before {
+  content: "\e976";
+}
+.icon-route-line:before {
+  content: "\e977";
+}
+.icon-run-fill:before {
+  content: "\e978";
+}
+.icon-run-line:before {
+  content: "\e979";
+}
+.icon-sailboat-fill:before {
+  content: "\e97a";
+}
+.icon-sailboat-line:before {
+  content: "\e97b";
+}
+.icon-ship-2-fill:before {
+  content: "\e97c";
+}
+.icon-ship-2-line:before {
+  content: "\e97d";
+}
+.icon-ship-fill:before {
+  content: "\e97e";
+}
+.icon-ship-line:before {
+  content: "\e97f";
+}
+.icon-signal-tower-fill:before {
+  content: "\e980";
+}
+.icon-signal-tower-line:before {
+  content: "\e981";
+}
+.icon-signpost-fill:before {
+  content: "\e982";
+}
+.icon-signpost-line:before {
+  content: "\e983";
+}
+.icon-space-ship-2-fill:before {
+  content: "\e984";
+}
+.icon-space-ship-2-line:before {
+  content: "\e985";
+}
+.icon-space-ship-fill:before {
+  content: "\e986";
+}
+.icon-space-ship-line:before {
+  content: "\e987";
+}
+.icon-steering-2-fill:before {
+  content: "\e988";
+}
+.icon-steering-2-line:before {
+  content: "\e989";
+}
+.icon-steering-fill:before {
+  content: "\e98a";
+}
+.icon-steering-line:before {
+  content: "\e98b";
+}
+.icon-subway-fill:before {
+  content: "\e98c";
+}
+.icon-subway-line:before {
+  content: "\e98d";
+}
+.icon-subway-wifi-fill:before {
+  content: "\e98e";
+}
+.icon-subway-wifi-line:before {
+  content: "\e98f";
+}
+.icon-suitcase-2-fill:before {
+  content: "\e990";
+}
+.icon-suitcase-2-line:before {
+  content: "\e991";
+}
+.icon-suitcase-3-fill:before {
+  content: "\e992";
+}
+.icon-suitcase-3-line:before {
+  content: "\e993";
+}
+.icon-suitcase-fill:before {
+  content: "\e994";
+}
+.icon-suitcase-line:before {
+  content: "\e995";
+}
+.icon-takeaway-fill:before {
+  content: "\e996";
+}
+.icon-takeaway-line:before {
+  content: "\e997";
+}
+.icon-taxi-fill:before {
+  content: "\e998";
+}
+.icon-taxi-line:before {
+  content: "\e999";
+}
+.icon-taxi-wifi-fill:before {
+  content: "\e99a";
+}
+.icon-taxi-wifi-line:before {
+  content: "\e99b";
+}
+.icon-time-zone-fill:before {
+  content: "\e99c";
+}
+.icon-time-zone-line:before {
+  content: "\e99d";
+}
+.icon-traffic-light-fill:before {
+  content: "\e99e";
+}
+.icon-traffic-light-line:before {
+  content: "\e99f";
+}
+.icon-train-fill:before {
+  content: "\e9a0";
+}
+.icon-train-line:before {
+  content: "\e9a1";
+}
+.icon-train-wifi-fill:before {
+  content: "\e9a2";
+}
+.icon-train-wifi-line:before {
+  content: "\e9a3";
+}
+.icon-treasure-map-fill:before {
+  content: "\e9a4";
+}
+.icon-treasure-map-line:before {
+  content: "\e9a5";
+}
+.icon-truck-fill:before {
+  content: "\e9a6";
+}
+.icon-truck-line:before {
+  content: "\e9a7";
+}
+.icon-unpin-fill:before {
+  content: "\e9a8";
+}
+.icon-unpin-line:before {
+  content: "\e9a9";
+}
+.icon-walk-fill:before {
+  content: "\e9aa";
+}
+.icon-walk-line:before {
+  content: "\e9ab";
+}
