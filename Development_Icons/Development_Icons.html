@@ -1,0 +1,461 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Development Icons</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="demo-files/demo.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+            color: #1e293b;
+            padding: 2rem 1.5rem;
+        }
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .header {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #e9edf2;
+        }
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        .header h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #64748b;
+            margin-left: 0.75rem;
+        }
+        .header .badge {
+            background: #eef2ff;
+            color: #4f46e5;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .search-wrap {
+            background: #ffffff;
+            border-radius: 60px;
+            padding: 0.2rem 0.2rem 0.2rem 1.8rem;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            transition: 0.2s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            flex: 1 1 280px;
+            max-width: 400px;
+            margin-left: 1.5rem;
+        }
+        .search-wrap:focus-within {
+            border-color: #818cf8;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
+        }
+        .search-wrap input {
+            border: none;
+            padding: 0.9rem 0.2rem 0.9rem 0;
+            font-size: 1rem;
+            width: 100%;
+            background: transparent;
+            outline: none;
+            color: #0f172a;
+        }
+        .search-wrap input::placeholder {
+            color: #94a3b8;
+        }
+        .search-wrap button {
+            background: #4f46e5;
+            border: none;
+            color: white;
+            padding: 0.6rem 1.6rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.15s;
+            white-space: nowrap;
+        }
+        .search-wrap button:hover {
+            background: #4338ca;
+        }
+        .grid-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.8rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .grid-header .count {
+            background: #f1f5f9;
+            padding: 0.25rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+        .glyph-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 1.25rem;
+        }
+        .glyph-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.2rem 1rem 1rem;
+            text-align: center;
+            border: 1px solid #eef2f6;
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
+            cursor: default;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .glyph-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+            transform: translateY(-2px);
+        }
+        .glyph-card .icon {
+            font-size: 2.6rem;
+            line-height: 1.2;
+            color: #0f172a;
+            margin-bottom: 0.4rem;
+        }
+        .glyph-card .name {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1e293b;
+            word-break: break-word;
+            background: #f8fafc;
+            padding: 0.25rem 0.6rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 0.3rem;
+            border: 1px solid #f1f5f9;
+        }
+        .glyph-card .code {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            font-family: monospace;
+            margin-top: 0.2rem;
+            background: #f1f5f9;
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+        }
+        .test-drive {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.5rem;
+            margin-top: 3rem;
+            border: 1px solid #e9edf2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+        .test-drive h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+        .test-drive .row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem 2rem;
+        }
+        .test-drive .row label {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 500;
+            color: #334155;
+        }
+        .test-drive .row input[type="number"] {
+            width: 80px;
+            padding: 0.5rem 0.6rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: #f8fafc;
+            text-align: center;
+        }
+        .test-drive .row input[type="text"] {
+            flex: 1 1 240px;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 40px;
+            font-size: 1rem;
+            background: #f8fafc;
+            transition: 0.2s;
+        }
+        .test-drive .row input[type="text"]:focus {
+            border-color: #818cf8;
+            background: #ffffff;
+            outline: none;
+        }
+        .test-drive .preview {
+            margin-top: 1.2rem;
+            padding: 1.8rem 1.5rem;
+            background: #f8fafc;
+            border-radius: 20px;
+            font-size: 2.8rem;
+            font-family: 'Development_icons', sans-serif;
+            border: 1px dashed #d4dce6;
+            min-height: 100px;
+            color: #0f172a;
+            word-break: break-all;
+        }
+        .test-drive .preview span {
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+        .footer {
+            margin-top: 3.5rem;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #e9edf2;
+            padding-top: 2rem;
+        }
+        .footer a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        @media (max-width: 700px) {
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 1.5rem;
+                gap: 1rem;
+            }
+            .search-wrap {
+                margin-left: 0;
+                max-width: 100%;
+            }
+            .test-drive {
+                padding: 1.5rem;
+            }
+            .glyph-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+        }
+        .hidden-glyph {
+            display: none !important;
+        }
+        .glyph-card .icon[class*="icon-"] {
+            font-family: 'Development_icons' !important;
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>Development Icons <small>66 glyphs</small></h1>
+        </div>
+        <div class="search-wrap">
+            <input type="text" id="searchInput" placeholder="Search icons...">
+            <button id="searchBtn">Search</button>
+        </div>
+    </div>
+
+    <div class="grid-header">
+        <span class="count" id="resultCount">66 icons</span>
+        <span style="color:#94a3b8; font-size:0.9rem;">Click icon to copy name</span>
+    </div>
+
+    <div class="glyph-grid" id="glyphGrid"></div>
+
+    <div class="test-drive">
+        <h2>Test Drive</h2>
+        <div class="row">
+            <label>Size: <input type="number" id="fontSize" min="8" value="48"> px</label>
+            <input type="text" id="testText" placeholder="Type text to test...">
+        </div>
+        <div class="preview" id="testDrive" style="font-family:'Development_icons';">&#xe900; &#xe901; &#xe902;</div>
+    </div>
+
+    <div class="footer">
+        Generated by <a href="https://github.com/FALCONZeroX">FALAH FATHEL</a>
+    </div>
+</div>
+
+<script src="demo-files/demo.js"></script>
+<script>
+    (function() {
+        const glyphs = [
+            { name: "icon-braces-fill", code: "e900" },
+            { name: "icon-braces-line", code: "e901" },
+            { name: "icon-brackets-fill", code: "e902" },
+            { name: "icon-brackets-line", code: "e903" },
+            { name: "icon-bug-2-fill", code: "e904" },
+            { name: "icon-bug-2-line", code: "e905" },
+            { name: "icon-bug-fill", code: "e906" },
+            { name: "icon-bug-line", code: "e907" },
+            { name: "icon-code-ai-fill", code: "e908" },
+            { name: "icon-code-ai-line", code: "e909" },
+            { name: "icon-code-box-fill", code: "e90a" },
+            { name: "icon-code-box-line", code: "e90b" },
+            { name: "icon-code-fill", code: "e90c" },
+            { name: "icon-code-line", code: "e90d" },
+            { name: "icon-code-s-fill", code: "e90e" },
+            { name: "icon-code-s-line", code: "e90f" },
+            { name: "icon-code-s-slash-fill", code: "e910" },
+            { name: "icon-code-s-slash-line", code: "e911" },
+            { name: "icon-command-fill", code: "e912" },
+            { name: "icon-command-line", code: "e913" },
+            { name: "icon-css3-fill", code: "e914" },
+            { name: "icon-css3-line", code: "e915" },
+            { name: "icon-cursor-fill", code: "e916" },
+            { name: "icon-cursor-line", code: "e917" },
+            { name: "icon-git-branch-fill", code: "e918" },
+            { name: "icon-git-branch-line", code: "e919" },
+            { name: "icon-git-close-pull-request-fill", code: "e91a" },
+            { name: "icon-git-close-pull-request-line", code: "e91b" },
+            { name: "icon-git-commit-fill", code: "e91c" },
+            { name: "icon-git-commit-line", code: "e91d" },
+            { name: "icon-git-fork-fill", code: "e91e" },
+            { name: "icon-git-fork-line", code: "e91f" },
+            { name: "icon-git-merge-fill", code: "e920" },
+            { name: "icon-git-merge-line", code: "e921" },
+            { name: "icon-git-pr-draft-fill", code: "e922" },
+            { name: "icon-git-pr-draft-line", code: "e923" },
+            { name: "icon-git-pull-request-fill", code: "e924" },
+            { name: "icon-git-pull-request-line", code: "e925" },
+            { name: "icon-git-repository-commits-fill", code: "e926" },
+            { name: "icon-git-repository-commits-line", code: "e927" },
+            { name: "icon-git-repository-fill", code: "e928" },
+            { name: "icon-git-repository-line", code: "e929" },
+            { name: "icon-git-repository-private-fill", code: "e92a" },
+            { name: "icon-git-repository-private-line", code: "e92b" },
+            { name: "icon-html5-fill", code: "e92c" },
+            { name: "icon-html5-line", code: "e92d" },
+            { name: "icon-issues-fill", code: "e92e" },
+            { name: "icon-issues-line", code: "e92f" },
+            { name: "icon-issues-reopen-fill", code: "e930" },
+            { name: "icon-issues-reopen-line", code: "e931" },
+            { name: "icon-javascript-fill", code: "e932" },
+            { name: "icon-javascript-line", code: "e933" },
+            { name: "icon-parentheses-fill", code: "e934" },
+            { name: "icon-parentheses-line", code: "e935" },
+            { name: "icon-php-fill", code: "e936" },
+            { name: "icon-php-line", code: "e937" },
+            { name: "icon-puzzle-2-fill", code: "e938" },
+            { name: "icon-puzzle-2-line", code: "e939" },
+            { name: "icon-puzzle-fill", code: "e93a" },
+            { name: "icon-puzzle-line", code: "e93b" },
+            { name: "icon-terminal-box-fill", code: "e93c" },
+            { name: "icon-terminal-box-line", code: "e93d" },
+            { name: "icon-terminal-fill", code: "e93e" },
+            { name: "icon-terminal-line", code: "e93f" },
+            { name: "icon-terminal-window-fill", code: "e940" },
+            { name: "icon-terminal-window-line", code: "e941" }
+        ];
+
+        const grid = document.getElementById('glyphGrid');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const resultCount = document.getElementById('resultCount');
+        const testDrive = document.getElementById('testDrive');
+        const fontSizeInput = document.getElementById('fontSize');
+        const testTextInput = document.getElementById('testText');
+
+        function renderGlyphs(filter = '') {
+            const q = filter.trim().toLowerCase();
+            let visible = 0;
+            grid.innerHTML = '';
+            glyphs.forEach(g => {
+                const match = q === '' || g.name.toLowerCase().includes(q);
+                if (match) visible++;
+                const card = document.createElement('div');
+                card.className = 'glyph-card' + (match ? '' : ' hidden-glyph');
+                card.setAttribute('data-name', g.name);
+                const iconSpan = document.createElement('span');
+                iconSpan.className = 'icon ' + g.name;
+                iconSpan.setAttribute('aria-hidden', 'true');
+                const nameSpan = document.createElement('span');
+                nameSpan.className = 'name';
+                nameSpan.textContent = g.name;
+                const codeSpan = document.createElement('span');
+                codeSpan.className = 'code';
+                codeSpan.textContent = '&#x' + g.code + ';';
+                card.appendChild(iconSpan);
+                card.appendChild(nameSpan);
+                card.appendChild(codeSpan);
+                card.addEventListener('click', function() {
+                    navigator.clipboard.writeText(g.name).catch(() => {});
+                    const orig = this.style.background;
+                    this.style.background = '#eef2ff';
+                    setTimeout(() => this.style.background = orig, 200);
+                });
+                grid.appendChild(card);
+            });
+            resultCount.textContent = visible + ' icon' + (visible !== 1 ? 's' : '');
+        }
+
+        function filterIcons() {
+            const q = searchInput.value;
+            renderGlyphs(q);
+        }
+
+        searchBtn.addEventListener('click', filterIcons);
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') filterIcons();
+        });
+        searchInput.addEventListener('input', function() {
+            if (this.value === '') filterIcons();
+        });
+
+        fontSizeInput.addEventListener('input', function() {
+            const size = parseInt(this.value, 10) || 48;
+            testDrive.style.fontSize = size + 'px';
+        });
+
+        testTextInput.addEventListener('input', function() {
+            const txt = this.value;
+            const span = document.createElement('span');
+            span.textContent = txt || '\u00A0';
+            testDrive.innerHTML = '';
+            testDrive.appendChild(span);
+        });
+
+        renderGlyphs('');
+
+        const previewSpan = document.createElement('span');
+        previewSpan.textContent = '\u00A0';
+        testDrive.innerHTML = '';
+        testDrive.appendChild(previewSpan);
+
+        window.addEventListener('load', function() {
+            testDrive.style.fontSize = '48px';
+        });
+    })();
+</script>
+</body>
+</html>

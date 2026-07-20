@@ -1,0 +1,213 @@
+@font-face {
+  font-family: 'Buildings_icons';
+  src:  url('fonts/Buildings_icons.eot?2ssu7g');
+  src:  url('fonts/Buildings_icons.eot?2ssu7g#iefix') format('embedded-opentype'),
+    url('fonts/Buildings_icons.ttf?2ssu7g') format('truetype'),
+    url('fonts/Buildings_icons.woff?2ssu7g') format('woff'),
+    url('fonts/Buildings_icons.svg?2ssu7g#Buildings_icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Buildings_icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ancient-gate-fill:before {
+  content: "\e900";
+}
+.icon-ancient-gate-line:before {
+  content: "\e901";
+}
+.icon-ancient-pavilion-fill:before {
+  content: "\e902";
+}
+.icon-ancient-pavilion-line:before {
+  content: "\e903";
+}
+.icon-bank-fill:before {
+  content: "\e904";
+}
+.icon-bank-line:before {
+  content: "\e905";
+}
+.icon-building-2-fill:before {
+  content: "\e906";
+}
+.icon-building-2-line:before {
+  content: "\e907";
+}
+.icon-building-3-fill:before {
+  content: "\e908";
+}
+.icon-building-3-line:before {
+  content: "\e909";
+}
+.icon-building-4-fill:before {
+  content: "\e90a";
+}
+.icon-building-4-line:before {
+  content: "\e90b";
+}
+.icon-building-fill:before {
+  content: "\e90c";
+}
+.icon-building-line:before {
+  content: "\e90d";
+}
+.icon-community-fill:before {
+  content: "\e90e";
+}
+.icon-community-line:before {
+  content: "\e90f";
+}
+.icon-government-fill:before {
+  content: "\e910";
+}
+.icon-government-line:before {
+  content: "\e911";
+}
+.icon-home-2-fill:before {
+  content: "\e912";
+}
+.icon-home-2-line:before {
+  content: "\e913";
+}
+.icon-home-3-fill:before {
+  content: "\e914";
+}
+.icon-home-3-line:before {
+  content: "\e915";
+}
+.icon-home-4-fill:before {
+  content: "\e916";
+}
+.icon-home-4-line:before {
+  content: "\e917";
+}
+.icon-home-5-fill:before {
+  content: "\e918";
+}
+.icon-home-5-line:before {
+  content: "\e919";
+}
+.icon-home-6-fill:before {
+  content: "\e91a";
+}
+.icon-home-6-line:before {
+  content: "\e91b";
+}
+.icon-home-7-fill:before {
+  content: "\e91c";
+}
+.icon-home-7-line:before {
+  content: "\e91d";
+}
+.icon-home-8-fill:before {
+  content: "\e91e";
+}
+.icon-home-8-line:before {
+  content: "\e91f";
+}
+.icon-home-9-fill:before {
+  content: "\e920";
+}
+.icon-home-9-line:before {
+  content: "\e921";
+}
+.icon-home-fill:before {
+  content: "\e922";
+}
+.icon-home-gear-fill:before {
+  content: "\e923";
+}
+.icon-home-gear-line:before {
+  content: "\e924";
+}
+.icon-home-heart-fill:before {
+  content: "\e925";
+}
+.icon-home-heart-line:before {
+  content: "\e926";
+}
+.icon-home-line:before {
+  content: "\e927";
+}
+.icon-home-office-fill:before {
+  content: "\e928";
+}
+.icon-home-office-line:before {
+  content: "\e929";
+}
+.icon-home-smile-2-fill:before {
+  content: "\e92a";
+}
+.icon-home-smile-2-line:before {
+  content: "\e92b";
+}
+.icon-home-smile-fill:before {
+  content: "\e92c";
+}
+.icon-home-smile-line:before {
+  content: "\e92d";
+}
+.icon-home-wifi-fill:before {
+  content: "\e92e";
+}
+.icon-home-wifi-line:before {
+  content: "\e92f";
+}
+.icon-hospital-fill:before {
+  content: "\e930";
+}
+.icon-hospital-line:before {
+  content: "\e931";
+}
+.icon-hotel-fill:before {
+  content: "\e932";
+}
+.icon-hotel-line:before {
+  content: "\e933";
+}
+.icon-school-fill:before {
+  content: "\e934";
+}
+.icon-school-line:before {
+  content: "\e935";
+}
+.icon-store-2-fill:before {
+  content: "\e936";
+}
+.icon-store-2-line:before {
+  content: "\e937";
+}
+.icon-store-3-fill:before {
+  content: "\e938";
+}
+.icon-store-3-line:before {
+  content: "\e939";
+}
+.icon-store-fill:before {
+  content: "\e93a";
+}
+.icon-store-line:before {
+  content: "\e93b";
+}
+.icon-tent-fill:before {
+  content: "\e93c";
+}
+.icon-tent-line:before {
+  content: "\e93d";
+}

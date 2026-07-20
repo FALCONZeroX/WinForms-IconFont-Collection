@@ -1,0 +1,493 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Business Icons</title>
+    <meta name="description" content="Business Icons Set by FALAH FATHEL using IcoMoon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="demo-files/demo.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f5f7fc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e293b;
+            padding: 2rem 1.5rem;
+        }
+        .container {
+            max-width: 1360px;
+            margin: 0 auto;
+        }
+        .header {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 10px 30px -8px rgba(0, 20, 50, 0.08);
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid rgba(226, 232, 240, 0.6);
+        }
+        .header h1 {
+            font-weight: 600;
+            font-size: 1.9rem;
+            letter-spacing: -0.02em;
+            color: #0b1e3a;
+        }
+        .header h1 small {
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: #5b6e8e;
+            margin-left: 0.75rem;
+            background: #eef2f8;
+            padding: 0.15rem 1rem;
+            border-radius: 40px;
+        }
+        .search-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #f1f5f9;
+            padding: 0.2rem 0.2rem 0.2rem 1.5rem;
+            border-radius: 60px;
+            border: 1px solid #e2e8f0;
+            transition: 0.2s;
+        }
+        .search-wrap:focus-within {
+            background: #ffffff;
+            border-color: #3b7cff;
+            box-shadow: 0 0 0 4px rgba(59, 124, 255, 0.15);
+        }
+        .search-wrap i {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+        .search-wrap input {
+            border: none;
+            background: transparent;
+            padding: 0.85rem 0.5rem 0.85rem 0;
+            font-size: 1rem;
+            width: 230px;
+            outline: none;
+            color: #0f1e3a;
+        }
+        .search-wrap input::placeholder {
+            color: #94a3b8;
+            font-weight: 400;
+        }
+        .search-wrap .clear-btn {
+            background: #e2e8f0;
+            border: none;
+            border-radius: 40px;
+            width: 34px;
+            height: 34px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #334155;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: 0.15s;
+            margin-right: 4px;
+        }
+        .search-wrap .clear-btn.visible {
+            display: flex;
+        }
+        .search-wrap .clear-btn:hover {
+            background: #cbd5e1;
+        }
+        .stats {
+            font-size: 0.95rem;
+            color: #475569;
+            background: #f8fafc;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid #e9edf3;
+        }
+        .grid-container {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2rem 1.8rem 2.5rem;
+            box-shadow: 0 12px 32px -10px rgba(0, 20, 40, 0.06);
+            border: 1px solid #eef2f8;
+        }
+        .grid-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .grid-header h2 {
+            font-weight: 500;
+            font-size: 1.25rem;
+            color: #1e2f4a;
+            letter-spacing: -0.01em;
+        }
+        .grid-header .count-badge {
+            background: #eef2f8;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #3a4c6b;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.75rem;
+        }
+        .icon-card {
+            background: #fafcff;
+            border-radius: 18px;
+            padding: 1.2rem 0.3rem 0.9rem;
+            text-align: center;
+            transition: 0.15s;
+            border: 1px solid transparent;
+            cursor: default;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #eef3f9;
+        }
+        .icon-card:hover {
+            background: #ffffff;
+            border-color: #cbd9ec;
+            box-shadow: 0 6px 14px rgba(0, 20, 40, 0.04);
+            transform: translateY(-2px);
+        }
+        .icon-card .icon-preview {
+            font-size: 2.1rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: #0b1e3a;
+        }
+        .icon-card .icon-name {
+            font-size: 0.7rem;
+            font-weight: 450;
+            color: #2d405b;
+            background: #eef4fc;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            max-width: 95%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            letter-spacing: 0.01em;
+        }
+        .icon-card .icon-code {
+            font-size: 0.6rem;
+            color: #657b9c;
+            background: #e9eef6;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            margin-top: 0.3rem;
+            font-family: 'SF Mono', monospace;
+        }
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem 0;
+            color: #5a6f8e;
+            font-size: 1.1rem;
+            background: #f8faff;
+            border-radius: 30px;
+            border: 1px dashed #d9e1ed;
+        }
+        .footer {
+            margin-top: 2.5rem;
+            text-align: center;
+            color: #68748e;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2eaf2;
+            padding-top: 2rem;
+        }
+        .footer a {
+            color: #2b4b7a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 700px) {
+            body { padding: 0.8rem; }
+            .header { flex-direction: column; align-items: stretch; gap: 1rem; padding: 1.5rem; }
+            .header h1 { font-size: 1.5rem; }
+            .search-wrap input { width: 100%; }
+            .grid-container { padding: 1rem 0.8rem; }
+            .icon-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+        }
+        .test-drive {
+            margin-top: 2.8rem;
+            background: #f8faff;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #e7eef8;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.2rem 2rem;
+        }
+        .test-drive label {
+            font-weight: 450;
+            color: #2d3f5a;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .test-drive input[type="number"] {
+            width: 70px;
+            padding: 0.4rem 0.5rem;
+            border: 1px solid #d2deed;
+            border-radius: 40px;
+            background: white;
+            font-weight: 500;
+            text-align: center;
+        }
+        .test-drive input[type="text"] {
+            flex: 1;
+            min-width: 180px;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid #d2deed;
+            border-radius: 40px;
+            background: white;
+            font-size: 1rem;
+        }
+        #testDrive {
+            font-size: 2.6rem;
+            padding: 0.3rem 0.2rem;
+            min-height: 60px;
+            color: #13273f;
+            letter-spacing: 2px;
+            width: 100%;
+            border-top: 1px solid #dce5f0;
+            padding-top: 1.2rem;
+            margin-top: 0.4rem;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>
+            Business Icons
+            <small>220 glyphs</small>
+        </h1>
+        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+            <div class="search-wrap">
+                <span class="icon-search" style="font-family: Business_icons;">&#xe968;</span>
+                <input type="text" id="searchInput" placeholder="Search icon...">
+                <button class="clear-btn" id="clearBtn" aria-label="Clear">✕</button>
+            </div>
+            <span class="stats" id="visibleCount">220 / 220</span>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid-header">
+            <h2>All icons</h2>
+            <span class="count-badge" id="resultCount">220 icons</span>
+        </div>
+        <div class="icon-grid" id="iconGrid"></div>
+    </div>
+
+    <div class="test-drive">
+        <label>Size <input type="number" id="fontSize" min="8" value="48"> px</label>
+        <input type="text" id="testText" placeholder="Type to preview...">
+        <div id="testDrive" style="font-family: Business_icons;">&nbsp;</div>
+    </div>
+
+    <div class="footer">
+        Generated by <a href="https://github.com/FALCONZeroX" target="_blank">FALAH FATHEL</a> &bull; Business edition
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ---------- GLYPHS DATA (220) ----------
+        const glyphs = [
+            {name:"icon-mail-forbid-fill", code:"e900"}, {name:"icon-mail-forbid-line", code:"e901"},
+            {name:"icon-mail-line", code:"e902"}, {name:"icon-mail-lock-fill", code:"e903"},
+            {name:"icon-mail-lock-line", code:"e904"}, {name:"icon-mail-open-fill", code:"e905"},
+            {name:"icon-mail-open-line", code:"e906"}, {name:"icon-mail-send-fill", code:"e907"},
+            {name:"icon-mail-send-line", code:"e908"}, {name:"icon-mail-settings-fill", code:"e909"},
+            {name:"icon-mail-settings-line", code:"e90a"}, {name:"icon-mail-star-fill", code:"e90b"},
+            {name:"icon-mail-star-line", code:"e90c"}, {name:"icon-mail-unread-fill", code:"e90d"},
+            {name:"icon-mail-unread-line", code:"e90e"}, {name:"icon-mail-volume-fill", code:"e90f"},
+            {name:"icon-mail-volume-line", code:"e910"}, {name:"icon-medal-2-fill", code:"e911"},
+            {name:"icon-medal-2-line", code:"e912"}, {name:"icon-medal-fill", code:"e913"},
+            {name:"icon-medal-line", code:"e914"}, {name:"icon-megaphone-2-fill", code:"e915"},
+            {name:"icon-megaphone-2-line", code:"e916"}, {name:"icon-megaphone-fill", code:"e917"},
+            {name:"icon-megaphone-line", code:"e918"}, {name:"icon-pass-expired-fill", code:"e919"},
+            {name:"icon-pass-expired-line", code:"e91a"}, {name:"icon-pass-pending-fill", code:"e91b"},
+            {name:"icon-pass-pending-line", code:"e91c"}, {name:"icon-pass-valid-fill", code:"e91d"},
+            {name:"icon-pass-valid-line", code:"e91e"}, {name:"icon-pie-chart-2-fill", code:"e91f"},
+            {name:"icon-pie-chart-2-line", code:"e920"}, {name:"icon-pie-chart-box-fill", code:"e921"},
+            {name:"icon-pie-chart-box-line", code:"e922"}, {name:"icon-pie-chart-fill", code:"e923"},
+            {name:"icon-pie-chart-line", code:"e924"}, {name:"icon-presentation-fill", code:"e925"},
+            {name:"icon-presentation-line", code:"e926"}, {name:"icon-printer-cloud-fill", code:"e927"},
+            {name:"icon-printer-cloud-line", code:"e928"}, {name:"icon-printer-fill", code:"e929"},
+            {name:"icon-printer-line", code:"e92a"}, {name:"icon-profile-fill", code:"e92b"},
+            {name:"icon-profile-line", code:"e92c"}, {name:"icon-projector-2-fill", code:"e92d"},
+            {name:"icon-projector-2-line", code:"e92e"}, {name:"icon-projector-fill", code:"e92f"},
+            {name:"icon-projector-line", code:"e930"}, {name:"icon-record-mail-fill", code:"e931"},
+            {name:"icon-record-mail-line", code:"e932"}, {name:"icon-registered-fill", code:"e933"},
+            {name:"icon-registered-line", code:"e934"}, {name:"icon-reply-all-fill", code:"e935"},
+            {name:"icon-reply-all-line", code:"e936"}, {name:"icon-reply-fill", code:"e937"},
+            {name:"icon-reply-line", code:"e938"}, {name:"icon-send-ins-fill", code:"e939"},
+            {name:"icon-send-ins-line", code:"e93a"}, {name:"icon-send-plane-2-fill", code:"e93b"},
+            {name:"icon-send-plane-2-line", code:"e93c"}, {name:"icon-send-plane-fill", code:"e93d"},
+            {name:"icon-send-plane-line", code:"e93e"}, {name:"icon-seo-fill", code:"e93f"},
+            {name:"icon-seo-line", code:"e940"}, {name:"icon-service-fill", code:"e941"},
+            {name:"icon-service-line", code:"e942"}, {name:"icon-shake-hands-fill", code:"e943"},
+            {name:"icon-shake-hands-line", code:"e944"}, {name:"icon-slideshow-2-fill", code:"e945"},
+            {name:"icon-slideshow-2-line", code:"e946"}, {name:"icon-slideshow-3-fill", code:"e947"},
+            {name:"icon-slideshow-3-line", code:"e948"}, {name:"icon-slideshow-4-fill", code:"e949"},
+            {name:"icon-slideshow-4-line", code:"e94a"}, {name:"icon-slideshow-fill", code:"e94b"},
+            {name:"icon-slideshow-line", code:"e94c"}, {name:"icon-stack-fill", code:"e94d"},
+            {name:"icon-stack-line", code:"e94e"}, {name:"icon-stacked-chart-fill", code:"e94f"},
+            {name:"icon-stacked-chart-line", code:"e950"}, {name:"icon-trademark-fill", code:"e951"},
+            {name:"icon-trademark-line", code:"e952"}, {name:"icon-triangular-flag-fill", code:"e953"},
+            {name:"icon-triangular-flag-line", code:"e954"}, {name:"icon-verified-badge-fill", code:"e955"},
+            {name:"icon-verified-badge-line", code:"e956"}, {name:"icon-window-2-fill", code:"e957"},
+            {name:"icon-window-2-line", code:"e958"}, {name:"icon-window-fill", code:"e959"},
+            {name:"icon-window-line", code:"e95a"}, {name:"icon-advertisement-fill", code:"e95b"},
+            {name:"icon-advertisement-line", code:"e95c"}, {name:"icon-archive-2-fill", code:"e95d"},
+            {name:"icon-archive-2-line", code:"e95e"}, {name:"icon-archive-drawer-fill", code:"e95f"},
+            {name:"icon-archive-drawer-line", code:"e960"}, {name:"icon-archive-fill", code:"e961"},
+            {name:"icon-archive-line", code:"e962"}, {name:"icon-archive-stack-fill", code:"e963"},
+            {name:"icon-archive-stack-line", code:"e964"}, {name:"icon-area-chart-fill", code:"e965"},
+            {name:"icon-area-chart-line", code:"e966"}, {name:"icon-at-fill", code:"e967"},
+            {name:"icon-at-line", code:"e968"}, {name:"icon-attachment-fill", code:"e969"},
+            {name:"icon-attachment-line", code:"e96a"}, {name:"icon-award-fill", code:"e96b"},
+            {name:"icon-award-line", code:"e96c"}, {name:"icon-bar-chart-2-fill", code:"e96d"},
+            {name:"icon-bar-chart-2-line", code:"e96e"}, {name:"icon-bar-chart-box-ai-fill", code:"e96f"},
+            {name:"icon-bar-chart-box-ai-line", code:"e970"}, {name:"icon-bar-chart-box-fill", code:"e971"},
+            {name:"icon-bar-chart-box-line", code:"e972"}, {name:"icon-bar-chart-fill", code:"e973"},
+            {name:"icon-bar-chart-grouped-fill", code:"e974"}, {name:"icon-bar-chart-grouped-line", code:"e975"},
+            {name:"icon-bar-chart-horizontal-fill", code:"e976"}, {name:"icon-bar-chart-horizontal-line", code:"e977"},
+            {name:"icon-bar-chart-line", code:"e978"}, {name:"icon-bookmark-2-fill", code:"e979"},
+            {name:"icon-bookmark-2-line", code:"e97a"}, {name:"icon-bookmark-3-fill", code:"e97b"},
+            {name:"icon-bookmark-3-line", code:"e97c"}, {name:"icon-bookmark-fill", code:"e97d"},
+            {name:"icon-bookmark-line", code:"e97e"}, {name:"icon-briefcase-2-fill", code:"e97f"},
+            {name:"icon-briefcase-2-line", code:"e980"}, {name:"icon-briefcase-3-fill", code:"e981"},
+            {name:"icon-briefcase-3-line", code:"e982"}, {name:"icon-briefcase-4-fill", code:"e983"},
+            {name:"icon-briefcase-4-line", code:"e984"}, {name:"icon-briefcase-5-fill", code:"e985"},
+            {name:"icon-briefcase-5-line", code:"e986"}, {name:"icon-briefcase-fill", code:"e987"},
+            {name:"icon-briefcase-line", code:"e988"}, {name:"icon-bubble-chart-fill", code:"e989"},
+            {name:"icon-bubble-chart-line", code:"e98a"}, {name:"icon-calculator-fill", code:"e98b"},
+            {name:"icon-calculator-line", code:"e98c"}, {name:"icon-calendar-2-fill", code:"e98d"},
+            {name:"icon-calendar-2-line", code:"e98e"}, {name:"icon-calendar-check-fill", code:"e98f"},
+            {name:"icon-calendar-check-line", code:"e990"}, {name:"icon-calendar-close-fill", code:"e991"},
+            {name:"icon-calendar-close-line", code:"e992"}, {name:"icon-calendar-event-fill", code:"e993"},
+            {name:"icon-calendar-event-line", code:"e994"}, {name:"icon-calendar-fill", code:"e995"},
+            {name:"icon-calendar-line", code:"e996"}, {name:"icon-calendar-schedule-fill", code:"e997"},
+            {name:"icon-calendar-schedule-line", code:"e998"}, {name:"icon-calendar-todo-fill", code:"e999"},
+            {name:"icon-calendar-todo-line", code:"e99a"}, {name:"icon-cloud-fill", code:"e99b"},
+            {name:"icon-cloud-line", code:"e99c"}, {name:"icon-cloud-off-fill", code:"e99d"},
+            {name:"icon-cloud-off-line", code:"e99e"}, {name:"icon-copyleft-fill", code:"e99f"},
+            {name:"icon-copyleft-line", code:"e9a0"}, {name:"icon-copyright-fill", code:"e9a1"},
+            {name:"icon-copyright-line", code:"e9a2"}, {name:"icon-creative-commons-by-fill", code:"e9a3"},
+            {name:"icon-creative-commons-by-line", code:"e9a4"}, {name:"icon-creative-commons-fill", code:"e9a5"},
+            {name:"icon-creative-commons-line", code:"e9a6"}, {name:"icon-creative-commons-nc-fill", code:"e9a7"},
+            {name:"icon-creative-commons-nc-line", code:"e9a8"}, {name:"icon-creative-commons-nd-fill", code:"e9a9"},
+            {name:"icon-creative-commons-nd-line", code:"e9aa"}, {name:"icon-creative-commons-sa-fill", code:"e9ab"},
+            {name:"icon-creative-commons-sa-line", code:"e9ac"}, {name:"icon-creative-commons-zero-fill", code:"e9ad"},
+            {name:"icon-creative-commons-zero-line", code:"e9ae"}, {name:"icon-customer-service-2-fill", code:"e9af"},
+            {name:"icon-customer-service-2-line", code:"e9b0"}, {name:"icon-customer-service-fill", code:"e9b1"},
+            {name:"icon-customer-service-line", code:"e9b2"}, {name:"icon-donut-chart-fill", code:"e9b3"},
+            {name:"icon-donut-chart-line", code:"e9b4"}, {name:"icon-flag-2-fill", code:"e9b5"},
+            {name:"icon-flag-2-line", code:"e9b6"}, {name:"icon-flag-fill", code:"e9b7"},
+            {name:"icon-flag-line", code:"e9b8"}, {name:"icon-flag-off-fill", code:"e9b9"},
+            {name:"icon-flag-off-line", code:"e9ba"}, {name:"icon-global-fill", code:"e9bb"},
+            {name:"icon-global-line", code:"e9bc"}, {name:"icon-global-off-fill", code:"e9bd"},
+            {name:"icon-global-off-line", code:"e9be"}, {name:"icon-honour-fill", code:"e9bf"},
+            {name:"icon-honour-line", code:"e9c0"}, {name:"icon-id-card-fill", code:"e9c1"},
+            {name:"icon-id-card-line", code:"e9c2"}, {name:"icon-inbox-2-fill", code:"e9c3"},
+            {name:"icon-inbox-2-line", code:"e9c4"}, {name:"icon-inbox-archive-fill", code:"e9c5"},
+            {name:"icon-inbox-archive-line", code:"e9c6"}, {name:"icon-inbox-fill", code:"e9c7"},
+            {name:"icon-inbox-line", code:"e9c8"}, {name:"icon-inbox-unarchive-fill", code:"e9c9"},
+            {name:"icon-inbox-unarchive-line", code:"e9ca"}, {name:"icon-info-card-fill", code:"e9cb"},
+            {name:"icon-info-card-line", code:"e9cc"}, {name:"icon-line-chart-fill", code:"e9cd"},
+            {name:"icon-line-chart-line", code:"e9ce"}, {name:"icon-links-fill", code:"e9cf"},
+            {name:"icon-links-line", code:"e9d0"}, {name:"icon-mail-add-fill", code:"e9d1"},
+            {name:"icon-mail-add-line", code:"e9d2"}, {name:"icon-mail-ai-fill", code:"e9d3"},
+            {name:"icon-mail-ai-line", code:"e9d4"}, {name:"icon-mail-check-fill", code:"e9d5"},
+            {name:"icon-mail-check-line", code:"e9d6"}, {name:"icon-mail-close-fill", code:"e9d7"},
+            {name:"icon-mail-close-line", code:"e9d8"}, {name:"icon-mail-download-fill", code:"e9d9"},
+            {name:"icon-mail-download-line", code:"e9da"}, {name:"icon-mail-fill", code:"e9db"}
+        ];
+
+        const grid = document.getElementById('iconGrid');
+        const searchInput = document.getElementById('searchInput');
+        const clearBtn = document.getElementById('clearBtn');
+        const visibleCount = document.getElementById('visibleCount');
+        const resultCount = document.getElementById('resultCount');
+
+        function render(filter = '') {
+            const q = filter.toLowerCase().trim();
+            let html = '';
+            let matched = 0;
+            for (const g of glyphs) {
+                const match = g.name.includes(q) || g.code.includes(q);
+                if (match) matched++;
+                const display = match ? 'block' : 'none';
+                html += `<div class="icon-card" style="display:${display}" data-name="${g.name}" data-code="${g.code}">
+                    <div class="icon-preview" style="font-family:Business_icons;">&#x${g.code};</div>
+                    <div class="icon-name">${g.name}</div>
+                    <div class="icon-code">${g.code}</div>
+                </div>`;
+            }
+            grid.innerHTML = html;
+            const total = glyphs.length;
+            visibleCount.textContent = `${matched} / ${total}`;
+            resultCount.textContent = `${matched} icon${matched !== 1 ? 's' : ''}`;
+            clearBtn.classList.toggle('visible', q.length > 0);
+            if (matched === 0 && q.length > 0) {
+                grid.innerHTML += `<div class="no-results">No icons found for “${q}”</div>`;
+            }
+        }
+
+        searchInput.addEventListener('input', function() {
+            render(this.value);
+        });
+
+        clearBtn.addEventListener('click', function() {
+            searchInput.value = '';
+            render('');
+            searchInput.focus();
+        });
+
+        // Test drive
+        const fontSizeInput = document.getElementById('fontSize');
+        const testText = document.getElementById('testText');
+        const testDrive = document.getElementById('testDrive');
+
+        fontSizeInput.addEventListener('input', function() {
+            testDrive.style.fontSize = this.value + 'px';
+        });
+
+        testText.addEventListener('input', function() {
+            testDrive.textContent = this.value || '\u00a0';
+        });
+
+        // Init
+        render('');
+        testDrive.textContent = '\u00a0';
+    })();
+</script>
+
+</body>
+</html>

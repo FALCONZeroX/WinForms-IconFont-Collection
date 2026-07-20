@@ -1,0 +1,225 @@
+@font-face {
+  font-family: 'Development_icons';
+  src:  url('fonts/Development_icons.eot?7pfwq3');
+  src:  url('fonts/Development_icons.eot?7pfwq3#iefix') format('embedded-opentype'),
+    url('fonts/Development_icons.ttf?7pfwq3') format('truetype'),
+    url('fonts/Development_icons.woff?7pfwq3') format('woff'),
+    url('fonts/Development_icons.svg?7pfwq3#Development_icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Development_icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-braces-fill:before {
+  content: "\e900";
+}
+.icon-braces-line:before {
+  content: "\e901";
+}
+.icon-brackets-fill:before {
+  content: "\e902";
+}
+.icon-brackets-line:before {
+  content: "\e903";
+}
+.icon-bug-2-fill:before {
+  content: "\e904";
+}
+.icon-bug-2-line:before {
+  content: "\e905";
+}
+.icon-bug-fill:before {
+  content: "\e906";
+}
+.icon-bug-line:before {
+  content: "\e907";
+}
+.icon-code-ai-fill:before {
+  content: "\e908";
+}
+.icon-code-ai-line:before {
+  content: "\e909";
+}
+.icon-code-box-fill:before {
+  content: "\e90a";
+}
+.icon-code-box-line:before {
+  content: "\e90b";
+}
+.icon-code-fill:before {
+  content: "\e90c";
+}
+.icon-code-line:before {
+  content: "\e90d";
+}
+.icon-code-s-fill:before {
+  content: "\e90e";
+}
+.icon-code-s-line:before {
+  content: "\e90f";
+}
+.icon-code-s-slash-fill:before {
+  content: "\e910";
+}
+.icon-code-s-slash-line:before {
+  content: "\e911";
+}
+.icon-command-fill:before {
+  content: "\e912";
+}
+.icon-command-line:before {
+  content: "\e913";
+}
+.icon-css3-fill:before {
+  content: "\e914";
+}
+.icon-css3-line:before {
+  content: "\e915";
+}
+.icon-cursor-fill:before {
+  content: "\e916";
+}
+.icon-cursor-line:before {
+  content: "\e917";
+}
+.icon-git-branch-fill:before {
+  content: "\e918";
+}
+.icon-git-branch-line:before {
+  content: "\e919";
+}
+.icon-git-close-pull-request-fill:before {
+  content: "\e91a";
+}
+.icon-git-close-pull-request-line:before {
+  content: "\e91b";
+}
+.icon-git-commit-fill:before {
+  content: "\e91c";
+}
+.icon-git-commit-line:before {
+  content: "\e91d";
+}
+.icon-git-fork-fill:before {
+  content: "\e91e";
+}
+.icon-git-fork-line:before {
+  content: "\e91f";
+}
+.icon-git-merge-fill:before {
+  content: "\e920";
+}
+.icon-git-merge-line:before {
+  content: "\e921";
+}
+.icon-git-pr-draft-fill:before {
+  content: "\e922";
+}
+.icon-git-pr-draft-line:before {
+  content: "\e923";
+}
+.icon-git-pull-request-fill:before {
+  content: "\e924";
+}
+.icon-git-pull-request-line:before {
+  content: "\e925";
+}
+.icon-git-repository-commits-fill:before {
+  content: "\e926";
+}
+.icon-git-repository-commits-line:before {
+  content: "\e927";
+}
+.icon-git-repository-fill:before {
+  content: "\e928";
+}
+.icon-git-repository-line:before {
+  content: "\e929";
+}
+.icon-git-repository-private-fill:before {
+  content: "\e92a";
+}
+.icon-git-repository-private-line:before {
+  content: "\e92b";
+}
+.icon-html5-fill:before {
+  content: "\e92c";
+}
+.icon-html5-line:before {
+  content: "\e92d";
+}
+.icon-issues-fill:before {
+  content: "\e92e";
+}
+.icon-issues-line:before {
+  content: "\e92f";
+}
+.icon-issues-reopen-fill:before {
+  content: "\e930";
+}
+.icon-issues-reopen-line:before {
+  content: "\e931";
+}
+.icon-javascript-fill:before {
+  content: "\e932";
+}
+.icon-javascript-line:before {
+  content: "\e933";
+}
+.icon-parentheses-fill:before {
+  content: "\e934";
+}
+.icon-parentheses-line:before {
+  content: "\e935";
+}
+.icon-php-fill:before {
+  content: "\e936";
+}
+.icon-php-line:before {
+  content: "\e937";
+}
+.icon-puzzle-2-fill:before {
+  content: "\e938";
+}
+.icon-puzzle-2-line:before {
+  content: "\e939";
+}
+.icon-puzzle-fill:before {
+  content: "\e93a";
+}
+.icon-puzzle-line:before {
+  content: "\e93b";
+}
+.icon-terminal-box-fill:before {
+  content: "\e93c";
+}
+.icon-terminal-box-line:before {
+  content: "\e93d";
+}
+.icon-terminal-fill:before {
+  content: "\e93e";
+}
+.icon-terminal-line:before {
+  content: "\e93f";
+}
+.icon-terminal-window-fill:before {
+  content: "\e940";
+}
+.icon-terminal-window-line:before {
+  content: "\e941";
+}

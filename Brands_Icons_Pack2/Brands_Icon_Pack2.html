@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brands Icons Pack 2</title>
+    <link rel="stylesheet" href="demo-files/demo.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #f8fafc;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding: 2rem 1.5rem;
+            color: #1e293b;
+        }
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .header {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 2.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #e9edf2;
+        }
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        .header h1 small {
+            font-weight: 400;
+            color: #64748b;
+            font-size: 1rem;
+            margin-left: 0.5rem;
+        }
+        .header .badge {
+            background: #eef2ff;
+            color: #4f46e5;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .search-box {
+            background: #ffffff;
+            border-radius: 60px;
+            padding: 0.4rem 0.4rem 0.4rem 1.5rem;
+            display: flex;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            flex: 1 1 280px;
+            min-width: 200px;
+        }
+        .search-box:focus-within {
+            border-color: #818cf8;
+            box-shadow: 0 0 0 4px rgba(99,102,241,0.08);
+        }
+        .search-box input {
+            border: none;
+            background: transparent;
+            padding: 0.7rem 0;
+            font-size: 1rem;
+            width: 100%;
+            outline: none;
+            color: #0f172a;
+        }
+        .search-box input::placeholder {
+            color: #94a3b8;
+        }
+        .search-box button {
+            background: #4f46e5;
+            border: none;
+            color: white;
+            padding: 0.6rem 1.6rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.15s;
+            white-space: nowrap;
+        }
+        .search-box button:hover {
+            background: #4338ca;
+        }
+        .stats {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.8rem;
+        }
+        .glyph-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.4rem 0.8rem;
+            text-align: center;
+            border: 1px solid #edf2f7;
+            transition: 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            cursor: default;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .glyph-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            transform: translateY(-3px);
+        }
+        .glyph-card .icon {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+            transition: 0.15s;
+        }
+        .glyph-card .icon-name {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #475569;
+            letter-spacing: 0.01em;
+            word-break: break-word;
+            max-width: 100%;
+            background: #f1f5f9;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        .glyph-card .code {
+            font-size: 0.65rem;
+            color: #94a3b8;
+            background: #f8fafc;
+            padding: 0.15rem 0.7rem;
+            border-radius: 16px;
+            margin-top: 0.3rem;
+            font-family: 'SF Mono', 'Cascadia Code', monospace;
+            letter-spacing: 0.3px;
+        }
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 1rem;
+            color: #64748b;
+            font-size: 1.2rem;
+            background: white;
+            border-radius: 32px;
+            border: 1px dashed #d1d9e6;
+        }
+        .test-drive {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 2.5rem;
+            margin-top: 2.8rem;
+            border: 1px solid #edf2f7;
+        }
+        .test-drive label {
+            font-weight: 500;
+            margin-right: 1rem;
+            color: #334155;
+        }
+        .test-drive input[type="number"] {
+            width: 80px;
+            padding: 0.4rem 0.6rem;
+            border: 1px solid #d1d9e6;
+            border-radius: 30px;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .test-drive input[type="text"] {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #d1d9e6;
+            border-radius: 40px;
+            margin: 1rem 0;
+            font-size: 1rem;
+        }
+        .test-drive .preview {
+            font-size: 48px;
+            padding: 1.2rem;
+            background: #f8fafc;
+            border-radius: 20px;
+            min-height: 80px;
+            border: 1px solid #e9edf2;
+            color: #0f172a;
+            transition: 0.15s;
+            font-family: 'Brands2_icons' !important;
+        }
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 2rem;
+        }
+        .footer a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        @media (max-width: 640px) {
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+            .search-box {
+                flex: 1 1 auto;
+            }
+            .grid-container {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 0.8rem;
+            }
+            .test-drive {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>Brands icons Pack2 <small>501 glyph</small></h1>
+        </div>
+        <div class="stats">
+            <span class="badge">FALCON</span>
+        </div>
+    </div>
+
+    <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.5rem;">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="ابحث عن أيقونة... (اسم أو كود)">
+            <button id="searchBtn">بحث</button>
+        </div>
+        <button id="resetBtn" style="background: transparent; border: 1px solid #d1d9e6; padding: 0.5rem 1.2rem; border-radius: 40px; font-weight: 500; color: #475569; cursor: pointer;">إعادة تعيين</button>
+    </div>
+
+    <div id="glyphGrid" class="grid-container"></div>
+
+    <div class="test-drive">
+        <h3 style="margin-bottom: 0.5rem; font-weight: 500;">اختبار الخط</h3>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem;">
+            <label>حجم الخط: <input id="fontSize" type="number" min="8" value="48"> px</label>
+        </div>
+        <input id="testText" type="text" placeholder="اكتب نصاً لاختبار الأيقونات..." value="">
+        <div id="testDrive" class="preview" style="font-family: 'Brands2_icons';">&#xe900; &#xe901; &#xe902;</div>
+    </div>
+
+    <div class="footer">
+        Generated By<a href="https://github.com/FALCONZeroX">FALAH FATHEL</a>
+    </div>
+</div>
+
+<script src="demo-files/demo.js"></script>
+<script>
+    (function() {
+        const glyphs = [
+            { name: "icon-cib-about-me", code: "e900" },
+            { name: "icon-cib-500px-5", code: "e901" },
+            { name: "icon-cib-500px", code: "e902" },
+            { name: "icon-cib-abstract", code: "e903" },
+            { name: "icon-cib-acm", code: "e904" },
+            { name: "icon-cib-addthis", code: "e905" },
+            { name: "icon-cib-adguard", code: "e906" },
+            { name: "icon-cib-adobe-acrobat-reader", code: "e907" },
+            { name: "icon-cib-adobe-after-effects", code: "e908" },
+            { name: "icon-cib-adobe-audition", code: "e909" },
+            { name: "icon-cib-adobe-creative-cloud", code: "e90a" },
+            { name: "icon-cib-adobe-dreamweaver", code: "e90b" },
+            { name: "icon-cib-adobe-illustrator", code: "e90c" },
+            { name: "icon-cib-adobe-indesign", code: "e90d" },
+            { name: "icon-cib-adobe-lightroom-classic", code: "e90e" },
+            { name: "icon-cib-adobe-lightroom", code: "e90f" },
+            { name: "icon-cib-adobe-photoshop", code: "e910" },
+            { name: "icon-cib-adobe-premiere", code: "e911" },
+            { name: "icon-cib-adobe-typekit", code: "e912" },
+            { name: "icon-cib-adobe-xd", code: "e913" },
+            { name: "icon-cib-adobe", code: "e914" },
+            { name: "icon-cib-airbnb", code: "e915" },
+            { name: "icon-cib-algolia", code: "e916" },
+            { name: "icon-cib-alipay", code: "e917" },
+            { name: "icon-cib-allocine", code: "e918" },
+            { name: "icon-cib-amazon-aws", code: "e919" },
+            { name: "icon-cib-amazon-pay", code: "e91a" },
+            { name: "icon-cib-amazon", code: "e91b" },
+            { name: "icon-cib-amd", code: "e91c" },
+            { name: "icon-cib-american-express", code: "e91d" },
+            { name: "icon-cib-anaconda", code: "e91e" },
+            { name: "icon-cib-analogue", code: "e91f" },
+            { name: "icon-cib-android-alt", code: "e920" },
+            { name: "icon-cib-android", code: "e921" },
+            { name: "icon-cib-angellist", code: "e922" },
+            { name: "icon-cib-angular-universal", code: "e923" },
+            { name: "icon-cib-angular", code: "e924" },
+            { name: "icon-cib-ansible", code: "e925" },
+            { name: "icon-cib-apache-airflow", code: "e926" },
+            { name: "icon-cib-apache-flink", code: "e927" },
+            { name: "icon-cib-apache-spark", code: "e928" },
+            { name: "icon-cib-apache", code: "e929" },
+            { name: "icon-cib-app-store-ios", code: "e92a" },
+            { name: "icon-cib-app-store", code: "e92b" },
+            { name: "icon-cib-apple-music", code: "e92c" },
+            { name: "icon-cib-apple-pay", code: "e92d" },
+            { name: "icon-cib-apple-podcasts", code: "e92e" },
+            { name: "icon-cib-apple", code: "e92f" },
+            { name: "icon-cib-appveyor", code: "e930" },
+            { name: "icon-cib-aral", code: "e931" },
+            { name: "icon-cib-arch-linux", code: "e932" },
+            { name: "icon-cib-archive-of-our-own", code: "e933" },
+            { name: "icon-cib-arduino", code: "e934" },
+            { name: "icon-cib-artstation", code: "e935" },
+            { name: "icon-cib-arxiv", code: "e936" },
+            { name: "icon-cib-asana", code: "e937" },
+            { name: "icon-cib-at-and-t", code: "e938" },
+            { name: "icon-cib-atlassian", code: "e939" },
+            { name: "icon-cib-atom", code: "e93a" },
+            { name: "icon-cib-audible", code: "e93b" },
+            { name: "icon-cib-aurelia", code: "e93c" },
+            { name: "icon-cib-auth0", code: "e93d" },
+            { name: "icon-cib-automatic", code: "e93e" },
+            { name: "icon-cib-autotask", code: "e93f" },
+            { name: "icon-cib-aventrix", code: "e940" },
+            { name: "icon-cib-azure-artifacts", code: "e941" },
+            { name: "icon-cib-azure-devops", code: "e942" },
+            { name: "icon-cib-azure-pipelines", code: "e943" },
+            { name: "icon-cib-babel", code: "e944" },
+            { name: "icon-cib-baidu", code: "e945" },
+            { name: "icon-cib-bamboo", code: "e946" },
+            { name: "icon-cib-bancontact", code: "e947" },
+            { name: "icon-cib-bandcamp", code: "e948" },
+            { name: "icon-cib-basecamp", code: "e949" },
+            { name: "icon-cib-bathasu", code: "e94a" },
+            { name: "icon-cib-behance", code: "e94b" },
+            { name: "icon-cib-big-cartel", code: "e94c" },
+            { name: "icon-cib-bing", code: "e94d" },
+            { name: "icon-cib-bit", code: "e94e" },
+            { name: "icon-cib-bitbucket", code: "e94f" },
+            { name: "icon-cib-bitcoin", code: "e950" },
+            { name: "icon-cib-bitdefender", code: "e951" },
+            { name: "icon-cib-bitly", code: "e952" },
+            { name: "icon-cib-blackberry", code: "e953" },
+            { name: "icon-cib-blender", code: "e954" },
+            { name: "icon-cib-blogger-b", code: "e955" },
+            { name: "icon-cib-blogger", code: "e956" },
+            { name: "icon-cib-bluetooth-b", code: "e957" },
+            { name: "icon-cib-bluetooth", code: "e958" },
+            { name: "icon-cib-boeing", code: "e959" },
+            { name: "icon-cib-boost", code: "e95a" },
+            { name: "icon-cib-bootstrap", code: "e95b" },
+            { name: "icon-cib-bower", code: "e95c" },
+            { name: "icon-cib-brand-ai", code: "e95d" },
+            { name: "icon-cib-brave", code: "e95e" },
+            { name: "icon-cib-btc", code: "e95f" },
+            { name: "icon-cib-buddy", code: "e960" },
+            { name: "icon-cib-buffer", code: "e961" },
+            { name: "icon-cib-buy-me-a-coffee", code: "e962" },
+            { name: "icon-cib-buysellads", code: "e963" },
+            { name: "icon-cib-buzzfeed", code: "e964" },
+            { name: "icon-cib-c", code: "e965" },
+            { name: "icon-cib-cakephp", code: "e966" },
+            { name: "icon-cib-campaign-monitor", code: "e967" },
+            { name: "icon-cib-canva", code: "e968" },
+            { name: "icon-cib-cashapp", code: "e969" },
+            { name: "icon-cib-cassandra", code: "e96a" },
+            { name: "icon-cib-castro", code: "e96b" },
+            { name: "icon-cib-cc-amazon-pay", code: "e96c" },
+            { name: "icon-cib-cc-amex", code: "e96d" },
+            { name: "icon-cib-cc-apple-pay", code: "e96e" },
+            { name: "icon-cib-cc-diners-club", code: "e96f" },
+            { name: "icon-cib-cc-discover", code: "e970" },
+            { name: "icon-cib-cc-jcb", code: "e971" },
+            { name: "icon-cib-cc-mastercard", code: "e972" },
+            { name: "icon-cib-cc-paypal", code: "e973" },
+            { name: "icon-cib-cc-stripe", code: "e974" },
+            { name: "icon-cib-cc-visa", code: "e975" },
+            { name: "icon-cib-centos", code: "e976" },
+            { name: "icon-cib-cevo", code: "e977" },
+            { name: "icon-cib-chase", code: "e978" },
+            { name: "icon-cib-chef", code: "e979" },
+            { name: "icon-cib-chromecast", code: "e97a" },
+            { name: "icon-cib-circle", code: "e97b" },
+            { name: "icon-cib-circleci", code: "e97c" },
+            { name: "icon-cib-cirrusci", code: "e97d" },
+            { name: "icon-cib-cisco", code: "e97e" },
+            { name: "icon-cib-civicrm", code: "e97f" },
+            { name: "icon-cib-clockify", code: "e980" },
+            { name: "icon-cib-clojure", code: "e981" },
+            { name: "icon-cib-cloudbees", code: "e982" },
+            { name: "icon-cib-cloudflare", code: "e983" },
+            { name: "icon-cib-cmake", code: "e984" },
+            { name: "icon-cib-co-op", code: "e985" },
+            { name: "icon-cib-codacy", code: "e986" },
+            { name: "icon-cib-code-climate", code: "e987" },
+            { name: "icon-cib-codecademy", code: "e988" },
+            { name: "icon-cib-codecov", code: "e989" },
+            { name: "icon-cib-codeigniter", code: "e98a" },
+            { name: "icon-cib-codepen", code: "e98b" },
+            { name: "icon-cib-coderwall", code: "e98c" },
+            { name: "icon-cib-codesandbox", code: "e98d" },
+            { name: "icon-cib-codeship", code: "e98e" },
+            { name: "icon-cib-codewars", code: "e98f" },
+            { name: "icon-cib-codio", code: "e990" },
+            { name: "icon-cib-coffeescript", code: "e991" },
+            { name: "icon-cib-common-workflow-language", code: "e992" },
+            { name: "icon-cib-composer", code: "e993" },
+            { name: "icon-cib-conda-forge", code: "e994" },
+            { name: "icon-cib-conekta", code: "e995" },
+            { name: "icon-cib-confluence", code: "e996" },
+            { name: "icon-cib-coreui-c", code: "e997" },
+            { name: "icon-cib-coreui", code: "e998" },
+            { name: "icon-cib-coursera", code: "e999" },
+            { name: "icon-cib-coveralls", code: "e99a" },
+            { name: "icon-cib-cpanel", code: "e99b" },
+            { name: "icon-cib-cplusplus", code: "e99c" },
+            { name: "icon-cib-creative-commons-by", code: "e99d" },
+            { name: "icon-cib-creative-commons-nc-eu", code: "e99e" },
+            { name: "icon-cib-creative-commons-nc-jp", code: "e99f" },
+            { name: "icon-cib-creative-commons-nc", code: "e9a0" },
+            { name: "icon-cib-creative-commons-nd", code: "e9a1" },
+            { name: "icon-cib-creative-commons-pd-alt", code: "e9a2" },
+            { name: "icon-cib-creative-commons-pd", code: "e9a3" },
+            { name: "icon-cib-creative-commons-remix", code: "e9a4" },
+            { name: "icon-cib-creative-commons-sa", code: "e9a5" },
+            { name: "icon-cib-creative-commons-sampling-plus", code: "e9a6" },
+            { name: "icon-cib-creative-commons-sampling", code: "e9a7" },
+            { name: "icon-cib-creative-commons-share", code: "e9a8" },
+            { name: "icon-cib-creative-commons-zero", code: "e9a9" },
+            { name: "icon-cib-creative-commons", code: "e9aa" },
+            { name: "icon-cib-crunchbase", code: "e9ab" },
+            { name: "icon-cib-crunchyroll", code: "e9ac" },
+            { name: "icon-cib-css3-shiled", code: "e9ad" },
+            { name: "icon-cib-css3", code: "e9ae" },
+            { name: "icon-cib-csswizardry", code: "e9af" },
+            { name: "icon-cib-d3-js", code: "e9b0" },
+            { name: "icon-cib-dailymotion", code: "e9b1" },
+            { name: "icon-cib-dashlane", code: "e9b2" },
+            { name: "icon-cib-dazn", code: "e9b3" },
+            { name: "icon-cib-dblp", code: "e9b4" },
+            { name: "icon-cib-debian", code: "e9b5" },
+            { name: "icon-cib-deepin", code: "e9b6" },
+            { name: "icon-cib-deezer", code: "e9b7" },
+            { name: "icon-cib-delicious", code: "e9b8" },
+            { name: "icon-cib-dell", code: "e9b9" },
+            { name: "icon-cib-deno", code: "e9ba" },
+            { name: "icon-cib-dependabot", code: "e9bb" },
+            { name: "icon-cib-designer-news", code: "e9bc" },
+            { name: "icon-cib-dev-to", code: "e9bd" },
+            { name: "icon-cib-deviantart", code: "e9be" },
+            { name: "icon-cib-devrant", code: "e9bf" },
+            { name: "icon-cib-diaspora", code: "e9c0" },
+            { name: "icon-cib-digg", code: "e9c1" },
+            { name: "icon-cib-digital-ocean", code: "e9c2" },
+            { name: "icon-cib-discord", code: "e9c3" },
+            { name: "icon-cib-discourse", code: "e9c4" },
+            { name: "icon-cib-discover", code: "e9c5" },
+            { name: "icon-cib-disqus", code: "e9c6" },
+            { name: "icon-cib-disroot", code: "e9c7" },
+            { name: "icon-cib-django", code: "e9c8" },
+            { name: "icon-cib-docker", code: "e9c9" },
+            { name: "icon-cib-docusign", code: "e9ca" },
+            { name: "icon-cib-dot-net", code: "e9cb" },
+            { name: "icon-cib-draugiem-lv", code: "e9cc" },
+            { name: "icon-cib-dribbble", code: "e9cd" },
+            { name: "icon-cib-drone", code: "e9ce" },
+            { name: "icon-cib-dropbox", code: "e9cf" },
+            { name: "icon-cib-drupal", code: "e9d0" },
+            { name: "icon-cib-dtube", code: "e9d1" },
+            { name: "icon-cib-duckduckgo", code: "e9d2" },
+            { name: "icon-cib-dynatrace", code: "e9d3" },
+            { name: "icon-cib-ebay", code: "e9d4" },
+            { name: "icon-cib-eclipseide", code: "e9d5" },
+            { name: "icon-cib-elastic-cloud", code: "e9d6" },
+            { name: "icon-cib-elastic-search", code: "e9d7" },
+            { name: "icon-cib-elastic-stack", code: "e9d8" },
+            { name: "icon-cib-elastic", code: "e9d9" },
+            { name: "icon-cib-electron", code: "e9da" },
+            { name: "icon-cib-elementary", code: "e9db" },
+            { name: "icon-cib-eleventy", code: "e9dc" },
+            { name: "icon-cib-ello", code: "e9dd" },
+            { name: "icon-cib-emlakjet", code: "e9de" },
+            { name: "icon-cib-empirekred", code: "e9df" },
+            { name: "icon-cib-envato", code: "e9e0" },
+            { name: "icon-cib-epic-games", code: "e9e1" },
+            { name: "icon-cib-epson", code: "e9e2" },
+            { name: "icon-cib-esea", code: "e9e3" },
+            { name: "icon-cib-eslint", code: "e9e4" },
+            { name: "icon-cib-ethereum", code: "e9e5" },
+            { name: "icon-cib-etsy", code: "e9e6" },
+            { name: "icon-cib-event-store", code: "e9e7" },
+            { name: "icon-cib-eventbrite", code: "e9e8" },
+            { name: "icon-cib-evernote", code: "e9e9" },
+            { name: "icon-cib-everplaces", code: "e9ea" },
+            { name: "icon-cib-evry", code: "e9eb" },
+            { name: "icon-cib-exercism", code: "e9ec" },
+            { name: "icon-cib-experts-exchange", code: "e9ed" },
+            { name: "icon-cib-expo", code: "e9ee" },
+            { name: "icon-cib-eyeem", code: "e9ef" },
+            { name: "icon-cib-f-secure", code: "e9f0" },
+            { name: "icon-cib-facebook-f", code: "e9f1" },
+            { name: "icon-cib-facebook", code: "e9f2" },
+            { name: "icon-cib-faceit", code: "e9f3" },
+            { name: "icon-cib-fandango", code: "e9f4" },
+            { name: "icon-cib-favro", code: "e9f5" },
+            { name: "icon-cib-feathub", code: "e9f6" },
+            { name: "icon-cib-fedex", code: "e9f7" },
+            { name: "icon-cib-fedora", code: "e9f8" },
+            { name: "icon-cib-feedly", code: "e9f9" },
+            { name: "icon-cib-fido-alliance", code: "e9fa" },
+            { name: "icon-cib-figma", code: "e9fb" },
+            { name: "icon-cib-filezilla", code: "e9fc" },
+            { name: "icon-cib-firebase", code: "e9fd" },
+            { name: "icon-cib-fitbit", code: "e9fe" },
+            { name: "icon-cib-flask", code: "e9ff" },
+            { name: "icon-cib-flattr", code: "ea00" },
+            { name: "icon-cib-flickr", code: "ea01" },
+            { name: "icon-cib-flipboard", code: "ea02" },
+            { name: "icon-cib-flutter", code: "ea03" },
+            { name: "icon-cib-fnac", code: "ea04" },
+            { name: "icon-cib-foursquare", code: "ea05" },
+            { name: "icon-cib-framer", code: "ea06" },
+            { name: "icon-cib-freebsd", code: "ea07" },
+            { name: "icon-cib-freecodecamp", code: "ea08" },
+            { name: "icon-cib-fur-affinity", code: "ea09" },
+            { name: "icon-cib-furry-network", code: "ea0a" },
+            { name: "icon-cib-garmin", code: "ea0b" },
+            { name: "icon-cib-gatsby", code: "ea0c" },
+            { name: "icon-cib-gauges", code: "ea0d" },
+            { name: "icon-cib-genius", code: "ea0e" },
+            { name: "icon-cib-gentoo", code: "ea0f" },
+            { name: "icon-cib-geocaching", code: "ea10" },
+            { name: "icon-cib-gerrit", code: "ea11" },
+            { name: "icon-cib-gg", code: "ea12" },
+            { name: "icon-cib-ghost", code: "ea13" },
+            { name: "icon-cib-gimp", code: "ea14" },
+            { name: "icon-cib-git", code: "ea15" },
+            { name: "icon-cib-gitea", code: "ea16" },
+            { name: "icon-cib-github", code: "ea17" },
+            { name: "icon-cib-gitkraken", code: "ea18" },
+            { name: "icon-cib-gitlab", code: "ea19" },
+            { name: "icon-cib-gitpod", code: "ea1a" },
+            { name: "icon-cib-gitter", code: "ea1b" },
+            { name: "icon-cib-glassdoor", code: "ea1c" },
+            { name: "icon-cib-glitch", code: "ea1d" },
+            { name: "icon-cib-gmail", code: "ea1e" },
+            { name: "icon-cib-gnu-privacy-guard", code: "ea1f" },
+            { name: "icon-cib-gnu-social", code: "ea20" },
+            { name: "icon-cib-gnu", code: "ea21" },
+            { name: "icon-cib-go", code: "ea22" },
+            { name: "icon-cib-godot-engine", code: "ea23" },
+            { name: "icon-cib-gog-com", code: "ea24" },
+            { name: "icon-cib-goldenline", code: "ea25" },
+            { name: "icon-cib-goodreads", code: "ea26" },
+            { name: "icon-cib-google-ads", code: "ea27" },
+            { name: "icon-cib-google-allo", code: "ea28" },
+            { name: "icon-cib-google-analytics", code: "ea29" },
+            { name: "icon-cib-google-chrome", code: "ea2a" },
+            { name: "icon-cib-google-cloud", code: "ea2b" },
+            { name: "icon-cib-google-keep", code: "ea2c" },
+            { name: "icon-cib-google-pay", code: "ea2d" },
+            { name: "icon-cib-google-play", code: "ea2e" },
+            { name: "icon-cib-google-podcasts", code: "ea2f" },
+            { name: "icon-cib-google", code: "ea30" },
+            { name: "icon-cib-googles-cholar", code: "ea31" },
+            { name: "icon-cib-gov-uk", code: "ea32" },
+            { name: "icon-cib-gradle", code: "ea33" },
+            { name: "icon-cib-grafana", code: "ea34" },
+            { name: "icon-cib-graphcool", code: "ea35" },
+            { name: "icon-cib-graphql", code: "ea36" },
+            { name: "icon-cib-grav", code: "ea37" },
+            { name: "icon-cib-gravatar", code: "ea38" },
+            { name: "icon-cib-greenkeeper", code: "ea39" },
+            { name: "icon-cib-greensock", code: "ea3a" },
+            { name: "icon-cib-groovy", code: "ea3b" },
+            { name: "icon-cib-groupon", code: "ea3c" },
+            { name: "icon-cib-grunt", code: "ea3d" },
+            { name: "icon-cib-gulp", code: "ea3e" },
+            { name: "icon-cib-gumroad", code: "ea3f" },
+            { name: "icon-cib-gumtree", code: "ea40" },
+            { name: "icon-cib-habr", code: "ea41" },
+            { name: "icon-cib-hackaday", code: "ea42" },
+            { name: "icon-cib-hackerearth", code: "ea43" },
+            { name: "icon-cib-hackerone", code: "ea44" },
+            { name: "icon-cib-hackerrank", code: "ea45" },
+            { name: "icon-cib-hackhands", code: "ea46" },
+            { name: "icon-cib-hackster", code: "ea47" },
+            { name: "icon-cib-happycow", code: "ea48" },
+            { name: "icon-cib-hashnode", code: "ea49" },
+            { name: "icon-cib-haskell", code: "ea4a" },
+            { name: "icon-cib-hatena-bookmark", code: "ea4b" },
+            { name: "icon-cib-haxe", code: "ea4c" },
+            { name: "icon-cib-helm", code: "ea4d" },
+            { name: "icon-cib-here", code: "ea4e" },
+            { name: "icon-cib-heroku", code: "ea4f" },
+            { name: "icon-cib-hexo", code: "ea50" },
+            { name: "icon-cib-highly", code: "ea51" },
+            { name: "icon-cib-hipchat", code: "ea52" },
+            { name: "icon-cib-hitachi", code: "ea53" },
+            { name: "icon-cib-hockeyapp", code: "ea54" },
+            { name: "icon-cib-homify", code: "ea55" },
+            { name: "icon-cib-hootsuite", code: "ea56" },
+            { name: "icon-cib-hotjar", code: "ea57" },
+            { name: "icon-cib-houzz", code: "ea58" },
+            { name: "icon-cib-hp", code: "ea59" },
+            { name: "icon-cib-html5-shield", code: "ea5a" },
+            { name: "icon-cib-html5", code: "ea5b" },
+            { name: "icon-cib-htmlacademy", code: "ea5c" },
+            { name: "icon-cib-huawei", code: "ea5d" },
+            { name: "icon-cib-hubspot", code: "ea5e" },
+            { name: "icon-cib-hulu", code: "ea5f" },
+            { name: "icon-cib-humble-bundle", code: "ea60" },
+            { name: "icon-cib-iata", code: "ea61" },
+            { name: "icon-cib-ibm", code: "ea62" },
+            { name: "icon-cib-icloud", code: "ea63" },
+            { name: "icon-cib-iconjar", code: "ea64" },
+            { name: "icon-cib-icq", code: "ea65" },
+            { name: "icon-cib-ideal", code: "ea66" },
+            { name: "icon-cib-ifixit", code: "ea67" },
+            { name: "icon-cib-imdb", code: "ea68" },
+            { name: "icon-cib-indeed", code: "ea69" },
+            { name: "icon-cib-inkscape", code: "ea6a" },
+            { name: "icon-cib-instacart", code: "ea6b" },
+            { name: "icon-cib-instagram", code: "ea6c" },
+            { name: "icon-cib-instapaper", code: "ea6d" },
+            { name: "icon-cib-intel", code: "ea6e" },
+            { name: "icon-cib-intellijidea", code: "ea6f" },
+            { name: "icon-cib-intercom", code: "ea70" },
+            { name: "icon-cib-internet-explorer", code: "ea71" },
+            { name: "icon-cib-invision", code: "ea72" },
+            { name: "icon-cib-ionic", code: "ea73" },
+            { name: "icon-cib-issuu", code: "ea74" },
+            { name: "icon-cib-itch-io", code: "ea75" },
+            { name: "icon-cib-jabber", code: "ea76" },
+            { name: "icon-cib-java", code: "ea77" },
+            { name: "icon-cib-javascript", code: "ea78" },
+            { name: "icon-cib-jekyll", code: "ea79" },
+            { name: "icon-cib-jenkins", code: "ea7a" },
+            { name: "icon-cib-jest", code: "ea7b" },
+            { name: "icon-cib-jet", code: "ea7c" },
+            { name: "icon-cib-jetbrains", code: "ea7d" },
+            { name: "icon-cib-jira", code: "ea7e" },
+            { name: "icon-cib-joomla", code: "ea7f" },
+            { name: "icon-cib-jquery", code: "ea80" },
+            { name: "icon-cib-js", code: "ea81" },
+            { name: "icon-cib-jsdelivr", code: "ea82" },
+            { name: "icon-cib-jsfiddle", code: "ea83" },
+            { name: "icon-cib-json", code: "ea84" },
+            { name: "icon-cib-jupyter", code: "ea85" },
+            { name: "icon-cib-justgiving", code: "ea86" },
+            { name: "icon-cib-kaggle", code: "ea87" },
+            { name: "icon-cib-kaios", code: "ea88" },
+            { name: "icon-cib-kaspersky", code: "ea89" },
+            { name: "icon-cib-kentico", code: "ea8a" },
+            { name: "icon-cib-keras", code: "ea8b" },
+            { name: "icon-cib-keybase", code: "ea8c" },
+            { name: "icon-cib-keycdn", code: "ea8d" },
+            { name: "icon-cib-khan-academy", code: "ea8e" },
+            { name: "icon-cib-kibana", code: "ea8f" },
+            { name: "icon-cib-kickstarter", code: "ea90" },
+            { name: "icon-cib-kik", code: "ea91" },
+            { name: "icon-cib-kirby", code: "ea92" },
+            { name: "icon-cib-klout", code: "ea93" },
+            { name: "icon-cib-known", code: "ea94" },
+            { name: "icon-cib-ko-fi", code: "ea95" },
+            { name: "icon-cib-kodi", code: "ea96" },
+            { name: "icon-cib-koding", code: "ea97" },
+            { name: "icon-cib-kotlin", code: "ea98" },
+            { name: "icon-cib-krita", code: "ea99" },
+            { name: "icon-cib-kubernetes", code: "ea9a" },
+            { name: "icon-cib-lanyrd", code: "ea9b" },
+            { name: "icon-cib-laravel-horizon", code: "ea9c" },
+            { name: "icon-cib-laravel-nova", code: "ea9d" },
+            { name: "icon-cib-laravel", code: "ea9e" },
+            { name: "icon-cib-last-fm", code: "ea9f" },
+            { name: "icon-cib-latex", code: "eaa0" },
+            { name: "icon-cib-launchpad", code: "eaa1" },
+            { name: "icon-cib-leetcode", code: "eaa2" },
+            { name: "icon-cib-lenovo", code: "eaa3" },
+            { name: "icon-cib-less", code: "eaa4" },
+            { name: "icon-cib-lets-encrypt", code: "eaa5" },
+            { name: "icon-cib-letterboxd", code: "eaa6" },
+            { name: "icon-cib-lgtm", code: "eaa7" },
+            { name: "icon-cib-liberapay", code: "eaa8" },
+            { name: "icon-cib-librarything", code: "eaa9" },
+            { name: "icon-cib-libreoffice", code: "eaaa" },
+            { name: "icon-cib-line", code: "eaab" },
+            { name: "icon-cib-linkedin-in", code: "eaac" },
+            { name: "icon-cib-linkedin", code: "eaad" },
+            { name: "icon-cib-linux-foundation", code: "eaae" },
+            { name: "icon-cib-linux-mint", code: "eaaf" },
+            { name: "icon-cib-linux", code: "eab0" },
+            { name: "icon-cib-livejournal", code: "eab1" },
+            { name: "icon-cib-livestream", code: "eab2" },
+            { name: "icon-cib-logstash", code: "eab3" },
+            { name: "icon-cib-lua", code: "eab4" },
+            { name: "icon-cib-lumen", code: "eab5" },
+            { name: "icon-cib-lyft", code: "eab6" },
+            { name: "icon-cib-macys", code: "eab7" },
+            { name: "icon-cib-magento", code: "eab8" },
+            { name: "icon-cib-magisk", code: "eab9" },
+            { name: "icon-cib-mail-ru", code: "eaba" },
+            { name: "icon-cib-mailchimp", code: "eabb" },
+            { name: "icon-cib-makerbot", code: "eabc" },
+            { name: "icon-cib-manjaro", code: "eabd" },
+            { name: "icon-cib-markdown", code: "eabe" },
+            { name: "icon-cib-marketo", code: "eabf" },
+            { name: "icon-cib-mastercard", code: "eac0" },
+            { name: "icon-cib-mastodon", code: "eac1" },
+            { name: "icon-cib-material-design", code: "eac2" },
+            { name: "icon-cib-mathworks", code: "eac3" },
+            { name: "icon-cib-matrix", code: "eac4" },
+            { name: "icon-cib-mattermost", code: "eac5" },
+            { name: "icon-cib-matternet", code: "eac6" },
+            { name: "icon-cib-maxcdn", code: "eac7" },
+            { name: "icon-cib-mcafee", code: "eac8" },
+            { name: "icon-cib-media-temple", code: "eac9" },
+            { name: "icon-cib-mediafire", code: "eaca" },
+            { name: "icon-cib-medium-m", code: "eacb" },
+            { name: "icon-cib-medium", code: "eacc" },
+            { name: "icon-cib-meetup", code: "eacd" },
+            { name: "icon-cib-mega", code: "eace" },
+            { name: "icon-cib-mendeley", code: "eacf" },
+            { name: "icon-cib-messenger", code: "ead0" },
+            { name: "icon-cib-meteor", code: "ead1" },
+            { name: "icon-cib-micro-blog", code: "ead2" },
+            { name: "icon-cib-microgenetics", code: "ead3" },
+            { name: "icon-cib-microsoft-edge", code: "ead4" },
+            { name: "icon-cib-microsoft", code: "ead5" },
+            { name: "icon-cib-minetest", code: "ead6" },
+            { name: "icon-cib-minutemailer", code: "ead7" },
+            { name: "icon-cib-mix", code: "ead8" },
+            { name: "icon-cib-mixcloud", code: "ead9" },
+            { name: "icon-cib-mixer", code: "eada" },
+            { name: "icon-cib-mojang", code: "eadb" },
+            { name: "icon-cib-monero", code: "eadc" },
+            { name: "icon-cib-mongodb", code: "eadd" },
+            { name: "icon-cib-monkeytie", code: "eade" },
+            { name: "icon-cib-monogram", code: "eadf" },
+            { name: "icon-cib-monzo", code: "eae0" },
+            { name: "icon-cib-moo", code: "eae1" },
+            { name: "icon-cib-mozilla-firefox", code: "eae2" },
+            { name: "icon-cib-mozilla", code: "eae3" },
+            { name: "icon-cib-musescore", code: "eae4" },
+            { name: "icon-cib-mxlinux", code: "eae5" },
+            { name: "icon-cib-myspace", code: "eae6" },
+            { name: "icon-cib-mysql", code: "eae7" },
+            { name: "icon-cib-nativescript", code: "eae8" },
+            { name: "icon-cib-nec", code: "eae9" },
+            { name: "icon-cib-neo4j", code: "eaea" },
+            { name: "icon-cib-netflix", code: "eaeb" },
+            { name: "icon-cib-netlify", code: "eaec" },
+            { name: "icon-cib-next-js", code: "eaed" },
+            { name: "icon-cib-nextcloud", code: "eaee" },
+            { name: "icon-cib-nextdoor", code: "eaef" },
+            { name: "icon-cib-nginx", code: "eaf0" },
+            { name: "icon-cib-nim", code: "eaf1" },
+            { name: "icon-cib-nintendo-3ds", code: "eaf2" },
+            { name: "icon-cib-nintendo-gamecube", code: "eaf3" },
+            { name: "icon-cib-nintendo-switch", code: "eaf4" }
+        ];
+
+        const grid = document.getElementById('glyphGrid');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const testDrive = document.getElementById('testDrive');
+        const fontSizeInput = document.getElementById('fontSize');
+        const testTextInput = document.getElementById('testText');
+
+        function renderGlyphs(filter = '') {
+            const query = filter.toLowerCase().trim();
+            const filtered = glyphs.filter(g => 
+                g.name.toLowerCase().includes(query) || 
+                g.code.includes(query)
+            );
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="no-results">🧐 لم نجد أيقونة تطابق "${query}"</div>`;
+                return;
+            }
+
+            let html = '';
+            filtered.forEach(g => {
+                const hex = `&#x${g.code};`;
+                html += `
+                    <div class="glyph-card" data-name="${g.name}" data-code="${g.code}">
+                        <div class="icon" style="font-family: 'Brands2_icons';">${hex}</div>
+                        <span class="icon-name">${g.name}</span>
+                        <span class="code">${g.code}</span>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
+        }
+
+        function updateTestDrive() {
+            const size = parseInt(fontSizeInput.value, 10) || 48;
+            testDrive.style.fontSize = size + 'px';
+            testDrive.innerHTML = testTextInput.value || '&#xe900; &#xe901; &#xe902;';
+        }
+
+        searchBtn.addEventListener('click', function() {
+            renderGlyphs(searchInput.value);
+        });
+
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                renderGlyphs(searchInput.value);
+            }
+        });
+
+        resetBtn.addEventListener('click', function() {
+            searchInput.value = '';
+            renderGlyphs('');
+        });
+
+        fontSizeInput.addEventListener('input', updateTestDrive);
+        testTextInput.addEventListener('input', updateTestDrive);
+
+        renderGlyphs('');
+        updateTestDrive();
+    })();
+</script>
+</body>
+</html>
